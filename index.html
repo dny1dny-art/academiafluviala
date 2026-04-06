@@ -2791,7 +2791,7 @@
     const filterCat = document.getElementById("filterCat");
 
     function renderList() {
-      const cat = filterCat.value;
+      const cat = filterCat ? filterCat.value : "all";
       const filtered = cat === "all" ? questions : questions.filter(q => q.cat === cat);
       statTotal.textContent = questions.length;
       qList.innerHTML = "";
