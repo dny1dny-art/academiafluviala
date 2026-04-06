@@ -2793,8 +2793,8 @@
     function renderList() {
       const cat = filterCat ? filterCat.value : "all";
       const filtered = cat === "all" ? questions : questions.filter(q => q.cat === cat);
-      statTotal.textContent = questions.length;
-      qList.innerHTML = "";
+      if (statTotal) statTotal.textContent = questions.length;
+      if (!qList) return; qList.innerHTML = "";
       if (!filtered.length) {
         qList.innerHTML = "<div class='small'>📭 Nicio întrebare</div>";
         return;
@@ -2815,7 +2815,7 @@
     }
 
     renderList();
-    filterCat.addEventListener("change", renderList);
+    if (filterCat) filterCat.addEventListener("change", renderList);
 
     document.getElementById("addBtn").addEventListener("click", () => {
       const cat = document.getElementById("cat").value.trim();
