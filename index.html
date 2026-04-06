@@ -2791,6 +2791,10 @@
     const filterCat = document.getElementById("filterCat");
 
     function renderList() {
+          const filterCat = document.getElementById("filterCat");
+    const qList = document.getElementById("qList");
+    const statTotal = document.getElementById("stat-total");
+    if (!filterCat || !qList || !statTotal) return;
       const cat = filterCat ? filterCat.value : "all";
       const filtered = cat === "all" ? questions : questions.filter(q => q.cat === cat);
       if (statTotal) statTotal.textContent = questions.length;
@@ -2815,6 +2819,7 @@
     }
 
     if (filterCat) filterCat.addEventListener("change", renderList);
+      renderList();
 
     document.getElementById("addBtn").addEventListener("click", () => {
       const cat = document.getElementById("cat").value.trim();
