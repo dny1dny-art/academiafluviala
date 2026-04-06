@@ -418,7 +418,7 @@
       gap: 6px;
     }
 
-    .summary {
+    .answers { display:flex; flex-direction:column; gap:6px; margin-top:10px; } .ans-option { display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:10px; border:1px solid rgba(148,163,184,0.5); cursor:pointer; transition:all 0.12s; background:rgba(15,23,42,0.9); } .ans-option:hover:not(.disabled) { border-color:rgba(56,189,248,0.7); background:rgba(56,189,248,0.08); } .ans-option.selected { border-color:rgba(56,189,248,0.9); background:rgba(56,189,248,0.15); } .ans-option.correct { border-color:rgba(74,222,128,0.9); background:rgba(74,222,128,0.15); color:#4ade80; } .ans-option.wrong { border-color:rgba(249,115,115,0.9); background:rgba(249,115,115,0.15); color:#f97373; } .ans-option.disabled { cursor:default; } .ans-option input { display:none; } .feedback { margin-top:8px; font-size:12px; font-weight:600; padding:6px 10px; border-radius:8px; } .feedback.correct { color:#4ade80; background:rgba(74,222,128,0.1); } .feedback.wrong { color:#f97373; background:rgba(249,115,115,0.1); } .summary {
       margin-top: 12px;
       padding: 10px;
       border-radius: 12px;
