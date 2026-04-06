@@ -2782,7 +2782,7 @@
     function saveQuestions(arr) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
     }
-
+    document.addEventListener('DOMContentLoaded', function() {
     let questions = loadQuestions();
 
     // -------------------- UI GESTIONARE --------------------
@@ -3149,7 +3149,7 @@
     nextBtn.addEventListener("click", goToNextQuestion);
     skipBtn.addEventListener("click", skipQuestion);
     finishBtn.addEventListener("click", () => finishExam(false));
-
+});
   </script>
 </body>
 </html>
