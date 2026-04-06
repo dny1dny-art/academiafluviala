@@ -1,0 +1,2449 @@
+<script>
+    // --------- BAZĂ DE ÎNTREBĂRI (identic cu versiunea ta, adaptat pentru acest fișier) ---------
+    // --------- BAZÄ DE ĂNTREBÄRI (identic cu versiunea ta, adaptat pentru acest fiČier) ---------
+    const baseQuestions = [
+      {cat:"ĂntreČinere Či ReparaČii", q:"IdentificaČi printre imaginile de mai jos instrumentul folosit pentru operaČia manualÄ de curÄČare a ruginii Či a vopselei.", a1:"Imagine 1", a2:"Imagine 2", a3:"Imagine 3", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Foile de tablÄ cu deformare marginalÄ sunt ĂŽndreptate", a1:"de la margine la centru", a2:"din interior spre exterior", a3:"de la centru spre margine", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Pentru materiale moi se folosesc ciocane din", a1:"oČel carbon de calitate", a2:"plastic", a3:"cauciuc", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Dispozitivele electrice care detecteazÄ modificÄri ale parametrilor electrici se numesc", a1:"instrumente de mÄsurÄ", a2:"dispozitive de protecČie", a3:"dispozitive de semnalizare", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"IdentificaČi pistolul electric de lipit printre imaginile de mai jos.", a1:"Imagine 1", a2:"Imagine 2", a3:"Imagine 3", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"IdentificaČi cu ce fel de instrument se face vopsirea manualÄ.", a1:"Instrument 1", a2:"Instrument 2", a3:"Instrument 3", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"ĂntreČinerea lanČului de ancorare constÄ ĂŽn", a1:"ciocÄnirea, perierea, lipirea, amorsarea, vopsirea", a2:"periere, amorsare, vopsire", a3:"ciocÄnire, rÄzuire, periere, amorsare, vopsire", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Racletele sunt realizate din urmÄtoarele materiale", a1:"cabluri metalice", a2:"oČel carbon pentru scule", a3:"materiale nemetalice", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"IdentificaČi cavila printre instrumentele folosite pentru ĂŽmbinarea parĂ˘melor.", a1:"Varianta 1", a2:"Varianta 2", a3:"Varianta 3", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Ce se ĂŽnČelege prin lucrÄri de matelotaj?", a1:"lucrÄri marinÄreČti ce se executÄ la bord, constĂ˘nd ĂŽn curÄČarea de ruginÄ a suprafeČelor", a2:"lucrÄri marinÄreČti ce se executÄ la bord, pentru mĂ˘nuirea parĂ˘melor, efectuarea nodurilor Či ĂŽmpletiturilor", a3:"lucrÄri marinÄreČti ce se executÄ la bord, constĂ˘nd ĂŽn acoperirea cu vopsea a suprafeČelor", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Scopul instruirii generale introductive ĂŽn protecČia muncii este", a1:"a aprofunda normele de protecČie a muncii", a2:"pentru a evalua riscul de accidentare", a3:"sÄ prezinte riscuri specifice locului de muncÄ Či mÄsuri de prevenire", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Care dintre urmÄtoarele imagini prezintÄ o acČiune corectÄ?", a1:"Imagine 1", a2:"Imagine 2", a3:"Imagine 3", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Echipamentul de protecČie din imaginea de mai jos este utilizat cĂ˘nd se executÄ", a1:"curÄČarea ruginii Či a vopselei vechi", a2:"vopsirea", a3:"lustruirea", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Echipamentul de protecČie din imaginea de mai jos este utilizat atunci cĂ˘nd", a1:"nivelul sunetului este ridicat", a2:"nivelul sonor este scÄzut", a3:"nivelul de radiaČie este ridicat", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Instruirea care are loc atunci cĂ˘nd procesul tehnologic a fost schimbat sau au fost schimbate echipamentele Či uneltele se numeČte", a1:"instruire privind bolile profesionale", a2:"antrenament periodic", a3:"pregÄtire la locul de muncÄ", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"DacÄ nava este ĂŽn miČcare sau cĂ˘nd viteza curentului depÄČeČte 2 noduri", a1:"se fac reparaČii la carenÄ", a2:"nu se fac reparaČii la carenÄ", a3:"se fac operaČii de vopsire la carenÄ", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Semnul de mai jos reprezintÄ", a1:"pericol de incendiu", a2:"pericol general", a3:"pericol de electrocutare", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"CĂ˘nd se efectueazÄ lucrÄri de reparaČii la motorul navei, pot apÄrea urmÄtoarele", a1:"poluarea fizicÄ a apei", a2:"poluarea biologicÄ a apei", a3:"poluarea chimicÄ a apei", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"ReacČia chimicÄ de combustie a unei substanČe cu oxigenul, ĂŽnsoČitÄ de dezvoltarea cÄldurii Či uneori a flÄcÄrilor se numeČte", a1:"aprindere", a2:"ardere", a3:"explozie", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Matagonirea reprezintÄ", a1:"operaČiunea de furbisire a alamurilor de pe navÄ", a2:"operaČiunea de ĂŽndepÄrtare a ruginii Či a stratului de vopsea sub care se aflÄ rugina", a3:"operaČiunea de aplicare a grundului pe suprafeČe curÄČate de ruginÄ", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"ReparaČia curentÄ se efectueazÄ", a1:"periodic, ĂŽntr-o manierÄ planificatÄ", a2:"neplanificat", a3:"lunar", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Timpii de ĂŽntreČinere preventivÄ pentru motoare Či instalaČii sunt indicaČi de cÄtre", a1:"comandantul navei", a2:"firma producÄtoare", a3:"armatorul navei", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Instrumentul de mÄsurare care indicÄ temperatura lichidului de rÄcire este", a1:"ampermetrul", a2:"termometrul", a3:"manometrul", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Instrumentul de mÄsurare din imagine mÄsoarÄ", a1:"temperatura", a2:"tensiune curentÄ", a3:"presiune", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Revizia tehnicÄ a navei se efectueazÄ", a1:"lunar", a2:"anual", a3:"trimestrial", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Pe navÄ aflatÄ ĂŽn exploatare conform documentaČiei se efectueazÄ lucrÄrile zilnice de ĂŽntreČinere a motoarelor diesel", a1:"la fiecare 24 de ore", a2:"la fiecare 8 ore", a3:"nu se executÄ nicio lucrare", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Sistemul de reparaČii preventive urmÄreČte", a1:"menČinerea navei ĂŽntr-o stare perfectÄ de funcČionare", a2:"anual reparaČii navale", a3:"ĂŽnlocuirea motorului", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"LucrÄrile curente de ĂŽntreČinere sunt efectuate de", a1:"fabrica de producČie", a2:"echipajul navei", a3:"armatorul navei", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"PÄstrarea vopselelor la bordul navei intrÄ ĂŽn atribuČiile", a1:"comandantului navei", a2:"Čefului de echipaj", a3:"ofiterului de punte", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Verificarea Či ĂŽncercarea instalaČiei de guvernare se face", a1:"ĂŽn timpul voiajului navei", a2:"ĂŽnainte de plecarea navei ĂŽn voiaj, cu aproximativ 12 ore ĂŽnainte", a3:"ĂŽnainte de plecarea navei ĂŽn voiaj, cu aproximativ o orÄ ĂŽnainte", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"ParĂ˘mele sintetice trebuie ferite de", a1:"razele solare", a2:"de apa de mare", a3:"nu trebuie aplicate mÄsuri speciale", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Ce reprezintÄ elasticitatea unei parĂ˘me?", a1:"capacitatea ei de a se ĂŽntinde sub acČiunea unei sarcini oarecare Či de a reveni la situaČia iniČialÄ ĂŽn momentul ĂŽncetÄrii tracČiunii", a2:"capacitatea ei de a se ĂŽndoi uČor fÄrÄ a-Či modifica structura interioarÄ Či fÄrÄ a-Či pierde din rezistenČÄ", a3:"sarcina la care parĂ˘ma se rupe", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"La parĂ˘mele metalice, prin diametrul secČiunii se mÄsoarÄ", a1:"grosimea", a2:"greutatea", a3:"rezistenČa", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Umezeala altereazÄ parĂ˘mele vegetale", a1:"da", a2:"nu", a3:"uneori", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Care din urmÄtoarele parĂ˘me au ĂŽn interior o inimÄ vegetalÄ pentru protecČia acestora?", a1:"parĂ˘mele sintetice", a2:"parĂ˘mele vegetale", a3:"parĂ˘mele metalice", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Caracteristicile parĂ˘melor sunt", a1:"grosimea, flotabilitatea, greutatea, rezistenČa, elasticitatea", a2:"grosimea, greutatea, rezistenČa, flexibilitatea, elasticitatea", a3:"grosimea, flotabilitatea, greutatea, elasticitatea, asieta", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Cum se mÄsoarÄ greutatea unei parĂ˘me?", a1:"prin mÄsurarea circumferinČei ei", a2:"prin mÄsurarea sarcinii la care parĂ˘ma se rupe", a3:"prin mÄsurarea greutÄČii ĂŽn kilograme, a unui metru liniar din parĂ˘ma respectivÄ", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Cum se mÄsoarÄ rezistenČa unei parĂ˘me?", a1:"prin mÄsurarea circumferinČei ei", a2:"prin mÄsurarea sarcinii la care parĂ˘ma se rupe", a3:"prin mÄsurarea greutÄČii ĂŽn kilograme, a unui metru liniar din parĂ˘ma respectivÄ", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Ce reprezintÄ flexibilitatea unei parĂ˘me?", a1:"capacitatea ei de a se ĂŽntinde sub acČiunea unei sarcini oarecare Či de a reveni la situaČia iniČialÄ ĂŽn momentul ĂŽncetÄrii tracČiunii", a2:"capacitatea ei de a se ĂŽndoi uČor fÄrÄ a-Či modifica structura interioarÄ Či fÄrÄ a-Či pierde din rezistenČÄ", a3:"sarcina la care parĂ˘ma se rupe", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Unde se pÄstreazÄ parĂ˘mele pentru uzul curent?", a1:"ĂŽn magazii", a2:"pe punte", a3:"ĂŽntr-un coferdam", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Pentru remorcare Či cuplare, parĂ˘mele dvs. trebuie sÄ fie", a1:"foarte lungi", a2:"umede", a3:"suficient de puternice Či nedeteriorate", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Patronarea reprezintÄ", a1:"ĂŽnfaČarea unei fĂ˘Čii de pĂ˘nzÄ de vele peste o parĂ˘ma cu scopul de a o proteja", a2:"ĂŽnfaČurarea cu o sÄulÄ sau aČÄ de velÄ a capetelor de parĂ˘ma cu scopul de a ĂŽmpiedica destrÄmarea acesteia", a3:"punerea unei rodante la gaČe cu scopul de protecČie a acesteia", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Voltele ĂŽn cadrul lucrÄrilor de matelotaj sunt", a1:"noduri marinÄreČti", a2:"legÄturi prin care se fixeazÄ parĂ˘mele la dispozitive speciale de legare", a3:"ĂŽntoarceri ale navelor sub acČiunea vĂ˘ntului", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Ce reprezintÄ imaginile de mai jos?", a1:"noduri marinÄreČti", a2:"legÄturi prin care se fixeazÄ parĂ˘mele la dispozitive speciale de legare", a3:"ĂŽntoarceri ale navelor sub acČiunea vĂ˘ntului", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Imaginea de mai jos reprezintÄ", a1:"tacheČi", a2:"babale", a3:"turnicheČi", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Imaginea de mai jos reprezintÄ", a1:"un tachet", a2:"un Čomar", a3:"o bintÄ", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Ăn imaginea de mai jos este prezentatÄ", a1:"un tachet", a2:"un Čomar", a3:"o bintÄ", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Unde ar trebui sÄ fie depozitate parĂ˘mele?", a1:"matisirea lungÄ", a2:"matisirea scurtÄ", a3:"ĂŽntr-o clÄdire bine ventilatÄ Či uscatÄ", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Ănainte de a folosi o parĂ˘ma, trebuie sÄ", a1:"o uzi", a2:"identifici orice tip de deteriorare", a3:"o ĂŽnfÄČori ĂŽn jurul unui post", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Care este legÄtura navei numitÄ traversa prova sau pupa?", a1:"1", a2:"2", a3:"3", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Fiecare membru al echipajului", a1:"tot echipajul are acelaČi rol", a2:"doar o persoanÄ are toatÄ responsabilitatea", a3:"are propriul rol Či responsabilitÄČi", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Comunicarea bunÄ cu echipa dvs. vÄ permite sÄ", a1:"ĂŽnvÄČaČi o nouÄ limbÄ", a2:"creaČi conflicte", a3:"ĂŽmbunÄtÄČiČi munca ĂŽn echipÄ", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Pentru a avea o ĂŽnČelegere comunÄ ĂŽn cadrul echipei dvs., trebuie sÄ", a1:"manifestaČi comportament personal", a2:"nu ĂŽmpÄrtÄČiČi informaČiile dvs.", a3:"manifestaČi flexibilitate Či adaptabilitate", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"DacÄ o sarcinÄ nu pare oportunÄ sau pare inadecvatÄ", a1:"nu o executaČi", a2:"trimiteČi-o coordonatorului locului de muncÄ", a3:"faceČi ceea ce credeČi cÄ ar trebui sÄ faceČi", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"ĂntreČinerea preventivÄ", a1:"vÄ permite sÄ reparaČi ĂŽntotdeauna un motor", a2:"va menČine nava curatÄ", a3:"previne defecČiunile Či se asigurÄ cÄ echipamentul este sigur de utilizat", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Sisteme de lucru", a1:"se aplicÄ numai evaluÄrilor", a2:"sunt opČionale", a3:"evitÄ accidentele", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Sistemele de lucru trebuie sÄ fie", a1:"comunicate numai cÄpitanului", a2:"exprimate numai oral", a3:"comunicate Či ĂŽnČelese de cÄtre toČi angajaČii afectaČi", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"CĂ˘nd nava este ĂŽn marČ se pot face lucrÄri la corpul navei ĂŽn afara bordului", a1:"da", a2:"uneori da", a3:"nu", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Cine pune la dispoziČia echipajului echipamentul de protecČie Či de lucru, potrivit condiČiilor specifice de lucru?", a1:"comandantul navei", a2:"armatorul navei", a3:"Čantierul de construcČie al navei", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Cine pune la dispoziČia echipajului alimentaČia de protecČie conform normativelor ĂŽn vigoare?", a1:"comandantul navei", a2:"armatorul navei", a3:"Čantierul de construcČie al navei", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Cine are dreptul la intervenČii la echipamentele tehnice ale navei?", a1:"orice membru al echipajului", a2:"echipe speciale de la mal", a3:"membrii echipajului stabiliČi prin sarcini de serviciu", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Exploatarea Či ĂŽntreČinerea echipamentelor tehnice de la bordul navelor va fi fÄcutÄ", a1:"de cÄtre echipe speciale de la mal", a2:"doar dupÄ instruirea ĂŽn prealabil a personalului desemnat pentru aceasta", a3:"de cÄtre personalul de maČinÄ", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Ănaintea pÄrÄsirii cabinei, membrii echipajului trebuie sÄ", a1:"ĂŽnchidÄ hublourile, sÄ stingÄ luminile Či sÄ stingÄ ČigÄrile rÄmase aprinse", a2:"deschidÄ hublourile pentru aerisire, sÄ stingÄ luminile Či sÄ stingÄ ČigÄrile rÄmase aprinse", a3:"se asigure cÄ nava este opritÄ, ĂŽn radÄ sau port", correct:1},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Este permisÄ depozitarea, chiar temporarÄ, a materialelor, uneltelor Či altor obiecte pe cÄile de acces sau de circulaČie?", a1:"da", a2:"nu", a3:"temporar, da", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"ReparaČia defecČiunilor vinciului de ancorare se face", a1:"cĂ˘nd vinciul este ĂŽn funcČiune", a2:"ĂŽn primul port", a3:"cĂ˘nd vinciul este ĂŽn repaus", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Cine controleazÄ cablurile, parĂ˘mele Či lanČurile ĂŽnainte de utilizare?", a1:"comandantul navei", a2:"Čeful mecanic", a3:"salariaČii care le manipuleazÄ", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Manevra prin ecluze, a navelor prin ĂŽmpingere, se executÄ ĂŽn urma dispoziČiei primite de la", a1:"Čef de echipaj", a2:"timonier", a3:"comandant", correct:3},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Ăn timpul acostÄrii convoiului de peretele camerei ecluzei, marinarii de la posturile de manevrÄ", a1:"au voie sÄ staČioneze ĂŽn dreptul legÄturilor", a2:"nu au voie sÄ staČioneze ĂŽn dreptul legÄturilor", a3:"au voie sÄ pÄrÄseascÄ convoiul", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Pe unde se face trecerea de pe doc pe navÄ Či invers?", a1:"nu este prevÄzut ĂŽn normele de protecČia muncii", a2:"numai pe pasarela de trecere", a3:"prin orice loc de trecere", correct:2},
+      {cat:"ĂntreČinere Či ReparaČii", q:"Este permisÄ ridicarea unei greutÄČi mai mari decĂ˘t cea ĂŽnscrisÄ pe placa indicatoare, la instalaČiile de ridicare?", a1:"da", a2:"nu", a3:"nu este prevÄzut ĂŽn normele de protecČia muncii la navÄ", correct:2},
+
+      {cat:"Comunicare", q:"Daca o nava este echipata cu AIS, datele sunt trimise automat catre instalaČiile de la mal, numite staČii bazate pe AIS:", a1:"Da", a2:"Nu", a3:"AIS este specific doar navelor maritime", correct:1},
+      {cat:"Comunicare", q:"AIS este conceput:", a1:"pentru a creČte siguranČa navigaČiei ĂŽn momentul folosirii de la", a2:"Pentru informarea persoanelor vizate privind identitatea operatorului", a3:"Pentru a asigura o prelucrare echitabila si transparenta ĂŽn ceea ce priveČte", correct:1},
+      {cat:"Comunicare", q:"Ăn general, o staČie mobila AIS pentru navigaČia interiora are urmatoarele componente:", a1:"un emitattor-receptor VHF Či un procesor de date", a2:"un emitattor-receptor VHF Či un receptor GNSS", a3:"un emitattor-receptor VHF, un receptor GNSS Či un procesor de", correct:3},
+      {cat:"Comunicare", q:"Mesajele AIS \"interior\" trebuie sa poata transmite urmatoarele tipuri de informaČii:", a1:"informaČii statice, informaČii dinamice", a2:"informaČii privind cursa, informaČii statice, informaČii dinamice", a3:"informaČii statice, informaČii dinamice, informaČii specifice", correct:3},
+      {cat:"Comunicare", q:"Radiourile portabile folosesc de obicei:", a1:"un singur canal radio Či funcČioneaza ĂŽn mod semi-duplex", a2:"modurile de operare ale AIS", a3:"un sistem de afiČare a hÄrČilor electronice de navigaČie interiora", correct:1},
+      {cat:"Comunicare", q:"Numarul oficial al navei, indicativul de apel al navei, numele navei, tipul navei sunt informaČiile incluse ĂŽn:", a1:"informaČiile statice din mesajele AIS", a2:"informaČiile dinamice din mesajele AIS", a3:"informaČiile transmise operatorilor economici", correct:1},
+      {cat:"Comunicare", q:"Sistemele RIS au ca premisa trei mari obiective:", a1:"transportul trebuie sa fie sigur Či eficient", a2:"transportul trebuie sa utilizeze sistemul de balast, sa fie sigur Či eficient", a3:"transportul trebuie sa protejeze mediul, sa fie sigur Či eficient", correct:3},
+      {cat:"Comunicare", q:"O zona RIS poate cuprinde:", a1:"caile navigabile ale unui bazin fluvial geografic, inclusiv teritoriile", a2:"caile navigabile ale unui bazin fluvial geografic, inclusiv echipamentul de", a3:"caile navigabile ale unui bazin fluvial geografic, inclusiv echipamentul de", correct:1},
+      {cat:"Comunicare", q:"Serviciul care asigura punerea la dispozitie ĂŽn timp util a informatiilor esentiale pentru deciziile de navigatie luate la bordul navei, poarta numele de:", a1:"Serviciu de informaČii", a2:"Serviciu de asistenta pentru navigatie", a3:"Serviciu de organizare a traficului", correct:1},
+      {cat:"Comunicare", q:"Serviciul care permite luarea unor decizii de navigatie la bordul navei si care monitorizeaza consecintele acestora, se numeste:", a1:"Serviciu de informaČii", a2:"Serviciu de asistenta pentru navigatie", a3:"Serviciu de organizare a traficului", correct:2},
+      {cat:"Comunicare", q:"Serviciul care are rolul de a preveni situatiile periculoase pentru trafic, prin controlarea miscarilor navei, de a asigura eficienta si siguranta traficului navelor ĂŽn zona VTS, se numeste:", a1:"Serviciu de informaČii", a2:"Serviciu de asistenta pentru navigatie", a3:"Serviciu de organizare a traficului", correct:3},
+      {cat:"Comunicare", q:"Sistemul de afisare a hartilor electronice de navigaČie interiora Či a informaČiilor suplimentare este cunoscut sub numele de:", a1:"ECDIS pentru navigaČia interiora", a2:"IMMARSAT", a3:"VTS cai navigabile interioare", correct:1},
+      {cat:"Comunicare", q:"Scopul principal al ECDIS pentru navigaČia interiora este de a contribui la:", a1:"SiguranČa Či eficienČa navigaČiei interioare", a2:"Calculul de stabilitate", a3:"Ăncarcarea navei", correct:1},
+      {cat:"Comunicare", q:"Ăn modul de navigaČie, afisarea ECDIS pentru navigaČia interiora trebuie sa fie integrata cu:", a1:"InformaČiile radar ale navei", a2:"Largimea de banda ocupata", a3:"Indicativul de apel al staČiilor de nava", correct:1},
+      {cat:"Comunicare", q:"Prin radiotelefon se faciliteaza contactul cu:", a1:"StaČii VTS de pe mal", a2:"Alte administratii", a3:"Alte agenČii locale", correct:1},
+      {cat:"Comunicare", q:"La bordul navei, radiotelefonul este folosit ĂŽn principal pentru:", a1:"A folosi informaČiile primite ĂŽn vederea alegerii unui curs sigur al", a2:"A contacta operatorii de transport", a3:"A contacta operatorii portuari", correct:1},
+      {cat:"Comunicare", q:"La bordul navelor de navigaČie interiora exista facilitÄČi de comunicare interna pentru a putea stabili legaturi de comunicare ĂŽntre:", a1:"Nave, nave Či mal, precum Či ĂŽn interiorul unui convoi", a2:"Nave, operatorul navei Či portului", a3:"Nave, operatorul de nava Či cel de transport", correct:1},
+      {cat:"Comunicare", q:"RadiocomunicaČiile desfÄČurate ĂŽntre staČiile de nava fac parte din:", a1:"Serviciul nava-nava", a2:"Serviciul nava-autoritÄČi portuare", a3:"Serviciul nava-companie", correct:1},
+      {cat:"Comunicare", q:"RadiocomunicaČiile desfÄČurate la bordul unei nave fac parte din:", a1:"Serviciul radiocomunicaČii la bord", a2:"Serviciul radiocomunicaČii de corespondenČÄ publica", a3:"Serviciul informaČii nautice", correct:1},
+      {cat:"Comunicare", q:"La bordul navei, exploatarea unei staČii radiotelefon va fi efectuata de o persoana care deČine:", a1:"Certificat de operator radiotelefon", a2:"FuncČia de marinar unional", a3:"Certificat de operator radar", correct:1},
+      {cat:"Comunicare", q:"Ăn serviciile nava-nava, informaČii nautice Či nava-autoritÄČi portuare:", a1:"Nava - staČia VTS", a2:"InformaČii nautice", a3:"Nava-operator de transport", correct:1},
+      {cat:"Comunicare", q:"StaČiile de nava:", a1:"Este permis sa se emita doar mesaje privind protecČia vieČii", a2:"Este permis sa se emita doar mesaje cu privire la navigaČie", a3:"Nu este permis sa se emita mesaje cu privire la securitatea navelor", correct:1},
+      {cat:"Comunicare", q:"Nerespectarea regulilor de procedura a desfÄČurarii traficului de radiocomunicaČii, ĂŽn ceea ce priveČte operarea staČiilor de radiocomunicaČii, constituie:", a1:"Sunt obligate sa confirme recepČia mesajelor adresate", a2:"Nu sunt obligate sa confirme recepČia mesajelor", a3:"Nu exista prevederi legale ĂŽn acest sens", correct:1},
+      {cat:"Comunicare", q:"Nerespectarea normelor privind evidenČa activitÄČilor staČiilor de radiocomunicaČii reprezinta:", a1:"ContravenČie", a2:"InfracČiune", a3:"Abatere disciplinara", correct:1},
+      {cat:"Comunicare", q:"Echipamentul radiotelefonic utilizeaza frecvenČele VHF conform:", a1:"Anexa 18 la Regulamentul radio", a2:"Anexa 19 la Regulamentul radio", a3:"Anexa 20 la Regulamentul radio", correct:1},
+      {cat:"Comunicare", q:"Mesajele care fac referire la siguranČa vieČii umane sunt incluse ĂŽn urmatoarele categorii de servicii:", a1:"Nava - staČia VTS", a2:"InformaČii nautice", a3:"Nava-operator de transport", correct:2},
+      {cat:"Comunicare", q:"ProtecČia persoanelor fizice ĂŽn ceea ce priveČte prelucrarea datelor cu caracter personal Či libera circulaČie a acestor date sunt documentate ĂŽn:", a1:"Regulamentul UE 2016/679 al Parlamentului European Či al", a2:"Reglementari ale Comisiei Dunarii", a3:"Reglementari ale Comisiei Rinului", correct:1},
+      {cat:"Comunicare", q:"Datele personale vor fi:", a1:"Prelucrate ĂŽn mod legal, corect Či transparent ĂŽn raport cu", a2:"Prelucrate ĂŽn mod legal, corect Či transparent doar de persoana fizica sau", a3:"Nu exista prevederi legale ĂŽn acest sens", correct:1},
+      {cat:"Comunicare", q:"Telefonul, interfonul, radiotelefoanele portabile Či semnalele de alarma date prin sonerie/fluier reprezinta:", a1:"Echipamente individuale de protecČie", a2:"Mijloace de comunicare interna", a3:"Echipamente pentru prevenirea poluarii mediului ĂŽnconjurator", correct:2},
+      {cat:"Comunicare", q:"Divulgarea secretului profesional reprezinta o:", a1:"InfracČiune", a2:"ContravenČie", a3:"Abatere disciplinara", correct:1},
+      {cat:"Comunicare", q:"Divulgarea fara drept a unor date de catre acela caruia i-au fost ĂŽncredinČate sau de care a luat cunoČtinČÄ ĂŽn virtutea profesiei ori funcČiei, daca fapta este de natura a aduce prejudicii, reprezinta:", a1:"Divulgarea secretului profesional", a2:"Divulgarea informaČiilor personale", a3:"Divulgarea datelor personale", correct:1},
+      {cat:"Comunicare", q:"Datele cu caracter personal sunt pastrate ĂŽntr-o forma care permite identificarea persoanelor vizate:", a1:"Pe o perioada care nu depÄČeČte perioada necesara ĂŽndeplinirii", a2:"Pe termen nelimitat", a3:"Nu exista condiČiuni legate de acest aspect", correct:1},
+      {cat:"Comunicare", q:"Principiile protecČiei datelor ar trebui sa se aplice:", a1:"Tuturor aspectelor vieČii profesionale, la nivel managerial", a2:"Oricarei informaČii privind o persoana fizica identificata sau", a3:"Oricarei informatii privind competentele profesionale", correct:2},
+      {cat:"Comunicare", q:"\"Date brute\" ĂŽnseamna:", a1:"InformaČii neinterpretate", a2:"Informatii interpretate", a3:"Lipsa unor informaČii", correct:1},
+      {cat:"Comunicare", q:"Pentru a se determina daca o persoana fizica este identificabila, ar trebui:", a1:"Sa se ia ĂŽn considerare toate mijloacele utilizate de operator sau", a2:"Sa se identifice diferentele de personalitate, dificultatile de exprimare,", a3:"Sa se ia ĂŽn considerare toate mijloacele, cum ar fi provocarea unei reactii", correct:1},
+      {cat:"Comunicare", q:"ProtecČia persoanelor fizice ĂŽn legatura cu prelucrarea datelor cu caracter personal:", a1:"este un drept fundamental", a2:"nu este necesara ĂŽn domeniul navigaČiei", a3:"se aplica doar personalului de conducere", correct:1},
+      {cat:"Comunicare", q:"Factorii care pot influenta ĂŽntelegerea mesajului sunt:", a1:"Emotiile, diferentele de personalitate", a2:"Lipsa de interes, dificultatile de exprimare", a3:"Diferentele de personalitate, lipsa de interes, emotiile,", correct:3},
+      {cat:"Comunicare", q:"Finalitatea procesului de comunicare exista ĂŽn masura ĂŽn care:", a1:"Mesajul este codificat de receptor si acceptat de emitator", a2:"Mesajul este codificat si acceptat de emitator", a3:"Mesajul codificat de emitator este decodificat si acceptat de", correct:3},
+      {cat:"Comunicare", q:"Ăn vederea finalizarii cu succes a procesului de comunicare, avem ĂŽn vedere urmatoarele obiective majore:", a1:"Sa fim receptionati Či ĂŽntelesi", a2:"Sa fim ĂŽntelesi Či acceptati", a3:"Sa fim receptionati, ĂŽntelesi, acceptati Či sa provocam o reactie", correct:3},
+      {cat:"Comunicare", q:"Comanda data ĂŽnainte de aruncarea bandulei:", a1:"\"Arunc bandula!\"", a2:"\"Fereste, bandula!\"", a3:"\"LiniČte, arunc bandula!\"", correct:2},
+      {cat:"Comunicare", q:"StaČionarea ĂŽn dreptul babalelor Či a parĂ˘melor ĂŽn timpul executarii manevrelor de acostare si plecare de la cheu a navelor:", a1:"Este interzisa", a2:"Este recomandata", a3:"Este obligatorie", correct:1},
+      {cat:"Comunicare", q:"Termen marinaresc prin care se da comanda pentru a readuce la bord lanČul ancorei Či ancora cu ajutorul cabestanului sau al vinciului:", a1:"Vira", a2:"Mola", a3:"Volta", correct:1},
+      {cat:"Comunicare", q:"Termen marinaresc folosit pentru a da drumul unei parĂ˘me sau unui lanČ:", a1:"Mola", a2:"Volta", a3:"Vira", correct:1},
+      {cat:"Comunicare", q:"Comanda pentru a opri virarea:", a1:"Volta!", a2:"Vira!", a3:"Pitureaza carena!", correct:1},
+      {cat:"Comunicare", q:"StaČionarea ĂŽnaintea remorcii, cĂ˘t aceasta se afla ĂŽntinsa ĂŽn forČÄ:", a1:"Este interzisa", a2:"Nu prezinta pericol", a3:"Este permisa", correct:1},
+      {cat:"Comunicare", q:"Comanda data pentru a se opri curgerea lantului:", a1:"\"Fila din vinci!\"", a2:"\"Volta lantul!\"", a3:"\"Funda ancora!\"", correct:2},
+      {cat:"Comunicare", q:"Trecerea de pe ĂŽmpingator pe barja/Člep si invers se poate face:", a1:"pe oriunde", a2:"printre tampoanele ĂŽmpingatorului", a3:"pe scara din lateral", correct:2},
+      {cat:"Comunicare", q:"Persoana care transmite informaČia este:", a1:"Destinatarul", a2:"Comunicatorul", a3:"Vorbitorul", correct:2},
+      {cat:"Comunicare", q:"Comunicarea ĂŽn cadrul echipei, echilibrul echipei, conducerea adecvata si specializarea echipei reprezinta:", a1:"Comunicarea interpersonala", a2:"Principiile muncii ĂŽn echipa", a3:"Bariere de comunicare", correct:2},
+      {cat:"Comunicare", q:"Principalul obiectiv al RIVERSPEAK (Fraze de comunicare standard pentru navigaČia interioara) consta ĂŽn:", a1:"comunicaČiile dintre nave Či staČiile terestre", a2:"comunicaČiile ĂŽntre operatorii economici Či autoritÄČile portuare", a3:"comunicaČiile ĂŽntre operatorii de transport Či autoritatea navala", correct:1},
+      {cat:"Comunicare", q:"Conducatorul navei este comunicatorul, iar membrii echipajului sunt:", a1:"Bariere lingvistice", a2:"Destinatarii mesajului", a3:"Interlocutorii", correct:2},
+      {cat:"Comunicare", q:"Comunicarea ĂŽn navigaČie este o interacČiune informaČionalÄ, ĂŽntreČinuta de:", a1:"Bariere lingvistice", a2:"Destinatarii mesajului", a3:"Interlocutorii", correct:1},
+      {cat:"Comunicare", q:"Personalul aflat ĂŽn serviciu la bordul navei:", a1:"Membrii echipajului ĂŽn timpul ĂŽndeplinirii sarcinilor lor funcČionale", a2:"Membrii echipajului doar ĂŽn timpul ĂŽmbarcarii/debarcarii", a3:"Membrii echipajului numai ĂŽn timpul exerciČiilor de siguranČÄ", correct:1},
+      {cat:"Comunicare", q:"Prima condiČie pentru o comunicare eficienta este:", a1:"nu are dreptul sa ĂŽnceteze sau sa ĂŽncredinČeze altei persoane executarea", a2:"poate ĂŽncredinČa Čefului de echipaj o parte din ĂŽndatoriri", a3:"poate ĂŽncredinČa conducatorului navei ĂŽndatoririle sale", correct:2},
+      {cat:"Comunicare", q:"Vocabularul standardizat UNECE pentru conexiune radio ĂŽn navigaČia interioara este recomandat a fi folosit pentru:", a1:"Ăndeplinirea sarcinilor functionale", a2:"Stabilirea unui set de mesaje utilizate ĂŽn mod consecvent", a3:"Remedierea defecČiunilor", correct:3},
+      {cat:"Comunicare", q:"DificultÄČile de comunicare apar adesea din cauza:", a1:"DiferenČelor culturale, dar Či a \"barierelor\" lingvistice", a2:"Comunicarii interpersonale", a3:"Comunicarii nonverbal", correct:1},
+      {cat:"Comunicare", q:"AcČiunile care trebuie ĂŽntreprinse la auzirea semnalelor de alarma sunt:", a1:"Echiparea adecvata, deplasarea la locurile de adunare,", a2:"Echiparea adecvata, deplasarea la locurile de adunare", a3:"Echiparea adecvata, deplasarea la locurile de adunare, acČionarea conform", correct:1},
+      {cat:"Comunicare", q:"StaČionarea ĂŽn apropierea cabestanelor Či vinciurilor pe timpul manevrarii parĂ˘melor sau a lanČurilor ancorelor:", a1:"Este recomandata", a2:"Este benefica ĂŽn eficientizarea muncii", a3:"Este interzisa", correct:3},
+      {cat:"Comunicare", q:"Deschiderile limitate pentru intrare/ieČire Či ventilaČia neadecvata sunt specifice:", a1:"Magaziilor de marfa", a2:"Tancurilor chimice", a3:"SpaČiilor ĂŽnchise", correct:3},
+      {cat:"Comunicare", q:"Ănaintea intrarii ĂŽn spaČii ĂŽnchise se vor lua urmatoarele masuri de precauČie:", a1:"Ventilarea spaČiului", a2:"Ventilarea spaČiului Či amplasarea plasei de siguranČÄ sub scaunul de catarg", a3:"Ventilarea completa a spaČiului Či testarea atmosferei", correct:3},
+      {cat:"Comunicare", q:"La bordul navei, marinarul are urmatoarele ĂŽndatoriri:", a1:"Sa participe la activitÄČile de curÄČenie Či ĂŽntreČinere a navei, a", a2:"Sa ĂŽntocmeasca programul zilnic ĂŽn conformitate cu programul navei Či", a3:"Sa participe la activitÄČile de curÄČenie Či ĂŽntreČinere a navei, a echipamentelor", correct:1},
+      {cat:"Comunicare", q:"La bordul navei, marinarul are urmatoarele ĂŽndatoriri:", a1:"Sa respecte cu strictete regulile de securitate Či sanatate ĂŽn", a2:"Sa verifice respectarea purtarii echipamentului de protecČie la bord, sa", a3:"Sa respecte cu strictete regulile de securitate Či sanatate ĂŽn munca Či de", correct:1},
+      {cat:"Comunicare", q:"Činuta echipajului, ĂŽn timp ul desfÄČurarii activitÄČii la bord, este alcatuita din:", a1:"Echipamentul de protecČie", a2:"Ochelari Či mÄnuČi de protecČie, aruncator de bandula", a3:"Colac de salvare, ham de siguranČÄ", correct:1},
+      {cat:"Comunicare", q:"Primirea vizitatorilor la nava:", a1:"Nu este permisa", a2:"Este permisa numai cu aprobarea conducatorului navei", a3:"Este permisa numai cu aprobarea Čefului de echipaj", correct:2},
+      {cat:"Comunicare", q:"Accesul ĂŽn compartimentele sau tancurile care au fost ĂŽnchise etan?, fiind lipsite de aerisire mai multa vreme:", a1:"Este permis numai dupa ventilarea acestora", a2:"Este permis numai cu acordul Čefului de echipaj", a3:"Este permis numai daca acestea sunt iluminate corespunzator pentru a putea", correct:1},
+      {cat:"Comunicare", q:"CĂ˘nd nava se afla ĂŽn marČ:", a1:"Conducatorul navei poate modifica programul orar ĂŽn raport cu", a2:"Conducatorul navei nu are voie sa modifice programul orar", a3:"Timonierul poate modifica programul orar ĂŽn raport cu cerinČele activitÄČii", correct:1},
+      {cat:"Comunicare", q:"La bordul navei, urmatoarele echipamente fac parte din categoria echipamentelor individuale de protecČie:", a1:"Ochelarii de protecČie, trusa de resuscitare, casca de protecČie, stingatoarele", a2:"Combinezoanele, mÄČtile antipraf, aruncatorul de bandula, stingatoarele cu", a3:"Hamul de siguranČÄ, mÄnuČile de protecČie, mÄČtile antipraf Či", correct:3},
+      {cat:"Comunicare", q:"Incapacitatea de a ĂŽntelege sau accepta oamenii cu seturi diferite de valori, standarde si stiluri de viata diferite de cele ale noastre reprezinta:", a1:"Bariere de comunicare determinate de factorii interni", a2:"Bariere de limbaj", a3:"Socul cultural", correct:3},
+      {cat:"Comunicare", q:"Productivitatea unei echipe de munca:", a1:"Depinde de eficienta ĂŽn comunicare, de nivelul de pregatire al", a2:"Depinde doar de nivelul de pregatire a persoanelor", a3:"Depinde de modalitatea ĂŽn care echipa este condusa", correct:1},
+      {cat:"Comunicare", q:"Membrii echipajului au o responsabilitate sociala fata de:", a1:"Colegii din compartimentul unde lucreaza", a2:"Čefii ierarhici", a3:"Sine, colegi, companie Či mediu", correct:3},
+      {cat:"Comunicare", q:"Existenta presupunerilor, exprimarea cu stĂ˘ngacie a mesajului de catre emitator, concluziile grabite asupra continutului mesajului reprezinta:", a1:"Bariere de limbaj", a2:"Bariere de mediu", a3:"Bariere de conceptie", correct:3},
+      {cat:"Comunicare", q:"La bordul navei, consumul de droguri Či alcool este:", a1:"Interzis", a2:"Permis cu acordul Čefului de echipaj", a3:"Permis doar ĂŽn spaČii special amenajate", correct:1},
+      {cat:"Comunicare", q:"La bordul navei, echipajul are dreptul:", a1:"De a respecta politicile companiei, de a executa ordinele primite de la superiori", a2:"De a ĂŽndeplini atribuČiile de serviciu cu minim de randament, de a respecta", a3:"De exprimare a convingerilor proprii, de clarificare a", correct:3},
+      {cat:"Comunicare", q:"Pentru munca egala sau de valoare egala:", a1:"Este interzisa orice discriminare bazata pe criteriul de sex cu", a2:"Remunerarea se diferenČiaza ĂŽn funcČie de vĂ˘rsta, sex Či naČionalitate", a3:"Remunerarea se diferenČiaza ĂŽn funcČie de vĂ˘rsta Či naČionalitate", correct:1},
+      {cat:"Comunicare", q:"Ăn cadrul relaČiilor de munca functioneaza:", a1:"Principiul egalitatii de tratament fata de toti salariatii", a2:"Principiul responsabilitÄČii", a3:"Principiul automatizarii proceselor pentru managementul personalului", correct:1},
+      {cat:"Comunicare", q:"Orice tip de comportament care are ca scop sau ca efect lezarea demnitÄČii unei persoane Či duce la crearea unui mediu intimidant, ostil, degradant, umilitor sau ofensator este cunoscut sub numele de:", a1:"HÄrČuire", a2:"Consensualism", a3:"InteracČiune umana de tipul \"win-lose'' (\"eu cĂ˘Čtig-tu pierzi\")", correct:1},
+      {cat:"Comunicare", q:"Unele dintre pericolele care pot aparea la bordul navei sunt:", a1:"Alunecarile Či caderile, utilizarea incorecta a echipamentelor,", a2:"Lucrul la ĂŽnÄlČime, munca ĂŽn echipa", a3:"CondiČiile meteo nefavorabile, consumul de alimente procesate, respectarea", correct:1},
+      {cat:"Comunicare", q:"Un element esenČial cu privire la siguranČa vieČii la bord este:", a1:"Comunicarea eficienta", a2:"Andocarea", a3:"NavigaČia ĂŽn aval", correct:1},
+      {cat:"Comunicare", q:"Politicile Či programele privind alcoolul Či drogurile se aplica:", a1:"Ăntregului personal de la bord", a2:"Numai pentru timonieri Či conducatorii de nava", a3:"Numai pentru personalul nou angajat", correct:1},
+      {cat:"Comunicare", q:"Membrii echipajului au o responsabilitate sociala fata de:", a1:"Colegii din compartimentul unde lucreaza", a2:"Čefii ierarhici", a3:"Sine, colegi, companie Či mediu", correct:3},
+      {cat:"Comunicare", q:"Membrii echipajului au urmatoarele drepturi:", a1:"dreptul de exprimare a propriilor convingeri", a2:"dreptul de clarificare a comunicaČiilor", a3:"dreptul la convingeri proprii, dreptul de exprimare a", correct:3},
+      {cat:"Comunicare", q:"Membrii echipajului au urmatoarele obligaČii:", a1:"Executarea ordinelor primite de la superiori, ĂŽndeplinirea", a2:"Respectarea politicilor companiei, executarea ordinelor primite de la superiori", a3:"Respectarea politicilor companiei, ĂŽndeplinirea atribuČiilor de serviciu cu", correct:1},
+      {cat:"Comunicare", q:"La bordul navei se interzice:", a1:"Realizarea curÄČeniei mici Či mari cĂ˘t timp nava este ĂŽn mars", a2:"Odihna ĂŽn alte locuri decĂ˘t cele special amenajate, consumul de", a3:"oprirea iluminatului la plecarea din cabina", correct:2},
+      {cat:"Comunicare", q:"Scaldatul ĂŽn fluviu Či ĂŽn bazinele portuare este:", a1:"Interzis personalului ĂŽmbarcat la bordul navei", a2:"Permis numai cu acordul Čefului de echipaj", a3:"Este permis ca modalitate de relaxare echipajului", correct:1},
+      {cat:"Comunicare", q:"Abuzul de droguri, alcool Či efectele adverse ale acestora asupra siguranČei navigaČiei este una dintre cele mai semnificative:", a1:"Probleme de comunicare", a2:"Probleme educaČionale", a3:"Probleme sociale", correct:3},
+      {cat:"Comunicare", q:"RecomandÄrile Codului de practica al OIM - Managementul problemelor legate de alcool Či droguri la locul de munca, au scopul de a oferi ĂŽndrumari tuturor celor care:", a1:"Au responsabilitatea de a aborda problemele legate de alcool Či", a2:"Au responsabilitatea pentru abordarea problemelor legate de alcool Či droguri", a3:"Au responsabilitatea pentru abordarea problemelor legate de alcool Či droguri", correct:1},
+      {cat:"Comunicare", q:"Carnea, ouale, laptele Či alte produse lactate fac parte din categoria:", a1:"Proteine", a2:"CarbohidraČi", a3:"Oleaginoase", correct:1},
+      {cat:"Comunicare", q:"Hrana de la bordul navei trebuie gĂ˘ndita ČinĂ˘nd seama Či de:", a1:"Contextul cultural Či religios al membrilor echipajului", a2:"CompetenČele membrilor echipajului", a3:"OrganizaČiile de protecČie sociala", correct:1},
+      {cat:"Comunicare", q:"", a1:"Este gratuita pentru toČi membrii echipajului", a2:"Nu este gratuita", a3:"Este gratuita doar pentru membrii echipajului din cadrul nivelului operaČional", correct:1},
+      {cat:"Comunicare", q:"Personalul de catering trebuie sa fie instruit corespunzator ĂŽn ceea ce priveČte:", a1:"SiguranČa alimentelor Či igiena personala", a2:"Igiena personala", a3:"Pregatirea alimentelor", correct:1},
+      {cat:"Comunicare", q:"Planificarea ĂŽn avans a meselor zilnice la bordul navei:", a1:"Este utila ĂŽn stabilirea necesarului de provizii alimentare", a2:"Nu este utila", a3:"Este nerecomandata", correct:1},
+      {cat:"Comunicare", q:"Cauzele infectarii alimentelor sunt:", a1:"Igiena personala insuficienta", a2:"Cunostinte reduse despre igiena", a3:"Igiena personala insuficienta si cunostinte reduse despre igiena", correct:3},
+      {cat:"Comunicare", q:"Temperatura medie de preparare a alimentelor ĂŽn vederea distrugerii bacteriilor este de:", a1:"75 ÂşC", a2:"70 ÂşC", a3:"80 ÂşC", correct:3},
+      {cat:"Comunicare", q:"Ănainte de servire, produsele pot fi Činute la o temperatura de:", a1:"Minim 60ÂşC(produse calde) si maxim 10 ÂşC(produse reci)", a2:"Minim 60ÂşC(produse calde) si maxim 8 ÂşC(produse reci)", a3:"Minim 50ÂşC(produse calde) si maxim 8 ÂşC(produse reci)", correct:2},
+      {cat:"Comunicare", q:"Cum trebuie racita hrana calda ĂŽn vederea refrigerarii?", a1:"cĂ˘t de repede posibil pĂ˘na la 4-5 ÂşC", a2:"lent, pĂ˘na la 8 ÂşC", a3:"moderat, pĂ˘na la 10 ÂşC", correct:1},
+      {cat:"Comunicare", q:"Alimentele congelate se dezgheaČÄ la temperatura de:", a1:"5-10ÂşC", a2:"10-15ÂşC", a3:"0-20ÂşC", correct:2},
+
+      {cat:"Operare", q:"Ce tip de nava este acesta?", a1:"Nava mare de Rhin", a2:"Nava cisterna", a3:"Nava Ro-Ro", correct:3},
+      {cat:"Operare", q:"Ce tip de nava este acesta?", a1:"Remorcher", a2:"Ămpingator", a3:"Ferry-boat", correct:2},
+      {cat:"Operare", q:"Ce tip de nava este acesta?", a1:"Cisterna chimica", a2:"Cisterna de gaz", a3:"Barja ĂŽmpinsa", correct:2},
+      {cat:"Operare", q:"Ce tip de nava este acesta?", a1:"Cisterna chimica", a2:"Cisterna de gaz", a3:"Barja ĂŽmpinsa", correct:2},
+      {cat:"Operare", q:"Navele de croaziera sunt nave :", a1:"Cisterna de gaz", a2:"Cisterna chimica", a3:"Tanc de bunkerare", correct:2},
+      {cat:"Operare", q:"Navele de transbordare sunt nave :", a1:"cu destinatie speciala", a2:"pasagere", a3:"tehnice", correct:1},
+      {cat:"Operare", q:"Ăn categoria navelor pasagere intra :", a1:"pasagere", a2:"sportive", a3:"de transport marfuri", correct:3},
+      {cat:"Operare", q:"Cargourile sunt nave :", a1:"piscicole", a2:"de transport marfuri generale", a3:"de servitute", correct:2},
+      {cat:"Operare", q:"Navele mineraliere sunt nave :", a1:"tip container", a2:"cu destinatie speciala", a3:"tip vrachier", correct:3},
+      {cat:"Operare", q:"Navele cerealiere sunt nave :", a1:"tip container", a2:"cu destinatie speciala", a3:"tip vrachier", correct:3},
+      {cat:"Operare", q:"Navele pentru transport marfuri lichide sunt :", a1:"containerele si frigorificele", a2:"petroliere si gaze lichefiate", a3:"hidrografice si pentru stins incendii", correct:2},
+      {cat:"Operare", q:"Ăn categoria navelor cu destinatie speciala, intra:", a1:"remorchere, ĂŽmpingatoare, pilotine", a2:"sportive si de agrement", a3:"hidrografice, de cercetare, nave scoala, debarcadere", correct:3},
+      {cat:"Operare", q:"Sunt nave tehnice :", a1:"dragi si salande", a2:"containere si frigorifice", a3:"de prelucrare si transport a pestelui", correct:1},
+      {cat:"Operare", q:"Sunt nave de servitute:", a1:"dragi si salande", a2:"spargatoare de gheata, pilot, de buncheraj", a3:"cerealiere, mineraliere, carboniere", correct:2},
+      {cat:"Operare", q:"Dupa modul de propulsie, navele sunt :", a1:"pentru curse regulate si pentru curse obisnuite", a2:"pe perna de aer, cu aripi portante si glisoare", a3:"fara propulsie proprie si cu propulsie proprie", correct:3},
+      {cat:"Operare", q:"Nava din imagine este supusa la", a1:"Tensiune transversala", a2:"Tensiune locala", a3:"Tensiune longitudinala", correct:3},
+      {cat:"Operare", q:"Mai jos vedeti un desen al unei nave de 135 m cu o cala de marfa impartita ĂŽn 16 sectiuni. Vei ĂŽncarca minereu de fier. Ăn ce ordine ĂŽncarci nava?", a1:"16-15-14-13-12-11-10-9-8-7-6-5-4-3-2-1", a2:"1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16", a3:"10-12-14-16-8-6-4-2-15-13-11-9-7-5-3-1", correct:3},
+      {cat:"Operare", q:"O cisterna cu rezervoare centrale:", a1:"poate avea de multe ori de-a face cu forte de torsiune", a2:"se poate ĂŽnclina ĂŽn mod neasteptat ĂŽn timpul unei viraj", a3:"poate avea dificultati ĂŽn a sta drept", correct:2},
+      {cat:"Operare", q:"Asupra unei nave care pluteste, actioneaza ĂŽn permanenta :", a1:"o forta: forta de greutate a navei", a2:"o forta: forta de flotabilitate", a3:"doua forte: forta de greutate a navei si forta de flotabilitate", correct:3},
+      {cat:"Operare", q:"CĂ˘nd spunem ca nava sta pe chila dreapta?", a1:"daca nu are ĂŽnclinari longitudinale si transversale", a2:"daca nu are ĂŽnclinari transversale, dar are ĂŽnclinari longitudinale", a3:"daca nu are inclinari longitudinale, dar are ĂŽnclinari transversale", correct:1},
+      {cat:"Operare", q:"CĂ˘nd spunem ca nava are asieta?", a1:"daca nu are ĂŽnclinari transversale, dar are ĂŽnclinari longitudinale", a2:"daca nu are inclinari longitudinale si transversale", a3:"daca nu are inclinari longitudinale, dar are ĂŽnclinari transversale", correct:1},
+      {cat:"Operare", q:"CĂ˘nd spunem ca nava este bandata?", a1:"daca nu are ĂŽncliaari transversale, dar are ĂŽnclinari longitudinale", a2:"daca nu are ĂŽnclinari longitudinale, dar are ĂŽnclinari transversale", a3:"daca nu are inclinari longitudinale si transversale", correct:2},
+      {cat:"Operare", q:"Unde se afla etrava?", a1:"la pupa navei", a2:"la prova navei", a3:"la mijlocul navei", correct:2},
+      {cat:"Operare", q:"Unde se afla etamboul?", a1:"la pupa navei", a2:"la prova navei", a3:"la mijlocul navei", correct:1},
+      {cat:"Operare", q:"Ce rol are selatura puntii?", a1:"de a mentine nava pe chila dreapta", a2:"de a asigura scurgerea rapida a apei de pe punti", a3:"de a ĂŽnchide nava ĂŽn dreptul puntii", correct:2},
+      {cat:"Operare", q:"Care sunt apendicii navei?", a1:"elicea, cĂ˘rma, chilele de ruliu, cavaletii", a2:"Parapet, balustrade, brĂ˘u", a3:"Ferestre, hublouri, usi metalice", correct:1},
+      {cat:"Operare", q:"Chila reprezinta:", a1:"element de rezistenta al navei dispus ĂŽn planul transversal al navei", a2:"element de rezistenta dispus ĂŽn planul longitudinal al navei", a3:"element de rezistenta dispus ĂŽn planul cuplului maestru", correct:2},
+      {cat:"Operare", q:"Etrava reprezinta:", a1:"prelungirea chilei ĂŽn tribord si babord", a2:"prelungirea chilei ĂŽn prova", a3:"prelungirea chilei ĂŽn pupa", correct:2},
+      {cat:"Operare", q:"Etamboul reprezinta:", a1:"prelungirea chilei ĂŽn tribord si babord", a2:"prelungirea chilei ĂŽn prova", a3:"prelungirea chilei ĂŽn pupa", correct:3},
+      {cat:"Operare", q:"Coastele reprezinta elemente de constructie ale navei dispuse ĂŽn planul:", a1:"liniei de plutire", a2:"longitudinal", a3:"transversal", correct:3},
+      {cat:"Operare", q:"Varangele reprezinta elemente de constructie ale navei dispuse ĂŽn planul:", a1:"liniei de plutire", a2:"longitudinal", a3:"transversal", correct:3},
+      {cat:"Operare", q:"Ce este flotabilitatea?", a1:"proprietatea navei de a reveni la pozitia initiala, dupa ce a fost scoasa din starea de echilibru", a2:"proprietatea navei de a pluti, la pescajul mediu determinat, cu incarcatura sa", a3:"proprietatea navei de a-si schimba directia miscarii", correct:2},
+      {cat:"Operare", q:"Cum se numeste ĂŽnclinarea navei ĂŽn jurul unui ax longitudinal?", a1:"tangaj", a2:"banda", a3:"ruliu", correct:2},
+      {cat:"Operare", q:"Cum se numeste miscarea oscilatorie provocata de ĂŽnclinarile transversale?", a1:"tangaj", a2:"banda", a3:"ruliu", correct:3},
+      {cat:"Operare", q:"Cum se numeste ĂŽnclinarea navei care se produce ĂŽn jurul unui ax transversal?", a1:"diferenta de asieta", a2:"tangaj", a3:"banda", correct:1},
+      {cat:"Operare", q:"Cum se numeste miscarea oscilatorie provocata de ĂŽnclinarile longitudinale?", a1:"ruliu", a2:"tangaj", a3:"asieta", correct:2},
+      {cat:"Operare", q:"CĂ˘nd se spune despre o nava, ca este canarisita?", a1:"daca o nava ramĂ˘ne ĂŽnclinata longitudinal si continua sa navige ĂŽnclinata", a2:"daca o nava are pescajul prova egal cu pescajul pupa", a3:"daca o nava bandata nu revine la pozitia initiala si continua sa navige ĂŽnclinata", correct:3},
+      {cat:"Operare", q:"CĂ˘nd se spune despre o nava, ca este aprovata?", a1:"daca o nava ĂŽnclinata longitudinal are pescajul prova mai mare decĂ˘t pescajul pupa", a2:"daca o nava ĂŽnclinata longitudinal are pescajul pupa mai mare decĂ˘t pescajul prova", a3:"daca o nava ĂŽnclinata longitudinal are pescajul pupa egal cu pescajul prova", correct:1},
+      {cat:"Operare", q:"CĂ˘nd se spune despre o nava ca este apupata?", a1:"daca o nava ĂŽnclinata longitudinal are pescajul prova mai mare decĂ˘t pescajul pupa", a2:"daca o nava ĂŽnclinata longitudinal are pescajul pupa mai mare decĂ˘t pescajul prova", a3:"daca o nava ĂŽnclinata longitudinal are pescajul pupa egal cu pescajul prova", correct:2},
+      {cat:"Operare", q:"CĂ˘nd se spune despre o nava ca are asieta dreapta?", a1:"daca o nava ĂŽnclinata longitudinal are pescajul prova mai mare decĂ˘t pescajul pupa", a2:"daca o nava ĂŽnclinata longitudinal are pescajul pupa mai mare decĂ˘t pescajul prova", a3:"daca o nava ĂŽnclinata longitudinal are pescajul pupa egal cu pescajul prova", correct:3},
+      {cat:"Operare", q:"Ce reprezinta nescufundabilitatea?", a1:"capacitatea navei de a pluti si de a-si mentine stabilitatea atunci cĂ˘nd unul sau mai multe compartimente au fost inundate", a2:"capacitatea navei de a nu se deforma si de a-si pastra etanseitatea, atunci cĂ˘nd asupra ei actioneaza forte exterioare", a3:"capacitatea navei de a-si continua deplasarea dupa schimbarea regimului de mars al masinilor", correct:1},
+      {cat:"Operare", q:"Ce reprezinta viteza navei?", a1:"capacitatea navei de a-si continua deplasarea dupa schimbarea regimului de mars al masinilor", a2:"spatiul parcurs ĂŽn unitatea de timp", a3:"capacitatea navei de a-si schimba directia de deplasare sub influenta cĂ˘rmei si a elice   lor", correct:2},
+      {cat:"Operare", q:"Ce reprezinta inertia navei?", a1:"capacitatea navei de a-si continua deplasarea dupa schimbarea regimului de mars al masinilor", a2:"spatiul parcurs ĂŽn unitatea de timp", a3:"capacitatea navei de a-si schimba directia de deplasare sub influenta cĂ˘rmei si a elicelor", correct:1},
+      {cat:"Operare", q:"Unde se afla dispusa puntea teuga?", a1:"la pupa navei", a2:"la prova navei", a3:"la mijlocul navei", correct:2},
+      {cat:"Operare", q:"Unde se afla dispusa puntea duneta?", a1:"la pupa navei", a2:"la prova navei", a3:"la mijlocul navei", correct:1},
+      {cat:"Operare", q:"Ce este picul prova?", a1:"compartimentul de coliziune situat ĂŽntre etambou si primul perete transversal etans", a2:"compartimentul etans situat ĂŽn prova, ĂŽntre primul perete etans si prima magazie", a3:"compartimentul de coliziune situat ĂŽntre etrava si primul perete transversal etans", correct:3},
+      {cat:"Operare", q:"Ce este picul pupa?", a1:"compartimentul de coliziune situat ĂŽntre etambou si primul perete transversal etans", a2:"compartimentul etans situat ĂŽn prova, ĂŽntre primul perete etans si prima magazie", a3:"compartimentul de coliziune situat ĂŽntre etrava si primul perete transversal etans", correct:1},
+      {cat:"Operare", q:"Ce sunt coferdamurile?", a1:"compartimente etanse, destinate depozitarii marfurilor", a2:"compartimente ĂŽn care sunt montate instalatiile pentru obtinerea aburului", a3:"compartimente etanse, realizate ĂŽntre peretii transversali dubli, foarte ĂŽnguste, ĂŽn care nu se depoziteaza nimic", correct:3},
+      {cat:"Operare", q:"Daca de pe o nava se descarca diferite greutati:", a1:"nava iese din apa", a2:"nava se scufunda ĂŽn apa", a3:"nava nu ĂŽsi modifica greutatea", correct:1},
+      {cat:"Operare", q:"Asupra unui corp scufundat ĂŽn apa actioneaza:", a1:"o forta determinata de presiunea apei", a2:"doua forte opuse: greutatea si presiunea apei", a3:"o forta determinata de greutatea corpului", correct:2},
+      {cat:"Operare", q:"Principiul lui Arhimede se aplica:", a1:"oricarui corp care zboara", a2:"oricarui corp aflat la sol", a3:"oricarui corp scufundat ĂŽn apa", correct:3},
+      {cat:"Operare", q:"Deplasamentul navei se masoara ĂŽn:", a1:"tone-forta", a2:"metri patrati", a3:"kilograme", correct:1},
+      {cat:"Operare", q:"Pentru ca o nava sa pluteasca ĂŽn stare de echilibru este necesar ca:", a1:"greutatea apei dislocuite de nava sa fie mai mica decĂ˘t greutatea navei", a2:"greutatea apei dislocuite de nava sa fie egala cu greutatea navei", a3:"greutatea apei dislocuite de nava sa fie mai mare decĂ˘t greutatea navei", correct:2},
+      {cat:"Operare", q:"Pentru ca o nava sa pluteasca ĂŽn stare de echilibru este necesar ca:", a1:"centrul de greutate al navei si centrul de carena sa se afle pe aceeasi verticala", a2:"centrul de greutate al navei si centrul de carena sa se afle pe aceeasi orizontala", a3:"centrul de greutate al navei si centrul de carena sa fie unic", correct:1},
+      {cat:"Operare", q:"Greutatea unei nave:", a1:"este ĂŽntotdeauna aceeasi", a2:"difera de la o situatie de ĂŽncarcare la alta", a3:"este data de greutatea marfurilor ambarcate", correct:2},
+      {cat:"Operare", q:"Care componenta a navei are cea mai mare probabilitate de patrundere a apei?", a1:"cala de marfa", a2:"arborele de elice", a3:"Puntea", correct:2},
+      {cat:"Operare", q:"Corpul navei este cel mai susceptibil la deteriorare:", a1:"la prova navei", a2:"la pupa navei", a3:"ĂŽn partile navei aflate ĂŽmpreuna la cald si rece", correct:3},
+      {cat:"Operare", q:"Un compartiment lateral ĂŽnchis poate fi verificat cel mai bine pentru prezenta apei:", a1:"prin deschiderea gurii de vizitare si inspectarea vizuala a acesteia", a2:"prin masurarea cu o joja ĂŽn partea de sus a compartimentului", a3:"cautĂ˘nd prezenta bulelor de aer pe exteriorul navei", correct:2},
+      {cat:"Operare", q:"Poate un perete etan sa contina si o usa etansa?", a1:"Da, cu conditia sa fie echipat cu alarma", a2:"Da, cu conditia sa fie si etan si sa fie clar ca trebuie sa ramĂ˘na ĂŽnchis ĂŽn timpul calatoriei", a3:"Nu, nu ar trebui sa existe orificii ĂŽn peretele etan", correct:2},
+      {cat:"Operare", q:"CĂ˘nd nava are o gaura de apa de dimensiuni mici, prin care patrunde apa, cum poate fi ea astupata?", a1:"Prin intermediul unui sigiliu pe interior", a2:"Prin intermediul unui sigiliu la exterior", a3:"Prin descarcarea navei", correct:1},
+      {cat:"Operare", q:"Ce se ĂŽnregistreaza ĂŽn Carnetul de Serviciu?", a1:"programul de lucru al navigatorului", a2:"zilele de ĂŽmbarcare ale navigatorului", a3:"zilele de boala ale navigatorului", correct:2},
+      {cat:"Operare", q:"La ce este folosit Jurnalul de evidenta a deseurilor colectate la bordul unei nave?", a1:"la ĂŽnregistrarea benzinei uzate", a2:"la ĂŽnregistrarea ĂŽntregului flux de deseuri", a3:"la ĂŽnregistrarea timpilor cĂ˘t au fost ĂŽn functiune generatoarele", correct:2},
+      {cat:"Operare", q:"La ce este folosit Jurnalul de bord al navei?", a1:"la ĂŽnregistrarea benzinei uzate", a2:"la ĂŽnregistrarea ĂŽntregului flux de deseuri", a3:"la ĂŽnregistrarea timpilor de navigatie si a echipajului", correct:3},
+      {cat:"Operare", q:"CĂ˘t de des se fac ĂŽnscrisuri ĂŽn Jurnalul de bord al navei?", a1:"la fiecare doua zile", a2:"la fiecare ora ĂŽn timp ce navigheaza", a3:"la ĂŽnceputul si la sfĂ˘rsitul unei calatorii", correct:3},
+      {cat:"Operare", q:"Pentru ce are nevoie navigatorul de certificat medical?", a1:"pentru a aplica pentru un carnet de serviciu", a2:"pentru a solicita un Jurnal de bord al navei", a3:"a aplica pentru un certificat de tonaj", correct:1},
+      {cat:"Operare", q:"CĂ˘nd trebuie remasurata o nava?", a1:"la fiecare 5 ani", a2:"niciodata", a3:"cĂ˘nd structura navei a fost modificata", correct:3},
+      {cat:"Operare", q:"Ce tip de ancora vezi ĂŽn aceasta imagine?", a1:"KLIP", a2:"Danford", a3:"Heuss", correct:1},
+      {cat:"Operare", q:"Ce tip de ancora vezi ĂŽn aceasta imagine?", a1:"KLIP", a2:"Danford", a3:"Heuss", correct:2},
+      {cat:"Operare", q:"Ce tipuri de vinciuri de ancora exista?", a1:"hidraulice si electrice", a2:"electrice si pneumatice", a3:"pneumatic si electric", correct:1},
+      {cat:"Operare", q:"Pentru ce sunt folosite vinciurile de ancora pe o barja?", a1:"remorcare de nave", a2:"ancorare si asigurare", a3:"cuplare", correct:2},
+      {cat:"Operare", q:"Ce ĂŽnseamna echipament de punte?", a1:"echipament sau dispozitiv electric necesar pentru andocarea navei, ĂŽncarcarea si descarcarea marfurilor, urcarea si coborĂ˘rea pasagerilor", a2:"echipament sau dispozitiv electronic necesar pentru andocarea navei, ĂŽncarcarea si descarcarea marfurilor, urcarea si coborĂ˘rea pasagerilor", a3:"echipament sau dispozitiv mecanic necesar pentru andocarea navei, ĂŽncarcarea si descarcarea marfurilor, urcarea si coborĂ˘rea pasagerilor", correct:3},
+      {cat:"Operare", q:"Ce este un vinci, ca echipament de punte?", a1:"o nava interioara folosita pentru a rula, pentru a elibera sau pentru a regla ĂŽn alt mod tensiunea unei frĂ˘nghii, sĂ˘rme sau cabluri", a2:"un mecanism folosit pentru a ĂŽnfasura, pentru a elibera sau pentru a regla ĂŽn alt mod tensiunea unei frĂ˘nghii, sĂ˘rme sau cabluri", a3:"un troliu este un element de structura a navei folosit pentru aceleasi scopuri", correct:2},
+      {cat:"Operare", q:"Unul dintre avantajele macaralelor pe punte este:", a1:"macaraua este capabila sa ridice numai sarcinile permise oriunde ĂŽn raza sa de lucru", a2:"macaraua nu este capabila sa ridice si sa coboare ĂŽncarcaturile permise oriunde ĂŽn raza sa", a3:"macaraua este capabila sa ridice si sa coboare ĂŽncarcaturile permise oriunde ĂŽn raza sa de lucru", correct:3},
+      {cat:"Operare", q:"Ce ĂŽnseamna sistem de conducte, ca echipament de punte:", a1:"un sistem de conducte este definit pentru a include numai conducte", a2:"un sistem de conducte este definit pentru a include numai componentele conectate direct la conducte", a3:"un sistem de conducte este definit pentru a include conducte, precum si componente ĂŽn legatura directa cu conductele", correct:3},
+      {cat:"Operare", q:"Pentru functionarea ĂŽn siguranta a vinciului ancorei, utilizati ĂŽntotdeauna opritorul de lant atunci cĂ˘nd nu se efectueaza nici o operatiune si ĂŽn timp ce ungeti piesele de ancorare ale navei.", a1:"Fals", a2:"Adevarat", a3:"Depinde de Comandantul navei", correct:2},
+      {cat:"Operare", q:"Ănainte de a utiliza macaraua de punte, membrii echipajului de punte trebuie sa verifice sarcina structurii/corpului/articolului de ridicare", a1:"Fals", a2:"Doar daca se primeste comanda de la Comandant", a3:"Adevarat", correct:3},
+      {cat:"Operare", q:"Elicea este un element component al instalatiei de:", a1:"acostare", a2:"ĂŽncarcare-descarcare", a3:"propulsie", correct:3},
+      {cat:"Operare", q:"Cabestanul este asezat ĂŽn plan:", a1:"orizontal", a2:"vertical", a3:"oblic", correct:2},
+      {cat:"Operare", q:"Ce este o bandula?", a1:"o bucata de saula de 20-25 metri, prevazuta la unul din capete cu o para ĂŽmpletita sau din lemn", a2:"o para din lemn sau ĂŽmpletita, folosita la darea gasei la mal", a3:"un element component al instalatiei de ĂŽncarcare-descarcare", correct:1},
+      {cat:"Operare", q:"Bandula este un element component al instalatiei de:", a1:"ĂŽncarcare-descarcare", a2:"acostare si legare", a3:"propulsie", correct:2},
+      {cat:"Operare", q:"Vinciul de ancora se foloseste la:", a1:"ĂŽncarcarea-descarcarea marfurilor si a containerelor", a2:"ancorarea si acostarea navelor", a3:"remorcarea navelor", correct:2},
+      {cat:"Operare", q:"Instalatia de acostare si legare:", a1:"mentine nava ĂŽntr-o zona ĂŽn afara caii navigabile", a2:"realizeaza deplasarea navei", a3:"asigura nava ĂŽn locul voit si ĂŽntr-o pozitie aleasa", correct:3},
+      {cat:"Operare", q:"Instalatia de ancorare:", a1:"realizeaza deplasarea navei", a2:"mentine nava ĂŽntr-o zona ĂŽn afara caii navigabile sau ĂŽntr-o pozitie stabilita", a3:"asigura nava ĂŽn locul voit si ĂŽntr-o pozitie aleasa", correct:2},
+      {cat:"Operare", q:"Instalatia de ĂŽncarcare/descarcare:", a1:"mentine nava ĂŽntr-o zona ĂŽn afara caii navigabile", a2:"asigura respectarea drumului impus sau schimbarea directiei", a3:"sisteme mecanice ce ĂŽnving fortele gravitationale pentru deplasarea greutatilor", correct:3},
+      {cat:"Operare", q:"Ce sunt bigile?", a1:"o bucata de saula de 20-25 m cu para", a2:"brate care pivoteaza ĂŽn jurul unui suport, cu miscare fata de axele orizontala si verticala", a3:"ansamblu de piese cu care se asigura nava ĂŽn locul voit", correct:2},
+      {cat:"Operare", q:"Sunt elemente componente ale instalatiei de ancorare:", a1:"fungile, bratele si scotele", a2:"ancora, nara de ancora si ghidajele de lant", a3:"straiurile, sarturile si pataratinele", correct:2},
+      {cat:"Operare", q:"Ce tip de ancora este ancora Amiralitate?", a1:"cu fus articulat", a2:"cu gheare de pisica", a3:"cu fus nearticulat", correct:3},
+      {cat:"Operare", q:"Ce tip de ancora este ancora Hall?", a1:"cu fus articulat", a2:"cu gheare de pisica", a3:"cu fus nearticulat", correct:1},
+      {cat:"Operare", q:"Elementele componente ale unei ancore sunt:", a1:"nara de ancora, vinciul de ancora si lantul de ancorare", a2:"fus, diamant, brate si gheare", a3:"stopa de lant, lantul de ancorare si tubul de ghidare", correct:2},
+      {cat:"Operare", q:"Care este rolul unei ancore?", a1:"de a schimba directia de deplasare a navei", a2:"de mentinere a unei rute prestabilite", a3:"de fixare a navei fata de fundul apei", correct:3},
+      {cat:"Operare", q:"Care sunt elementele de legatura dintre ancora si corpul navei?", a1:"stopele de lant", a2:"lanturile si parĂ˘mele de ancora", a3:"putul de lant", correct:2},
+      {cat:"Operare", q:"Ce reprezinta cheile de lant?", a1:"chei cu care se ĂŽnfasoara lantul pe un tambur", a2:"diametrul sĂ˘rmei de otel a zauei", a3:"tronsoane din lantul de ancora, de o anumita lungime", correct:3},
+      {cat:"Operare", q:"Unde se depoziteaza lanturile de ancora virate partial sau total la bord?", a1:"ĂŽn puturile de lant", a2:"ĂŽn stopele de lant", a3:"ĂŽn narile de punte", correct:1},
+      {cat:"Operare", q:"Ce sunt narile de punte?", a1:"deschideri ĂŽn corpul navei, prin care lantul traverseaza bordajul si puntea", a2:"elemente prin care lantul de pe barbotin intra ĂŽn putul lantului", a3:"dispozitive de blocare a lantului fata de corpul navei", correct:1},
+      {cat:"Operare", q:"La bordul navelor de pasageri, toate zonele pentru pasageri vor fi accesibile prin:", a1:"sistemul de difuzoare", a2:"echipamente radiotelefonice", a3:"instalatia radar", correct:1},
+      {cat:"Operare", q:"Navele de pasageri trebuie sa fie echipate cu un sistem de alarma care sa permita pasagerilor si echipajului sa alerteze:", a1:"Administratia portului", a2:"Comanda si echipajul navei", a3:"doar comandantul", correct:2},
+      {cat:"Operare", q:"Colacii de salvare pentru pasageri pe punte trebuie pozitionati:", a1:"pe ambele parti la cel mult 30 m", a2:"pe ambele parti la cel mult 20 m unul de celalalt", a3:"pe ambele parti la cel mult 10 m", correct:2},
+      {cat:"Operare", q:"Echipamente individuale de salvare trebuie sa fie disponibile pentru:", a1:"75% din numarul maxim permis de pasageri", a2:"100% din numarul maxim permis de pasageri", a3:"50% din numarul maxim permis de pasageri", correct:2},
+      {cat:"Operare", q:"Ce este un put de cablu?", a1:"containerul ĂŽn care se afla lantul macaralei", a2:"tubul prin care trece lantul de ancorare", a3:"spatiul ĂŽn care se afla lantul de ancorare", correct:3},
+      {cat:"Operare", q:"La bordul navelor de pasageri, aparatele de salvare trebuie depozitate astfel ĂŽncĂ˘t sa:", a1:"se ajunga la ele usor si ĂŽn siguranta", a2:"se ajunga la ele ĂŽn siguranta", a3:"se ajunga la ele ĂŽn orice conditii", correct:1},
+      {cat:"Operare", q:"Stingatoare portabile ĂŽn camerele pentru pasageri trebuie sa fie disponibile ĂŽn numar de:", a1:"un stingator pentru fiecare 120 mp de suprafata bruta a podelei", a2:"un stingator pentru fiecare 100 mp", a3:"un stingator pentru fiecare 80 mp", correct:1},
+      {cat:"Operare", q:"Ăn fiecare bucatarie si lĂ˘nga incaperile cu lichide inflamabile trebuie sa fie:", a1:"doua stingatoare portabile", a2:"un stingator portabil", a3:"trei stingatoare portabile", correct:2},
+      {cat:"Operare", q:"Ăn figura de mai jos, cu â1â s-a notat (prima imagine):", a1:"ancora", a2:"nara de ancora", a3:"vinciul de ancora", correct:1},
+      {cat:"Operare", q:"Ăn figura de mai jos, cu â1â s-a notat (a doua imagine):", a1:"ancora", a2:"lantul de ancora", a3:"vinciul de ancora", correct:1},
+      {cat:"Operare", q:"Plutele de salvare de la bordul navelor de pasageri trebuie:", a1:"sa poarte o notificare cu scopul lor", a2:"sa poarte o notificare cu scopul lor si numarul de persoane pentru care sunt aprobate", a3:"sa poarte o procedura cu scopul si numarul de persoane", correct:2},
+      {cat:"Operare", q:"Cine elibereaza certificatul de clasa al unei nave?", a1:"capitaniile porturilor", a2:"Registrul Naval RomĂ˘n", a3:"santierul de constructie al navei", correct:2},
+      {cat:"Operare", q:"Cine elibereaza certificatul pentru mijloacele de salvare al unei nave?", a1:"capitaniile porturilor", a2:"Registrul Naval RomĂ˘n", a3:"santierul de constructie al navei", correct:2},
+      {cat:"Operare", q:"Cine elibereaza certificatul pentru echipamentele de navigatie?", a1:"capitaniile porturilor", a2:"Registrul Naval RomĂ˘n", a3:"santierul de constructie al navei", correct:2},
+      {cat:"Operare", q:"Cine elibereaza documentele pentru liniile de ĂŽncarcare ale unei nave?", a1:"capitaniile porturilor", a2:"Registrul Naval RomĂ˘n", a3:"santierul de constructie al navei", correct:2},
+      {cat:"Operare", q:"Pe ce perioada de timp acorda Registrul Naval RomĂ˘n clasa unei nave?", a1:"ĂŽn fiecare an", a2:"la 5 ani", a3:"la 4 ani", correct:3},
+
+{cat:"Securitate",
+ q:"Cine este responsabilul principal pentru siguranČa Či sanatatea tuturor membrilor echipajului de la bordul navei?",
+ a1:"Proprietarul navei",
+ a2:"Persoana responsabila pentru securitatea muncii",
+ a3:"Persoana responsabila pentru protectia mediului",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Cine trebuie sa furnizeze Či sÄ ĂŽntreČinĂŁ navele, echipamentele, manualele de operare Či alte documente din punct de vedere al securitÄČii muncii?",
+ a1:"Armatorul navei",
+ a2:"Seful de echipaj",
+ a3:"Conducatorul navei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Care dintre urmÄtoarele situaČii pot fi considerate pericole la bord?",
+ a1:"Alunecari, ĂŽmpiedicari Či caderi din cauza suprafeČelor alunecoase Či a obstacolelor",
+ a2:"Alunecari, ĂŽmpiedicari Či caderi din cauza ĂŽncarcarii Či descarcarii marfii",
+ a3:"Alunecari, ĂŽmpiedicari Či caderi din cauza ĂŽmbarcarii pasagerilor",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Care dintre urmÄtoarele situaČii pot fi considerate pericole la bord?",
+ a1:"Leziuni oculare provocate prin ciobire, prin operatiuni de sudura",
+ a2:"Leziuni la cap din cauza neglijentei",
+ a3:"Ămbracaminte, degetele prinse ĂŽn maČini staČionare",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ăn ceea ce priveČte accesul ĂŽn siguranČa la bord a membrilor echipajului navei, nu ar trebui sa foloseasca un mijloc de acces care este:",
+ a1:"Nepotrivit",
+ a2:"Nesigur",
+ a3:"NeobiČnuit",
+ correct:2},
+
+{cat:"Securitate",
+ q:"ToČi membrii echipajului implicaČi ĂŽn operaČiunile de acostare:",
+ a1:"Trebuie sa fie informati cu privire la pericolele angajarii ĂŽn astfel de operaČiuni",
+ a2:"Ar trebui sa fie informati cu privire la pericolele aparute ĂŽn timpul navigaČiei",
+ a3:"Trebuie informati cu privire la pericolele aparute ĂŽn timpul lucrÄrilor de ĂŽntreČinere",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ăn timpul operaČiunii de piturare (vopsire), la bordul navei, este permis fumatul?",
+ a1:"Da, cu unele masuri de precauČie",
+ a2:"Nu",
+ a3:"Da, numai cu permisiunea conducatorului navei",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Comunicarea deschisa care trebuie asigurata ĂŽn principal de catre conducatorul navei include Či:",
+ a1:"Instruirea Či familiarizarea noilor membri ai echipajului cu privire la particularitÄČile locului de munca",
+ a2:"Instruirea Či familiarizarea noilor membri ai echipajului asupra particularitatilor zonei de cazare",
+ a3:"Instruirea Či familiarizarea noilor membri ai echipajului cu privire la particularitÄČile zonei de ĂŽncÄrcare",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Echipamentul de protecČie personala trebuie sa fie ĂŽntotdeauna ............... de catre membrii echipajului de fiecare data ĂŽnainte de utilizare.",
+ a1:"CurÄČat",
+ a2:"Verificat",
+ a3:"Stocat",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Echipamentul individual de protecČie pentru protecČia capului este:",
+ a1:"CaČti de protecČie, Čepci de protecČie, protecČie pentru pÄr",
+ a2:"CaČti de protecČie, ochelari de protecČie, scuturi faciale",
+ a3:"Centuri de siguranČa",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce fel de echipament este prezentat ĂŽn imagine?",
+ a1:"Casca de protectie",
+ a2:"ProtecČia pÄrului",
+ a3:"ProtecČia mĂ˘inilor",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Echipamentul individual de protecČie prezentat ĂŽn ilustraČie este utilizat pentru:",
+ a1:"ProtecČia ochilor",
+ a2:"ProtecČia capului",
+ a3:"ProtecČia feČei",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Costumele de siguranČa, centurile de siguranČa, hamurile, ČorČurile, ĂŽmbracamintea de ĂŽnalta vizibilitate sunt echipamente individuale de protecČie pentru:",
+ a1:"ProtecČia corpului",
+ a2:"ProtecČie ĂŽmpotriva hipotermiei",
+ a3:"ProtecČie ĂŽmpotriva vremii rele",
+ correct:1},
+
+{cat:"Securitate",
+ q:"MÄČtile de praf, aparatele de respirat sunt echipamente individuale de protecČie incluse ĂŽn categoria de:",
+ a1:"Echipament de protecČie respiratorie",
+ a2:"Echipament de protectie corporala",
+ a3:"Echipament de protectie a mĂ˘inilor",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Echipamentul individual de protecČie adecvat ar trebui sÄ:",
+ a1:"Fie adecvat pentru riscurile implicate Či sarcina care este ĂŽndeplinita, fÄrÄ ca el ĂŽnsuČi sÄ conducÄ la vreun risc crescut semnificativ",
+ a2:"Poata fi ĂŽmbracat oricum de catre echipaj",
+ a3:"Nu fie compatibil cu niciun alt echipament folosit ĂŽn acelaČi timp",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Toate spaČiile ĂŽnchise trebuie luate ĂŽn considerare ca .......... pentru intrare pĂ˘nÄ la proba contrarie.",
+ a1:"Nepotrivit",
+ a2:"Nesigur",
+ a3:"Neprotejat",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Orice spaČiu ĂŽnchis poate avea o atmosfera deficitara ĂŽn:",
+ a1:"Hidrogen",
+ a2:"Oxigen",
+ a3:"Monoxid de carbon",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Zonele ĂŽn care este prezenta sau poate aparea o atmosfera nesigura includ:",
+ a1:"Cabinele de locuit",
+ a2:"Dublu fond",
+ a3:"Timonerie",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Alte pericole pentru munca ĂŽn spaČiu ĂŽnchis pot include:",
+ a1:"Lovituri",
+ a2:"Intoxicatii din alta sursa, cum ar fi gaze de hidrocarburi",
+ a3:"Arsuri",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Pericolele atunci cĂ˘nd lucraČi ĂŽn spaČii ĂŽnchise includ:",
+ a1:"Lipsa oxigenului",
+ a2:"Oxigen ĂŽn concentratii mari",
+ a3:"Hidrogen ĂŽn concentraČie mare",
+ correct:1},
+
+ {cat:"Securitate",
+ q:"Ănainte de a intra ĂŽn spaČii ĂŽnchise, trebuie luate urmÄtoarele masuri de precauČie:",
+ a1:"Atmosfera trebuie testata cu 2 saptamĂ˘ni ĂŽnainte",
+ a2:"Procedurile de intrare ar trebui urmate din cĂ˘nd ĂŽn cĂ˘nd",
+ a3:"Accesul se face in baza unui permis de lucru",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Pentru a intra ĂŽn spaČii ĂŽnchise, ar trebui folosit aparat de respirat?",
+ a1:"Da",
+ a2:"Nu",
+ a3:"Uneori",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Pentru lucrul ĂŽn spaČiu ĂŽnchis, ar trebui sa se foloseasca:",
+ a1:"Permis de munca la cald",
+ a2:"Permis de lucru",
+ a3:"Permis de lucru cu foc deschis",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ănainte de a intra ĂŽn anumite spaČii ĂŽnchise de la bord, care dintre urmÄtoarele proceduri Či aranjamente trebuie urmate:",
+ a1:"Ar trebui luate puČine surse de aprindere",
+ a2:"O echipa de salvare Či echipament de resuscitare ar trebui sa fie disponibile pentru acČiune imediata",
+ a3:"Un sistem de comunicare ar trebui sa fie disponibil numai ĂŽn timpul intrarii ĂŽn spaČiul ĂŽnchis",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Scopul exerciČiilor conform rolului de echipaj este de a familiariza membrii echipajului cu sarcinile lor respective Či de a se asigura ca pot ĂŽndeplini acele sarcini ĂŽntr-un mod adecvat:",
+ a1:"Adevarat",
+ a2:"Fals",
+ a3:"Doar pentru rolul de abandonarea navei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Rolul de echipaj trebuie sa conČinÄ:",
+ a1:"Detalii ale semnalului general de alarma",
+ a2:"Alte proceduri de urgenČÄ",
+ a3:"AcČiuni care trebuie ĂŽntreprinse ĂŽn munca zilnica",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Rolul de echipaj ar trebui sa indice sarcinile:",
+ a1:"Colective",
+ a2:"Individuale",
+ a3:"OpČionale",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Tuturor membrilor echipajului trebuie sa li se ofere detalii cu privire la propriile sarcini ĂŽn timpul situaČiilor de urgenČÄ:",
+ a1:"Scrise",
+ a2:"Verbale",
+ a3:"Non-verbale",
+ correct:1},
+
+{cat:"Securitate",
+ q:"ExerciČiile sunt o parte esenČiala a instruirii ĂŽn caz de urgenČÄ?",
+ a1:"Nu",
+ a2:"Da",
+ a3:"Nu este obligatoriu",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Cine este responsabil pentru raportarea legala a accidentelor Či evenimentelor periculoase reglementate de legislaČie?",
+ a1:"Seful de echipaj",
+ a2:"Conducatorul navei",
+ a3:"Timonierul",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Care este rutina de urmat ĂŽn cazul unei alarme generale?",
+ a1:"AcČionaČi conform listei de echipaj a navei",
+ a2:"Actionati cum credeti de cuviinta",
+ a3:"AcČionaČi dupa ce pericolul a fost ĂŽnlaturat",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Care este una dintre acČiunile pe care trebuie sa le ĂŽntreprindeti ĂŽn cazul semnalului Om peste bord?",
+ a1:"ĂncercaČi sa localizaČi membrul echipajului cazut ĂŽn apa",
+ a2:"AruncaČi echipamentul individual de protecČie",
+ a3:"Informati-va colegii",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Care este una dintre acČiunile pe care trebuie sa le ĂŽntreprindeti ĂŽn cazul unei alarme de incendiu?",
+ a1:"InformaČi comandantul",
+ a2:"VerificaČi daca este o alarma reala sau falsa",
+ a3:"AleargÄ spre cel mai apropiat loc de siguranČÄ",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Care este una dintre acČiunile pe care trebuie sa le ĂŽntreprindeti ĂŽn cazul unui prim ajutor de urgenČÄ?",
+ a1:"AleargÄ ĂŽn cel mai apropiat loc sigur",
+ a2:"AnuntaČi comanda de navigatie",
+ a3:"Oprirea navei",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Care este una dintre acČiunile pe care trebuie sa le ĂŽntreprindeti ĂŽn cazul unui prim ajutor de urgenČÄ?",
+ a1:"Asigurarea accesului pentru membrii echipajului",
+ a2:"Nu intervin daca nu sunt in siguranta",
+ a3:"Salvarea victimei din pericol",
+ correct:2},
+
+{cat:"Securitate",
+ q:"O evaluare rapida de urgenČÄ a pacientului trebuie facuta la locul accidentului pentru a determina tipul Či amploarea traumatismei:",
+ a1:"Imediat",
+ a2:"La cererea conducatorului navei",
+ a3:"La cererea victimei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ăn timpul evaluarii pacientului, daca nu exista puls trebuie sa:",
+ a1:"Trebuie ĂŽncepute compresia cardiaca Či respiraČia artificiala",
+ a2:"Numai compresia cardiaca trebuie ĂŽnceputa",
+ a3:"Trebuie ĂŽnceputa numai respiraČia artificiala",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Pacientul trebuie tratat pentru Čoc daca:",
+ a1:"Pulsul este slab Či rapid",
+ a2:"Culoarea pielii este normala",
+ a3:"Pulsul este normal",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Primul ajutor la bordul navei trebuie acordat:",
+ a1:"Imediat",
+ a2:"La cererea conducatorului navei",
+ a3:"La cererea victimei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ăn timpul evaluarii pacientului, daca nu exista puls:",
+ a1:"RestabiliČi respiraČia Či bataile inimii",
+ a2:"Controleza situaČia",
+ a3:"ĂndepÄrtaČi obstacolele",
+ correct:1},
+
+ {cat:"Securitate",
+ q:"Pacientul trebuie tratat pentru Čoc daca:",
+ a1:"Trebuie ĂŽncepute compresia cardiaca Či respiraČia artificiala",
+ a2:"Numai compresia cardiaca trebuie ĂŽnceputa",
+ a3:"Trebuie ĂŽnceputa numai respiraČia artificiala",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Nu subestimaČi Či nu tratati ca fiind stari minore, cum ar fi:",
+ a1:"Pulsul este slab Či rapid",
+ a2:"Pielea are culoare normala",
+ a3:"Pulsul este normal",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ăn evaluarea starii unui accidentat nu considerati niciodata pe nimeni decedat, pĂ˘nÄ cĂ˘nd dvs. Či ceilalČi sunteti de acord ca:",
+ a1:"Inconstienta",
+ a2:"Rani mici",
+ a3:"Intepaturi",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Semnele Či simptomele pierderii excesive de sĂ˘nge sunt:",
+ a1:"Mobilitate buna",
+ a2:"Piele palida, umeda",
+ a3:"RespiraČie normala",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Care este perioada de timp in care se poate ĂŽntrerupe efectuarea masajului cardiac de catre un salvator care resusciteaza o victima cu stop cardiac?",
+ a1:"Nu mai mult de 5 secunde",
+ a2:"Nu mai mult de 20 secunde",
+ a3:"Nu mai mult de 25 secunde",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Care este frecventa insuflatiilor si a compresiunilor toracice care trebuie mentinuta in cazul in care un salvator trebuie sa resusciteze cardio-respirator o victima?",
+ a1:"0.09375",
+ a2:"0.0451388888888889",
+ a3:"0.104166666666667",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Intoxicatia poate fi produsa pe cale:",
+ a1:"Naturala",
+ a2:"Digestiva",
+ a3:"Artificiala",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Abdomenul acut-chirurgical apare ĂŽn:",
+ a1:"Gastrite",
+ a2:"Apendicita acuta",
+ a3:"Colica biliara",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Care sunt semnele care ne arata ca circulatia sanguina nu se face corect intr-o zona a corpului imobilizata prin atele?",
+ a1:"Zonele de sub fractura sunt calde",
+ a2:"Degetele de la maini si de la picioare sunt de culoare roz",
+ a3:"Absenta pulsului",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Socul anafilactic fiind cauza alergica poate sa apara tardiv dupa tratamentul cu:",
+ a1:"Supozitoare",
+ a2:"Penicilina",
+ a3:"Vaccinuri",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Toxiinfectiile alimentare au drept cauza urmÄtoarele:",
+ a1:"Intoxicatiile cu alimente",
+ a2:"Lipsa igienei mĂ˘inilor",
+ a3:"Toxinele purtate de vectori",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Hemoptizia reprezinta o hemoragie interna exteriorizata printr-un organ, la nivel:",
+ a1:"Gastric",
+ a2:"Intestinal",
+ a3:"Pulmonar",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Hemotoraxul reprezinta:",
+ a1:"Varsatura cu sĂ˘nge",
+ a2:"Supuratie pulmonara",
+ a3:"SĂ˘nge acumulat ĂŽntre foitele pleurale",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Socul poate avea una din urmÄtoarele forme:",
+ a1:"Profunda",
+ a2:"Compensata",
+ a3:"Comitiala",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Crepitatia, semn de siguranta al fracturii, reprezinta:",
+ a1:"Traiectul intern al fracturii",
+ a2:"Mobilitatea regiunii fracturate",
+ a3:"Frecatura dintre capetele osoase fracturate",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Care sunt masurile de prim ajutor in caz de hemoragie a urechii?",
+ a1:"Asezati victima in pozitie culcat si picioarele pe cat posibil mai sus decat restul corpului",
+ a2:"Asezati victima in pozitie jumatate sezand cu capul inclinat catre partea afectata pentru a favoriza curgerea sangelui",
+ a3:"Introduceti in urechea victimei tampoane de vata pentru a opri curgerea sangelui",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Un risc deosebit la nava il constituie intoxicarea cu CO2. Unde este probabilitatea mai mare sa intalniti acest gaz?",
+ a1:"La partea superioara a magaziilor de marfa",
+ a2:"La partea superioara a compartimentului masini",
+ a3:"La partea inferioara a magaziilor si a compartimentelor",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Cat la suta din suprafata totala a corpului este afectata la o victima adulta care a suferit arsuri pe membrele inferioare si zona membrelor superioare?",
+ a1:"0.27",
+ a2:"0.45",
+ a3:"0.54",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ce incearca sa faca salvatorul ĂŽn imaginea alaturata?",
+ a1:"Salvatorul incearca sa transporte victima aflata in stare de inconstienta unui accident de intoxicatie prin metoda pompierului",
+ a2:"Salvatorul incearca sa transporte victima aflata in stare de inconstienta aplicand metoda puntii olandeze",
+ a3:"Salvatorul incearca sa salveze victima unui accident de inecare aflata in stare de constienta utilizand Manevra Heimlich",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Metodele moderne de imobilizare a fracturilor recurg la utilizarea atelelor pneumatice. Cat timp pot imobiliza zona afectata acest tip de atele?",
+ a1:"Nu mai mult de 48 de ore",
+ a2:"Nu mai mult de 24 de ore",
+ a3:"Nu mai mult de cateva ore",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ăn cazul unei electrocutari primul pas de intervenČie este:",
+ a1:"Intreruperea curentului electric",
+ a2:"Indepartam de urgenta victima din zona accidentului",
+ a3:"Anunt comanda de navigatie",
+ correct:1},
+
+ {cat:"Securitate",
+ q:"Toate arsurile provocate de caldura ar trebui sa fie racite cĂ˘t mai repede posibil cu apa rece curenta aplicata cel puČin timp de:",
+ a1:"2 minute",
+ a2:"10 minute",
+ a3:"3 minute",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Vestele de salvare vor fi furnizate:",
+ a1:"Ăn trei dimensiuni pentru sugar, copil Či adulČi",
+ a2:"Numai marimi pentru adulti si copii, bebelusii nu au voie la bord",
+ a3:"Vestele de salvare au o singura marime universala",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Vestele de salvare pentru adulČi trebuie sa aiba suficienta flotabilitate Či stabilitate ĂŽn apa dulce calma pentru a:",
+ a1:"Ănclina corpul ĂŽnapoi din poziČie verticala",
+ a2:"Ănclina corpul ĂŽnainte din poziČie verticala",
+ a3:"Pastra pozitia corpului ĂŽn poziČie orizontala",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Culoarea luminilor vestei de salvare ar trebui sa fie:",
+ a1:"Alba",
+ a2:"Rosie",
+ a3:"Verde",
+ correct:1},
+
+{cat:"Securitate",
+ q:"CĂ˘te zile ar trebui sa se mentina la suprafata apei o pluta de salvare ĂŽn toate condiČiile de apa?",
+ a1:"45 de zile",
+ a2:"15 zile",
+ a3:"30 de zile",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin mijloace colective de salvare?",
+ a1:"Sunt barci de salvare, colaci de salvare",
+ a2:"Sunt plute de salvare, veste de salvare",
+ a3:"Sunt barci de salvare, plute de salvare",
+ correct:3},
+
+{cat:"Securitate",
+ q:"O persoana care a cazut peste bord in apa, in ce pozitie ar trebui recuperata din apa daca salvarea se face cu elicopterul:",
+ a1:"In pozitie orizontala",
+ a2:"In pozitie verticala",
+ a3:"Nu este importanta pozitia victimei cand este recuperata din apa",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Recuperarea unei persoane din apa se realizeaza de obicei prin utilizarea:",
+ a1:"Colac de salvare",
+ a2:"Barca de salvare",
+ a3:"Vesta de salvare",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Folosind o barca de salvare poate fi recuperata o persoana din apa?",
+ a1:"Intotdeauna",
+ a2:"Nu",
+ a3:"Uneori",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Folosind un colac de salvare poate fi recuperata o persoana din apa?",
+ a1:"Intotdeauna",
+ a2:"Nu",
+ a3:"Uneori",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Supravietuirea victimei unui accident prin cadere peste bord depinde de o serie de factori, cum ar fi:",
+ a1:"Cum a raspuns la Čocul rece",
+ a2:"CĂ˘t timp a stat pe punte",
+ a3:"Varsta victimei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ar trebui prevazute cai de evacuare sigure la bordul navelor de pasageri?",
+ a1:"Da",
+ a2:"Nu",
+ a3:"In anumite situatii",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Care dintre urmÄtoarele cerinČe trebuie sa le ĂŽndeplineasca caile de evacuare?",
+ a1:"Sa fie menČinute ĂŽn condiČii de siguranČÄ, fara obstacole",
+ a2:"Sa se poata depozita obiecte de mici dimensiuni pe aceste cai",
+ a3:"Sa fie furnizate instrucČiuni de siguranČÄ",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Cate cai de evacuare trebuie sa existe la bordul navelor de pasageri cat mai bine separate posibil de fiecare secČiune a spaČiilor de cazare, de serviciu Či posturi de control?",
+ a1:"Doua cai de evacuare",
+ a2:"Trei cai de evacuare",
+ a3:"Patru cai de evacuare",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Scarile Či coridoarele care deservesc spaČiile echipajului ar trebui sa fie amenajate astfel ĂŽncĂ˘t sa ofere mijloace de evacuare catre o punte de pe care sa se poata efectua ĂŽmbarcarea ĂŽn ambarcaČiunile de salvare?",
+ a1:"Nu se impune aceasta cerinta constructiva",
+ a2:"Se impune in functie de marimea si tipul navei",
+ a3:"Este obligatoriu sa fie indeplinita aceasta cerinta constructiva",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Mijloacele de evacuare, scarile, ar trebui sa fie confectionate din:",
+ a1:"Otel",
+ a2:"Aluminiu",
+ a3:"Un material suficient de rigid",
+ correct:1},
+
+{cat:"Securitate",
+ q:"FacilitÄČile de comunicare interna de la bordul navelor stabilesc legaturi de comunicaČie de la postul de cĂ˘rmÄ cu:",
+ a1:"Prova navei sau convoiului",
+ a2:"Compania proprietara",
+ a3:"Administratia portului",
+ correct:1},
+
+{cat:"Securitate",
+ q:"RecepČia la toate poziČiile legaturilor de comunicare interna trebuie sa se faca prin:",
+ a1:"Difuzor",
+ a2:"Telefon",
+ a3:"Pager",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Legatura cu prova Či pupa vasului sau convoiului se realizeaza prin:",
+ a1:"Difuzor",
+ a2:"Radiotelefon",
+ a3:"Computer personal",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Pentru ĂŽncÄperile Či locaČiile de la bordul navei trebuie asigurat iluminat adecvat Či iluminat de urgenČÄ, cum ar fi:",
+ a1:"Compartimentul ĂŽn care sunt depozitate alimentele",
+ a2:"Caile de evacuare, pentru pasageri",
+ a3:"Compartimentul acumulatori",
+ correct:2},
+
+ {cat:"Securitate",
+ q:"Ăn compartimentul maČinilor Či compartimentul pompelor, semnalul de alarma optic va fi:",
+ a1:"Lumina intermitenta",
+ a2:"Lumina alba",
+ a3:"Lumina galbena",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Focul este oxidarea rapida a oricarui material:",
+ a1:"Material combustibil",
+ a2:"Gaze cum ar fi bioxid de carbon, azot",
+ a3:"Substante lichide",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin termenul materiale combustibile?",
+ a1:"Materialele combustibile sunt considerate acele materiale care nu se aprind, nu ard mocnit si nu se carbonizeaza",
+ a2:"Materialele combustibile sunt acele materiale care se aprind si ard",
+ a3:"Materialele combustibile sunt ĂŽn general hidrocarburile precum motorina, combustibilul greu si benzina",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ce se intelege prin combustibilitate?",
+ a1:"Combustibilitatea este proprietatea unor materiale de a produce prin ardere caldura sau lucru mecanic",
+ a2:"Proprietatea pe care o au unele materiale de a arde ĂŽn prezenta oxigenului",
+ a3:"Combustibilitatea este o reactie chimica de oxidare rapida ĂŽn prezenta oxigenului",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Care sunt cauzele de natura tehnica ce pot duce la producerea unui incendiu la bordul navelor?",
+ a1:"Defectiuni mecanice sau electrice",
+ a2:"Neglijenta si indisciplina",
+ a3:"Lucrari cu flacara deschisa",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Procesul de ardere are loc ĂŽn doua moduri:",
+ a1:"Ăn flacari Či mocnit",
+ a2:"Numai ĂŽn flacari",
+ a3:"Numai fara flacari",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Odata ce a avut loc aprinderea, va continua pĂ˘nÄ cĂ˘nd:",
+ a1:"S-a consumat tot combustibilul sau oxidanČii disponibili",
+ a2:"Combustibilul Či/sau oxigenul sunt ĂŽncÄ ĂŽn acČiune",
+ a3:"Prin creČterea numarului de molecule excitate Či ruperea reacČiei ĂŽn lanČ",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Transmiterea caldurii de la un corp mai cald la un corp mai rece cĂ˘nd se ating unul de celalalt ĂŽnseamna:",
+ a1:"ConducČie rece",
+ a2:"ConducČie termica",
+ a3:"Conducerea combustibilului",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Dupa ce criteriu se clasifica incendiile?",
+ a1:"Dupa viteza de extindere a focului",
+ a2:"Dupa natura materialului combustibil si a substantelor utilizate pentru stingere",
+ a3:"Dupa natura materialului combustibil implicat ĂŽn ardere",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ce se intelege prin termenul incendii de clasa D?",
+ a1:"Incendii de materiale combustibile de tip D",
+ a2:"Incendii de natura electrica",
+ a3:"Incendii de metale combustibile",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ce se intelege prin termenul incendii de clasa A?",
+ a1:"Incendii de natura electrica",
+ a2:"Incendii de materiale solide prin a caror ardere se formeaza jar",
+ a3:"Incendii de lichide combustibile",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ce se intelege prin termenul incendii de clasa B?",
+ a1:"Incendii de natura electrica",
+ a2:"Incendii de materiale solide prin a caror ardere se formeaza jar",
+ a3:"Incendii de lichide combustibile",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ce se intelege prin termenul incendii de clasa F?",
+ a1:"Incendii de natura electrica",
+ a2:"Incendii de materiale solide prin a caror ardere se formeaza jar",
+ a3:"Incendii produse in bucataria navei provocate de uleiuri si grasimi de gatit",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Care sunt elementele care alcatuiesc Triunghiul Focului?",
+ a1:"Material combustibil, sursa de caldura si un gaz oricare ar fi el",
+ a2:"Oxigen, material combustibil si sursa de caldura",
+ a3:"Material combustibil, bioxid de carbon",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Cate etape are un incendiu in desfasurarea lui?",
+ a1:"4 etape",
+ a2:"5 etape",
+ a3:"2 etape",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Pentru un raspuns eficient la stingerea unui incendiu exista mai multi factori importanti. Alegeti factorul corect:",
+ a1:"Echipament de stingere a incendiilor",
+ a2:"Rolurile de echipaj",
+ a3:"Instalatia de guvernare",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Pentru un raspuns eficient la stingerea unui incendiu, alt factor important este:",
+ a1:"Toate echipamentele portabile si fixe de stingere a incendiilor ale navei",
+ a2:"Rolurile de echipaj",
+ a3:"Radiotelefonul navei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Pentru un raspuns eficient la stingerea unui incendiu, alt factor important este:",
+ a1:"Antrenamentul echipajului",
+ a2:"Radiotelefonul navei",
+ a3:"Instalatia de balast",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce agenti de stingere se folosesc pentru combaterea unui foc de clasa A?",
+ a1:"Apa, spuma mecanica, pulberile chimice",
+ a2:"Apa si unele pulberi chimice",
+ a3:"Bioxidul de carbon, gazul inert, halonii",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce agenti de stingere se folosesc pentru combaterea unui foc de clasa B?",
+ a1:"Apa",
+ a2:"Spuma mecanica",
+ a3:"Bioxid de carbon",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ce agenti de stingere se folosesc pentru combaterea unui incendiu de natura electrica?",
+ a1:"Apa",
+ a2:"Spuma mecanica",
+ a3:"Bioxid de carbon",
+ correct:3},
+
+ {cat:"Securitate",
+ q:"Membrii echipajului navei trebuie sa aiba abilitÄČi Či competenČe de baza pentru intervenČia eficienta ĂŽn caz de incendiu. CerinČele sunt:",
+ a1:"Utilizarea diverselor stingatoare portabile",
+ a2:"Utilizarea echipamentelor de sudare",
+ a3:"Folosirea aparatelor de respirat",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Scopul exerciČiului de incendiu este de a testa:",
+ a1:"Eficienta echipajului",
+ a2:"Eficienta pompierilor",
+ a3:"Eficienta conducatorului navei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Un exerciČiu de incendiu semnificativ de succes necesita gĂ˘ndire ĂŽnainte de a ĂŽncepe exerciČiul, cum ar fi:",
+ a1:"Definirea obiectivelor de ĂŽnvÄČare",
+ a2:"Selectarea locaČiei",
+ a3:"Dezvoltarea de noi scenarii",
+ correct:1},
+
+{cat:"Securitate",
+ q:"ExerciČiul de incendiu ĂŽncepe cu un raport de incendiu Či sondarea ulterioara a:",
+ a1:"Alarmei de incendiu",
+ a2:"Alarmei de om peste bord",
+ a3:"Alarmei gaura de apa",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Principala prioritate ĂŽn formularea unui plan de atac pentru stingerea incendiilor este:",
+ a1:"SiguranČa navei",
+ a2:"SiguranČa ĂŽncarcaturii",
+ a3:"SiguranČa echipajului",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ănainte de un atac pentru stingerea incendiilor, luaČi ĂŽn considerare mai ĂŽntĂ˘i pericolele. AcČiunea principalÄ este:",
+ a1:"SiguranČa echipajului Či a echipelor de pompieri",
+ a2:"SiguranČa navei Či a echipelor de pompieri",
+ a3:"Salvarea membrilor echipajului",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Planul de control al incendiului ilustreaza, pentru aparatele Či echipamentele de stingere a incendiilor de la bord:",
+ a1:"Semnalizarea",
+ a2:"LocaČia",
+ a3:"Numarul",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ce este un sistem automat de alarma?",
+ a1:"Un aranjament de dispozitive care detecteaza automat incendiile Či declanseaza alarmele sonore",
+ a2:"Un aranjament de dispozitive care detecteaza ĂŽn mod normal incendiile Či alarmele sonore",
+ a3:"Un aranjament de dispozitive care detecteaza automat doar alarmele sonore",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ănainte de a utiliza stingatorul, asiguraČi-va ca aČi selectat:",
+ a1:"Stingatorul indicat pentru clasa de foc cu care intenČionaČi sa o combateČi",
+ a2:"Cel mai la ĂŽndemĂ˘na stingator",
+ a3:"Orice tip de stingator",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ănainte de a acČiona pentru a lupta ĂŽmpotriva unui incendiu, asiguraČi-va ca sunteti poziČionat ĂŽntre foc Či:",
+ a1:"O ieČire sigura sau o cale de evacuare",
+ a2:"O cale obiČnuita de ieČire sau de evacuare",
+ a3:"Orice ieČire apropiata",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Unul dintre echipamentele individuale de protecČie pentru stingerea incendiilor consta ĂŽn:",
+ a1:"Ămbracaminte de protecČie",
+ a2:"Vesta de salvare",
+ a3:"Centura de siguranta",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ămbracamintea de protecČie este inclusa ĂŽn echipamentul individual de protecČie pentru stingerea incendiilor?",
+ a1:"Nu",
+ a2:"Da",
+ a3:"Nerecomandat",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Casca rigida este inclusa ĂŽn echipamentul individual de protecČie pentru stingerea incendiilor?",
+ a1:"Nu",
+ a2:"Da",
+ a3:"Nerecomandat",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Centura de siguranČa este inclusa ĂŽn echipamentul individual de protecČie pentru stingerea incendiilor?",
+ a1:"Nu",
+ a2:"Da",
+ a3:"Nerecomandat",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Acordul european privind transportul internaČional de marfuri periculoase pe caile navigabile interioare este ĂŽntre reglementarile internaČionale privind protecČia mediului?",
+ a1:"Da",
+ a2:"Nerecomandat",
+ a3:"Nu",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce se intelege prin conceptul de dezvoltare durabila?",
+ a1:"Dezvoltarea care urmareste satisfacerea nevoilor prezentului, fara a compromite posibilitatea generaČiilor viitoare de a-Či satisface propriile nevoi",
+ a2:"Dezvoltarea economica a unei societati pe termen mediu",
+ a3:"Dezvoltarea economica a unei societati pe termen lung",
+ correct:1},
+
+{cat:"Securitate",
+ q:"La ce se refera conceptul de poluare?",
+ a1:"Contaminarea mediului cu materiale care interfereaza cu sanatatea umana, calitatea vieČii sau funcČia naturala a ecosistemelor",
+ a2:"Contaminarea grava a mediului inconjurator",
+ a3:"Contaminarea mediului avand efecte majore asupra sanatatii oamenilor",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Prevenirea poluarii aerului cu noxe emise de la nava este o prioritate in legislatia din domeniul transporturilor navale?",
+ a1:"Este impusa doar de Anexa VI a conventiei MARPOL",
+ a2:"Nu sunt acte legislative in vigoare pentru navele de ape interioare",
+ a3:"Da",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Regulamentul de navigatie pe Dunare ĂŽn sectorul romanesc se aplica ĂŽntre:",
+ a1:"Km 1075 al Dunarii si rada Sulina",
+ a2:"Km 240 al Dunarii si rada portului Tulcea",
+ a3:"Mila marina 80 si rada Sulina",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce se mentioneaza in Regulamentul de navigatie pe Dunare referitor la prevenirea poluarii?",
+ a1:"Obligatiile referitoare la concentratia de hidrocarburi ĂŽn apele deversate peste bord",
+ a2:"Interzicerea aruncarii peste bord a oricarui tip de deČeu provenit din activitatea de navigatie",
+ a3:"Modul de depozitare a deseurilor uleioase pe puntea navelor",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ce se mentioneaza in Regulamentul de navigatie pe Dunare referitor la prevenirea poluarii (2)?",
+ a1:"Sortarea, colectarea Či predarea deseurilor la o instalatie de receptie",
+ a2:"Modul de depozitare a deseurilor uleioase pe punte",
+ a3:"Doar colectarea deseurilor",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce se mentioneaza in Regulamentul de navigatie pe Dunare referitor la prevenirea poluarii (3)?",
+ a1:"Interzicerea aruncarii peste bord a oricarui tip de deČeu provenit din activitatea de navigatie",
+ a2:"Sortarea deseurilor",
+ a3:"Prevenirea poluarii aerului",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Unde se pot preda deseurile care provin de la o nava?",
+ a1:"Numai la o instalatie de receptie",
+ a2:"Nu exista reglementari speciale",
+ a3:"Pot fi depozitate pe cheu ĂŽn zona portului de escala",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce fapta constituie contraventie la regimul transportului naval referitor la poluarea apelor?",
+ a1:"Poluarea apelor nationale navigabile cu hidrocarburi sau alte substante nocive de catre nave",
+ a2:"Stocarea deseurilor uleioase pe puntea navei",
+ a3:"Deversarea apelor de santina cu peste 15 p.p.m",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce fapta constituie contraventie la regimul transportului naval referitor la poluarea apelor (2)?",
+ a1:"Descarcarea apelor uzate sau aruncarea gunoiului generat la bord, ĂŽn apele nationale navigabile",
+ a2:"Stocarea deseurilor uleioase pe puntea navei",
+ a3:"Deversarea apelor de santina cu peste 5 p.p.m",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce fapta constituie contraventie la regimul transportului naval, alta decat cele prevazute in R.N.D., referitor la poluarea apelor?",
+ a1:"Depozitarea gunoiului ĂŽn afara locurilor amenajate si destinate acestui scop",
+ a2:"Distrugerea deseurilor la bord",
+ a3:"Incinerarea deseurilor ĂŽn instalatii neconforme",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Nepredarea deseurilor generate la bordul navei sau a reziduurilor de marfa constituie contraventie la regimul transportului naval?",
+ a1:"Da",
+ a2:"Nu",
+ a3:"Nu se mentioneaza in legislatie",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Predarea partiala a deseurilor generate la bordul navei si a reziduurilor de marfa constituie contraventie la regimul transportului naval?",
+ a1:"Nu se mentioneaza in legislatie",
+ a2:"Nu, daca nu se aduce prejudiciu major mediului",
+ a3:"Da",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ce fapta constituie contraventie la regimul transportului naval (2), alta decat cele prevazute in R.N.D., referitor la poluarea apelor?",
+ a1:"Stocarea la bord a deseurilor generate de nava fara sortare pe categorii",
+ a2:"Stocarea deseurilor uleioase pe puntea navei",
+ a3:"Deversarea apelor de santina cu peste 5 p.p.m",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce fapta constituie contraventie la regimul transportului naval (3), alta decat cele prevazute in R.N.D., referitor la poluarea apelor?",
+ a1:"Predarea deseurilor generate de nava fara sortare pe categorii",
+ a2:"Nu se mentioneaza in legislatie",
+ a3:"Deversarea apelor de santina cu peste 5 p.p.m",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Unde se afla sediul Comisiei Dunarii?",
+ a1:"Bucuresti",
+ a2:"Bratislava",
+ a3:"Budapesta",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Comisia Centrala pentru navigatia pe Rhin are sediul la:",
+ a1:"Strasbourg",
+ a2:"Bonn",
+ a3:"Viena",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ăn domeniul prevenirii poluarii mediului, Comisia Centrala pentru navigatia pe Rhin a elaborat:",
+ a1:"Conventia privind colectarea, depozitarea Či recepČia deČeurilor rezultate din navigaČia rhenana Či de interior",
+ a2:"Conventia privind depozitarea deČeurilor rezultate din navigaČia rhenana",
+ a3:"Conventia privind recepČia deČeurilor rezultate din navigaČia rhenana Či de interior",
+ correct:1},
+
+ {cat:"Securitate",
+ q:"Ce se realizeaza prin aplicarea masurilor impuse de Conventia Comisiei centrale pentru navigatia pe Rhin referitoare la prevenirea poluarii mediului?",
+ a1:"Prevenirea producerii de deČeuri la bordul navelor",
+ a2:"Armonizarea masurilor cu cele impuse de Comisia Dunarii",
+ a3:"Armonizarea masurilor cu cele impuse de legislatia nationala",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce se realizeaza prin aplicarea masurilor impuse de Conventia Comisiei centrale pentru navigatia pe Rhin referitoare la prevenirea poluarii mediului (2)?",
+ a1:"Faciliteaza controlul respectarii interdictiilor de deversare ĂŽn apa a deČeurilor",
+ a2:"Armonizarea masurilor cu cele impuse de legislatia nationala",
+ a3:"Verifica daca navele respecta cerinta ca in apa deversata peste bord sa nu se depaseaca concentratia de hidrocarburi de 5 p.p.m",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Cate parti cuprinde Conventia Comisiei centrale pentru navigatia pe Rhin referitoare la prevenirea poluarii mediului?",
+ a1:"Doua parti: partea A si partea B",
+ a2:"Trei parti: partea A, partea B si partea C",
+ a3:"Este alcatuita doar dintr-o singura parte",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin deseuri provenite din exploatarea navei?",
+ a1:"Deseuri si ape uzate produse la bord ca urmare a exploatarii si ĂŽntretinerii navei",
+ a2:"Deseuri produse la bord ca urmare a exploatarii navei",
+ a3:"Deseuri si ape uzate produse la bord ca urmare a ĂŽntretinerii navei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin deseuri provenite din exploatarea navei (2)?",
+ a1:"Ape uzate produse la bord ca urmare a ĂŽntretinerii navei",
+ a2:"Deseuri produse la bord ca urmare a ĂŽntretinerii navei",
+ a3:"Deseuri si ape uzate produse la bord ca urmare a exploatarii si ĂŽntretinerii navei",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin deseuri de marfa?",
+ a1:"Deseurile si apele uzate provenite la bordul navei datorita marfii operate",
+ a2:"Deseuri si ape uzate produse la bord ca urmare a exploatarii si ĂŽntretinerii navei",
+ a3:"Deseurile provenite la bordul navei datorita marfii operate",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin deseuri de marfa (2)?",
+ a1:"Deseurile provenite la bordul navei datorita marfii operate",
+ a2:"Apele uzate provenite la bordul navei datorita marfii operate",
+ a3:"Deseurile si apele uzate provenite la bordul navei datorita marfii operate",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin grasimi uzate conform legislatiei in vigoare referitoare la prevenirea poluarii apelor?",
+ a1:"Grasimi rezultate ĂŽn urma operatiunilor de gresare a rulmentilor si instalatiilor de gresare si alte grasimi care nu mai pot fi reutilizate",
+ a2:"Uleiuri uzate sau alte produse de ungere (gresare) nereutilizabile pentru motoare, angrenaje si instalatii hidraulice",
+ a3:"Filtre uzate (filtre uzate de ulei si aer) cĂ˘rpe folosite (cĂ˘rpe si lavete de sters murdare), recipiente (goale, murdare), ambalaje",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin grasimi uzate conform legislatiei in vigoare referitoare la prevenirea poluarii apelor (2)?",
+ a1:"Ape uleioase de santina",
+ a2:"Filtre uzate (filtre uzate de ulei si aer)",
+ a3:"Grasimi rezultate ĂŽn urma operatiunilor de gresare a rulmentilor si instalatiilor de gresare si alte grasimi care nu mai pot fi reutilizate",
+ correct:3},
+
+{cat:"Securitate",
+ q:"Cine suporta cheltuielile care decurg pentru monitorizarea undei poluante, de determinare a tipului de poluant si de constatare a efectelor poluarii in cazul unui incident de poluare?",
+ a1:"Cel care a produs poluarea",
+ a2:"Echipajul navei implicat in incidentul de poluare",
+ a3:"Armatorul navei implicata in incident",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce se interzice conform R.N.D. referitor la colectarea si tratarea reziduurilor la bordul navelor?",
+ a1:"Utilizarea drept rezervoare de colectare a uleiului uzat a unor rezervoare mobile amplasate pe punte",
+ a2:"Deseurile pot fi distruse numai intr-o instalatie de incinerare autorizata de o autoritate competenta",
+ a3:"Utilizarea drept rezervoare de colectare a uleiului uzat a unor rezervoare amplasate la rufurile navei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce se interzice conform R.N.D. referitor la colectarea si tratarea reziduurilor la bordul navelor (2)?",
+ a1:"Rezervoarele de colectare a uleiului uzat sa fie amplasate langa cabinele de locuit",
+ a2:"Utilizarea drept rezervoare de colectare a uleiului uzat a unor rezervoare mobile amplasate pe punte",
+ a3:"Rezervoarele de colectare a uleiului uzat sa fie amplasate pe punte la prova navei",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ce se interzice conform R.N.D. referitor la colectarea si tratarea reziduurilor la bordul navelor (3)?",
+ a1:"Distrugerea deseurilor la bord",
+ a2:"Rezervoarele de colectare a uleiului uzat sa fie amplasate langa cabinele de locuit",
+ a3:"Utilizarea drept rezervoare de colectare a uleiului uzat a unor rezervoare amplasate la rufurile navei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce trebuie sa contina informatia transmisa autoritatilor competente in cazul descoperirii unei poluari a apelor navigabile?",
+ a1:"Tipul, numele si pavilionul navei care face comunicarea",
+ a2:"Tipul de nava care poluat",
+ a3:"Concentratia de hidrocarburi din apa exprimata in miligrame/litru",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce trebuie sa contina informatia transmisa autoritatilor competente in cazul descoperirii unei poluari a apelor navigabile (2)?",
+ a1:"Numele conducatorului navei/convoiului (sau a persoanei care face comunicarea)",
+ a2:"Tipul de nava care poluat, nava de pasageri, impingator, remorcher",
+ a3:"Data si ora la care a avut loc incidentul",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce trebuie sa contina informatia transmisa autoritatilor competente in cazul descoperirii unei poluari a apelor navigabile (3)?",
+ a1:"Natura substanČei poluante",
+ a2:"Tipul, numele si pavilionul navei care a poluat",
+ a3:"Concentratia de hidrocarburi din apa exprimata in p.p.m",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce trebuie sa contina informatia transmisa autoritatilor competente in cazul descoperirii unei poluari a apelor navigabile (4)?",
+ a1:"Marimea suprafetei poluate (ĂŽntindere mare/mica, pata)",
+ a2:"Concentratia de hidrocarburi din apa exprimata in miligrame/litru",
+ a3:"Tipul, numele si pavilionul navei care a poluat",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce trebuie sa contina informatia transmisa autoritatilor competente in cazul descoperirii unei poluari a apelor navigabile (5)?",
+ a1:"Caracteristici privind natura/starea poluantului (toxic, otravitor, inflamabil, exploziv/ solid, lichid, gazos)",
+ a2:"Numele conducatorului navei/convoiului care a poluat",
+ a3:"Starea navei care a poluat, nava incarcata sau descarcata",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin uleiuri uzate conform legislatiei in vigoare referitoare la prevenirea poluarii apelor?",
+ a1:"Sunt uleiurile sau alte produse de ungere (gresare) nereutilizabile pentru motoare, angrenaje si instalatii hidraulice",
+ a2:"Filtre uzate (filtre uzate de ulei si aer)",
+ a3:"CĂ˘rpe folosite (cĂ˘rpe si lavete de sters utilizate si imbibate cu uleiuri sau grasimi), recipiente (goale, poluate), ambalaje",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin ape uzate domestic?",
+ a1:"Apele uzate provenind de la bucatarie, sali de mese, bai si spalatorii precum si ape provenite de la grupurile sanitare",
+ a2:"Ape de spalare cu resturi de marfa de la spalarea magaziilor",
+ a3:"Apele uzate provenite de la grupurile sanitare",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin ape de santina?",
+ a1:"Apa uleioasa provenita din santina salii masinilor, din pic, din coferdamuri sau din compartimentele laterale",
+ a2:"Apa uleioasa provenita numai din picuri si din coferdamuri",
+ a3:"Apa uleioasa provenita doar din compartimentele laterale",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin gunoaie menajere?",
+ a1:"Deseurile organice si neorganice provenite din menaj ce nu contin alte deseuri asa cum au fost cele din exploatarea navei",
+ a2:"Deseurile organice provenite din menaj ce nu contin alte deseuri asa cum au fost cele din exploatarea navei",
+ a3:"Numai deseurile neorganice provenite din menaj ce nu contin alte deseuri asa cum au fost cele din exploatarea navei",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin termenul de slop?",
+ a1:"Amestecuri de reziduuri de marfa cu resturi de apa folosita pentru spalat, de la rugina sau de namoluri, apte sau nu pentru a fi pompate",
+ a2:"Apa folosita pentru spalat magaziile de marfa",
+ a3:"Amestecuri de reziduuri de marfa cu apa apte pentru a fi pompate peste bord",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ce intelegeti prin termenul de slop (2)?",
+ a1:"Apele uzate provenind de la bucatarie, sali de mese, bai si spalatorii",
+ a2:"Amestecuri de reziduuri de marfa cu resturi de apa folosita pentru spalat, de la rugina sau de namoluri, apte sau nu pentru a fi pompate",
+ a3:"Reziduurile rezultate la bordul navei din exploatarea unei statii de epurare a apei de la bordul",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ăn timpul operatiunilor de alimentare cu combustibil a unei nave ce poate constitui o deficienta care poate avea ca efect un incident de poluare?",
+ a1:"Comunicare ineficienta ĂŽntre membrii echipei care participa la procedura operationala",
+ a2:"Comunicarea ĂŽntre membrii echipei care participa la procedura operationala si persoana de contact de la barja, terminal",
+ a3:"Cuplarea la barja sau terminal a furtunurilor de alimentare la instalatia de ambarcare a bordului",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ăn timpul operatiunilor de alimentare cu combustibil a unei nave ce poate constitui o deficienta care poate avea ca efect un incident de poluare (2)?",
+ a1:"Nerespectarea masurilor conform listei de verificari impuse navelor care ĂŽncarca produse petroliere, produse chimice ĂŽntr-un terminal",
+ a2:"Comunicare ĂŽntre membrii echipei care participa la procedura operationala",
+ a3:"Cuplarea la barja sau terminal a furtunurilor de alimentare la instalatia de ambarcare a bordului",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Ăn timpul operatiunilor de alimentare cu combustibil a unei nave ce poate constitui o deficienta care poate avea ca efect un incident de poluare (3)?",
+ a1:"Cuplarea incorecta a furtunurilor de alimentare la instalatia de ambarcare a bordului",
+ a2:"Comunicare ĂŽntre membrii echipei care participa la procedura operationala",
+ a3:"Comunicarea ĂŽntre membrii echipei care participa la procedura operationala si persoana de contact de la barja, terminal",
+ correct:1},
+
+{cat:"Securitate",
+ q:"Care este perioada de timp cĂ˘t trebuie pastrat la bord Jurnalul de evidenta a deseurilor colectate de la bordul navelor de navigatie interioara dupa ce acesta a fost declarat INVALID de catre capitania portului cu ocazia eliberarii unui nou Jurnal?",
+ a1:"3 ani",
+ a2:"6 luni",
+ a3:"12 luni",
+ correct:2},
+
+{cat:"Securitate",
+ q:"Ce operatiuni se consemneaza ĂŽn mod obligatoriu ĂŽn Jurnalul de evidenta a deseurilor colectate de la bordul navelor de navigatie interioara?",
+ a1:"Lucrari de curatare si reparatii a tancurilor de hidrocarburi",
+ a2:"Predarea apelor uzate",
+ a3:"3. drenarea peste bord a apei de santina",
+ correct:2},
+
+ {cat:"Manipulare",
+ q:"ContinuaČi urmÄtoarea propoziČie: Cu siguranČÄ, ĂŽn timpul unei calamitÄČi, comunicarea trebuie sÄ fie......",
+ a1:"Clara",
+ a2:"Pasiva",
+ a3:"Moale",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Evacuarea necesitÄ timp. Care este un punct foarte important ĂŽn timpul evacuÄrii?",
+ a1:"Colectarea de informaČii din surse autorizate pentru o bunÄ informare a pasagerilor",
+ a2:"Nu transmiteČi informaČii pasagerilor pentru a-i menČine calmi",
+ a3:"FaceČi pasagerii sÄ aČtepte rÄspunsuri la ĂŽntrebÄrile lor pĂ˘nÄ ĂŽn ultimul moment",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Ăn timp ce vÄ adunaČi la un punct de adunare, poate fi necesar sÄ vÄ adresaČi unui grup mare de oameni. Care ar trebui sÄ fie atitudinea dumneavoastrÄ faČÄ de pasageri?",
+ a1:"VorbiČi clar Či cu autoritate, arÄtaČi ĂŽncredere, furnizaČi doar informaČii care se bazeazÄ pe fapte, repetaČi informaČiile dupÄ cum este necesar, astfel ĂŽncĂ˘t toatÄ lumea sÄ aibÄ aceleaČi informaČii",
+ a2:"VorbiČi clar, dar nu cu autoritate Či nu repetaČi informaČiile mereu",
+ a3:"VorbeČte clar Či cu autoritate, fii pasiv Či nu aratÄ prea multÄ ĂŽncredere",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Trebuie sÄ eliberezi un hol la bord. Cum te prezinti/te aranjezi?",
+ a1:"VorbeČte calm Či clar Či dÄ instrucČiuni despre ceea ce se aČteaptÄ de la pasageri, menČine fluxul de oameni Či menČine oamenii cĂ˘t mai calmi posibil",
+ a2:"VorbeČte calm Či lasÄ pasagerii sÄ decidÄ cum doresc sÄ iasÄ pe hol atĂ˘ta timp cĂ˘t nu se agitÄ",
+ a3:"VorbeČte calm Či clar Či dÄ instrucČiuni despre ceea ce se aČteaptÄ de la pasageri Či lasÄ uČile deschise pentru ca pasagerii sÄ aibÄ o cale de ieČire",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Cum vÄ asiguraČi cÄ masele de pasageri nu merg ĂŽn direcČia greČitÄ ĂŽn timpul unei evacuÄri?",
+ a1:"MergeČi ĂŽntotdeauna cu ei, astfel ĂŽncĂ˘t sÄ-i puteČi ajuta ĂŽn mod corespunzÄtor",
+ a2:"ĂnchideČi uČile care pot face pasagerii sÄ se rÄtÄceascÄ",
+ a3:"RugaČi pasagerii sÄ rÄmĂ˘nÄ cu dvs. pĂ˘nÄ cĂ˘nd toČi sunt acolo, astfel ĂŽncĂ˘t sÄ-i puteČi ĂŽnsoČi",
+ correct:2},
+
+{cat:"Manipulare",
+ q:"Ce ĂŽnseamnÄ abrevierea SAR?",
+ a1:"Search and Rescue",
+ a2:"Search and Revival",
+ a3:"Search and Receive",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Cum ĂŽncepi un mesaj de primejdie?",
+ a1:"MAYDAY MAYDAY MAYDAY",
+ a2:"PAN PAN PAN PAN PAN PAN",
+ a3:"SECURITE SECURITE SECURITE",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Cum ĂŽncepi un mesaj de urgenČÄ?",
+ a1:"MAYDAY MAYDAY MAYDAY",
+ a2:"PAN PAN PAN PAN PAN PAN",
+ a3:"SECURITE SECURITE SECURITE",
+ correct:2},
+
+{cat:"Manipulare",
+ q:"Cum ĂŽncepi un mesaj de siguranČÄ?",
+ a1:"MAYDAY MAYDAY MAYDAY",
+ a2:"PAN PAN PAN PAN PAN PAN",
+ a3:"SECURITE SECURITE SECURITE",
+ correct:3},
+
+{cat:"Manipulare",
+ q:"Care este destinaČia unui mijloc de salvare?",
+ a1:"Un mijloc de salvare este un articol special creat pentru salvarea victimelor ĂŽn situaČii periculoase",
+ a2:"Un mijloc de salvare este un articol special conceput pentru a fi demonstrat pasagerilor",
+ a3:"Un mijloc de salvare este un articol special creat doar pentru uzul membrilor de echipaj",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"O barcÄ face parte din echipamentul obligatoriu al unei nave interioare ca mijloc de...",
+ a1:"Salvare",
+ a2:"Doar echipament de antrenament",
+ a3:"Folosire ĂŽn timpul exerciČiilor",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Ce termen este folosit pentru un membru al echipajului unei alte nave care a cÄzut ĂŽn apÄ, sau un coleg de echipaj al navei pe care navigaČi sau un pasager care a cÄzut ĂŽn apÄ?",
+ a1:"Om la apÄ",
+ a2:"PersoanÄ la bord",
+ a3:"Doamna peste bord",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Mai jos este o listÄ a obiectelor care trebuie sÄ fie obligatoriu Či/sau suplimentar disponibile la bord pentru a fi utilizate pentru salvarea unei persoane de la ĂŽnec: Colace de salvare, Veste de salvare, BarcÄ de salvare, Proiector, ĂncÄlČaminte de protecČie, Cange, Bandule, Lemn, TargÄ. Ce articole nu fac parte din listÄ?",
+ a1:"Lemn Či ĂŽncÄlČaminte de protecČie",
+ a2:"Lemn Či cange",
+ a3:"ĂncÄlČaminte de protecČie Či bandulÄ",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Ce acČiuni se ĂŽntreprind ĂŽn caz de OM LA APÄ?",
+ a1:"AlerteazÄ echipajul, Ănregistrarea poziČiei persoanei care se ĂŽneacÄ, AruncÄ un colac de salvare cu luminÄ Či fii cu ochii pe persoana care se ĂŽneacÄ, Cel puČin o persoanÄ aratÄ ĂŽn mod continuu cÄtre persoana care se ĂŽneacÄ",
+ a2:"AlerteazÄ echipajul, ĂnregistreazÄ poziČia persoanei care se ĂŽneacÄ, AruncÄ un colac de salvare cu luminÄ Či nu supraveghea persoana care se ĂŽneacÄ, Cel puČin o persoanÄ aratÄ",
+ a3:"AlerteazÄ echipajul, Ănregistrarea poziČiei persoanei care se ĂŽneacÄ, AruncÄ un colac de salvare cu luminÄ Či supravegheaza persoana care se ĂŽneacÄ, Cel puČin o persoanÄ aratÄ continuu cÄtre direcČia opusÄ persoanei care se ĂŽneacÄ",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"DacÄ un DEA este ĂŽn apropiere, acesta poate ajuta la resuscitare. Ce ĂŽnseamnÄ abrevierea DEA?",
+ a1:"Defibrilator extern automat",
+ a2:"Defibrilator european automat",
+ a3:"Defibrilator externalizat automat",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Pentru ce se foloseČte DEA?",
+ a1:"A stimula inima unei victime a stopului circulator",
+ a2:"Pentru a face ca inima unei victime sÄ pompeze Či mai bine",
+ a3:"A masÄ inima unei victime",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"ExistÄ douÄ tipuri de fracturi osoase: 1. Fractura osoasÄ ĂŽnchisÄ: pielea este ĂŽncÄ intactÄ. Osul poate fi rupt sau aČchiat; 2. Fractura osoasÄ deschisÄ: Aici osul este rupt Či existÄ o ranÄ ĂŽn piele unde uneori poate ieČi un os. ExistÄ un risc crescut de infecČie. Care dintre afirmaČii este/sunt adevÄrate?",
+ a1:"AfirmaČia 1",
+ a2:"AfirmaČia 2",
+ a3:"AfirmaČiile 1 Či 2",
+ correct:3},
+
+{cat:"Manipulare",
+ q:"CĂ˘nd cineva lucreazÄ cu electricitate, care este cel mai important lucru la care trebuie sÄ se gĂ˘ndeascÄ?",
+ a1:"Propria siguranČÄ",
+ a2:"Oprirea alimentÄrii",
+ a3:"Colegii lor",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"ExistÄ trei grade de arsuri ale pielii. Care afirmaČie este falsÄ? AfirmaČia 1: Arsura de gradul I; pielea este roČie umflatÄ Či dureroasÄ la atingere. AfirmaČia 2: Arsura gradului II; pielea este roČie umflatÄ, dureroasÄ la atingere Či formatÄ de vezicule. AfirmaČia 3: Arsura de gradul trei; pielea este roČie Či amorČitÄ.",
+ a1:"AfirmaČia 1",
+ a2:"AfirmaČia 2",
+ a3:"AfirmaČia 3",
+ correct:3},
+
+{cat:"Manipulare",
+ q:"Ce este hipotermia?",
+ a1:"CĂ˘nd temperatura corpului a scÄzut sub 35 Â°C",
+ a2:"CĂ˘nd temperatura corpului a crescut la 35 Â°C",
+ a3:"CĂ˘nd temperatura corpului a crescut la 37 Â°C",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Ce informaČii veČi vedea pe echipamentele de salvare?",
+ a1:"Numele navei",
+ a2:"Numele Či adresa producÄtorului",
+ a3:"NumÄrul de serie",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Pentru iluminatul de urgenČÄ, cÄile de evacuare, inclusiv scarile, ieČirile Či ieČirile de urgenČÄ, trebuie sÄ fie prevÄzute cu un iluminat de urgenČÄ pe toatÄ lungimea lor, ĂŽn special la colČuri Či un...",
+ a1:"Sistem de ghidare de siguranČÄ",
+ a2:"Filigran",
+ a3:"Semn solid",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Sistemele alimentate electric trebuie sÄ fie conectate la surse de energie... astfel ĂŽncĂ˘t sÄ poatÄ fi alimentate de la sursa principalÄ de energie ĂŽn condiČii normale",
+ a1:"De urgenČÄ",
+ a2:"Auxiliare",
+ a3:"Principale",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Ăn ce constÄ un sistem de alarmÄ pentru verificarea atmosferei?",
+ a1:"Senzori, un dispozitiv Či conducte",
+ a2:"Senzori Či conducte",
+ a3:"Dispozitiv Či conducte",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Semnele rutei de evacuare trebuie sÄ fie realizate dintr-un material... sau sÄ fie aprins...",
+ a1:"Fotoluminiscent, electric",
+ a2:"Magnetic, electric",
+ a3:"Fotoluminiscent, magnetic",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Certificatul de navigaČie interioarÄ al Uniunii se elibereazÄ navelor ĂŽn urma unei inspecČii tehnice efectuate ĂŽnainte de punerea ĂŽn funcČiune a ambarcaČiunii Či a verificÄrii conformitÄČii ambarcaČiunii cu cerinČele...",
+ a1:"Tehnice",
+ a2:"De navigaČie",
+ a3:"Electrice",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Perioada de valabilitate a unui certificat de navigaČie interioarÄ al Uniunii eliberat pentru ambarcaČiuni noi este determinatÄ de autoritatea competentÄ Či nu depÄČeČte: ... ani pentru navele de pasageri Či navele rapide; ... ani pentru toate celelalte nave",
+ a1:"5 Či 10",
+ a2:"10 Či 5",
+ a3:"5 Či 5",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Legea privind condiČiile de muncÄ stabileČte reguli cu privire la trei lucruri. Care sunt acestea?",
+ a1:"SÄnÄtate, securitate Či confort pe timpul derulÄrii ĂŽmbarcÄrii",
+ a2:"SÄnÄtate, securitate Či condiČiile casei tale",
+ a3:"SÄnÄtate, securitate Či performanČa dvs. ĂŽn munca",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Toate zonele pentru pasageri trebuie sÄ fie acoperite de un sistem de...",
+ a1:"Adresare publicÄ",
+ a2:"Identificare publicÄ",
+ a3:"Public magnetic",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Fiecare compartiment etanČ trebuie sÄ fie echipat cu o alarmÄ de...",
+ a1:"ČantinÄ",
+ a2:"NÄmol",
+ a3:"ĂnaltÄ frecvenČÄ",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Planul de stivuire ĂŽn siguranČÄ depinde de planificarea, execuČia Či supravegherea corespunzÄtoare de cÄtre",
+ a1:"Personal calificat corespunzÄtor",
+ a2:"Personal instruit corespunzÄtor",
+ a3:"Personal integrat corespunzÄtor",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"La stivuirea ĂŽncÄrcÄturii trebuie sÄ se ČinÄ seama de faptul cÄ accesul la echipamentele de siguranČÄ, echipamentele de stingere a incendiilor Či a gurilor de sondÄ trebuie pÄstrat:",
+ a1:"Liber",
+ a2:"Curat",
+ a3:"Uscat",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"ĂncÄrcarea, stivuirea Či asigurarea mÄrfii se efectueazÄ ĂŽn conformitate cu:",
+ a1:"Manual de asigurare a mÄrfurilor",
+ a2:"Manual de ĂŽncÄrcare a mÄrfurilor",
+ a3:"Manual de securitate a mÄrfurilor",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"LucrÄrile de reparaČii sau de ĂŽntreČinere, cum ar fi mÄgonirea, vopsirea sub presiune, sablarea sau sudarea, nu ar trebui sÄ fie... ĂŽn spaČiul ĂŽn care se desfÄČoarÄ operaČiunile de ĂŽncÄrcare/descÄrcare.",
+ a1:"Ăntreprinse",
+ a2:"Comandate",
+ a3:"Recomandate",
+ correct:1},
+
+ {cat:"Manipulare",
+ q:"De ce se foloseČte m3 ĂŽn tabelele tancurilor ĂŽn loc de tone?",
+ a1:"Deoarece densitatea substanČei poate diferi",
+ a2:"Deoarece densitatea substanČei poate rÄmĂ˘ne aceeaČi",
+ a3:"Deoarece densitatea substanČei poate deveni nesfĂ˘rČitÄ",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Cum ČtiČi dacÄ valorile mÄsurate sunt sigure?",
+ a1:"PuteČi cÄuta valoarea ĂŽntr-o listÄ cu limite legale de valoare",
+ a2:"PuteČi cere tuturor mÄsurile",
+ a3:"PuteČi presupune valorile care ar fi trebuit mÄsurate",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Ce informaČii pot fi incluse ĂŽn planul de ĂŽncÄrcare a unei nave tanc?",
+ a1:"Cantitatea de marfÄ, nivelul lichidului ĂŽn tancurile de marfÄ",
+ a2:"Cantitatea de marfÄ, nivelul lichidului ĂŽn afara tancurile de marfÄ",
+ a3:"Cantitatea de marfÄ, nivelul lichidului lĂ˘ngÄ tancurile de marfÄ",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Ce informaČii sunt incluse ĂŽn certificatul de tonaj?",
+ a1:"Čara de origine, numÄrul certificatului, denumirea navei, tipul navei, metoda de construcČie, natura propulsiei, lungime Či lÄČime maximÄ, squat-ul mediu a navei goale, capacitatea maximÄ de transport de marfÄ Či numÄrul Či locaČia marcilor de pescaj; scala de pescaj ĂŽn centimetri",
+ a2:"Doar Čara de origine, raionul de mÄsurare Či numÄrul certificatului",
+ a3:"Numai numele vasului, tipul vasului Či metoda de construcČie",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Un sfat general pentru stivuirea mÄrfurilor generale este:",
+ a1:"NiciodatÄ nu stivuiČi mÄrfuri grele peste cele uČoare",
+ a2:"StivuiČi mÄrfuri grele peste cele uČoare",
+ a3:"Stivuirea mÄrfurilor grele Či a celor uČoare poate fi fÄcutÄ ĂŽn orice ordine",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Marfa de pe vehicule (ro-ro) trebuie sÄ fie stivuitÄ Či asiguratÄ ĂŽn mod corespunzÄtor astfel ĂŽncĂ˘t sÄ nu se... ĂŽn timpul voiajului",
+ a1:"ĂmprÄČtie",
+ a2:"Mute",
+ a3:"Avarieze",
+ correct:2},
+
+{cat:"Manipulare",
+ q:"Marfa Či amarajul trebui sÄ fie... de-a lungul voiajului Či amarajul trebui sÄ fie ajustat",
+ a1:"Elaborate",
+ a2:"Diseminate",
+ a3:"Monitorizate",
+ correct:3},
+
+{cat:"Manipulare",
+ q:"Ăn timp ce nava este ĂŽn marČ, containerele trebuie sÄ nu poatÄ... dacÄ nava se ĂŽnclina, sau ĂŽn eventualitatea unei coliziuni",
+ a1:"SÄ se ĂŽncline",
+ a2:"SÄ se mute sau sÄ alunece",
+ a3:"SÄ alunece",
+ correct:2},
+
+{cat:"Manipulare",
+ q:"Toate vehiculele ar trebui sÄ fie inspectate.... ca ele sÄ fie ĂŽncarcate, sÄ se asigure cÄ se aflÄ ĂŽntr-o condiČie bunÄ de a fi transportate pe apÄ la bordul vaselor ro-ro",
+ a1:"Ănainte",
+ a2:"DupÄ",
+ a3:"Ăn timpul voiajului",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Printre regulile de bazÄ legate de planificarea ĂŽncÄrcÄrii Či a amarÄrii mÄrfurilor sunt incluse",
+ a1:"Stivuirea mÄrfurilor ar trebui sÄ fie planificatÄ ĂŽn general ĂŽnainte de voiaj",
+ a2:"Stivuirea mÄrfurilor ar trebui sÄ fie planificatÄ ĂŽn detaliu ĂŽnainte de voiaj",
+ a3:"Stivuirea mÄrfurilor ar trebui sÄ fie planificatÄ ĂŽn mod special ĂŽnainte de voiaj",
+ correct:2},
+
+{cat:"Manipulare",
+ q:"Regula fundamentalÄ pentru stivuirea mÄrfurilor generale este stabilirea ĂŽn primul rĂ˘nd de:",
+ a1:"GreutÄČii mÄrfii",
+ a2:"Culorilor mÄrfii",
+ a3:"RezistenČei la transport",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Persoanele responsabile cu ĂŽncÄrcarea unei nave, trebuie sÄ se asigure cÄ sunt informate cu privire la:",
+ a1:"ĂnÄlČimea centrului de greutate al mÄrfii",
+ a2:"Greutatea mÄrfii ce urmeazÄ a fi ĂŽncÄrcatÄ Či ĂŽnÄlČimea centrului ei de greutate",
+ a3:"Anumite documente despre marfÄ",
+ correct:2},
+
+{cat:"Manipulare",
+ q:"Greutatea mÄrfii ce urmeazÄ a fi ĂŽncÄrcatÄ Či ĂŽnÄlČimea centrului ei de greutate se determinÄ:",
+ a1:"Ăn timpul operaČiunilor de ĂŽncÄrcare",
+ a2:"La primirea mÄrfii",
+ a3:"Ănaintea operaČiunilor de ĂŽncÄrcare",
+ correct:3},
+
+{cat:"Manipulare",
+ q:"Responsabilitatea ĂŽncÄrcÄrii mÄrfii aparČine:",
+ a1:"Marinarului",
+ a2:"Timonierului",
+ a3:"ConducÄtorului de navÄ",
+ correct:3},
+
+{cat:"Manipulare",
+ q:"Efectul de suprafaČÄ liberÄ al oricÄror lichide de la bord are un/o... semnificativ(Ä) asupra stabilitÄČii navei.",
+ a1:"Impact",
+ a2:"RÄspuns",
+ a3:"EficienČÄ",
+ correct:2},
+
+{cat:"Manipulare",
+ q:"Procesul de lichefiere poate avea loc ĂŽn timpul transportului:",
+ a1:"Containerelor",
+ a2:"MÄrfurilor ĂŽn vrac",
+ a3:"MÄrfurilor lichide",
+ correct:3},
+
+{cat:"Manipulare",
+ q:"Ăn cazul ĂŽncÄrcÄrii mÄrfurilor grele/agabaritice pe puntea navei, ...(al) navei va fi deplasat(Ä) ĂŽn sus",
+ a1:"Centrul de gravitate",
+ a2:"Metacentrul",
+ a3:"Lichefiera",
+ correct:1},
+
+{cat:"Manipulare",
+ q:"Etichetele pentru mÄrfuri periculoase trebuie sÄ fie proiectate grafic pentru a ĂŽndeplini urmÄtoarele cerinČe",
+ a1:"FÄrÄ linie de delimitare exterioarÄ",
+ a2:"Forma unui cerc cu dimensiunile minime r=45mm",
+ a3:"Forma unui pÄtrat la un unghi de 45Â°",
+ correct:2},
+
+
+{cat:"Inginerie",q:"Sistemul de propulsie al navei este compus din",a1:"Motor, compresor si propulsor",a2:"Motor, linie axiala de transmisie a miscarii si propulsor",a3:"Motor principal, motoare auxiliare, elice",correct:2},
+{cat:"Inginerie",q:"Ce sistem de propulsie este reprezentat in imaginea de alaturata?",a1:"Sistem de propulsie utilizat in navigatia maritima",a2:"Sistem de propulsie cu motoare azimutale",a3:"Sistem clasic de propulsie cu doua motoare cu ardere interna, reductoare, axe port elice si elice",correct:3},
+{cat:"Inginerie",q:"Ce modalitati de propulsie sunt actual aplicabile in cazul navigatiei pe ape interioare?",a1:"Propulsia asigurata de motoare cu ardere interna",a2:"Propulsia electrica asigurata cu propulsoare azimutale",a3:"Ambele sisteme",correct:3},
+{cat:"Inginerie",q:"Ce sistem de propulsie este prezentat in imaginea alaturata?",a1:"Propulsie electrica azimutala",a2:"Propulsie azimutala",a3:"Transmisie mecanica azimutala",correct:1},
+{cat:"Inginerie",q:"Sistemul de propulsie al navei reprezinta",a1:"Sistemul care asigura deplasarea navei",a2:"Sistemul care asigura manevrabilitatea navei",a3:"Motorul principal de propulsie",correct:1},
+{cat:"Inginerie",q:"La navele fluviale, cel mai adesea propulsia este asigurata de",a1:"Un motor diesel cu reductor, inversor si generator pe ax",a2:"Un motor diesel",a3:"Unul sau mai multe motoare auxiliare",correct:2},
+{cat:"Inginerie",q:"Care sunt principalele elemente care constituie sistemul de racire pentru motoarele de propulsie si a celor auxiliare?",a1:"Apa si uleiul utilizate",a2:"Pompe, armaturi, tubulatori, schimbatoare de caldura",a3:"Uleiul de ungere asigura totodata si racirea motorului",correct:2},
+{cat:"Inginerie",q:"Un motor diesel produce lucru mecanic atunci cand pistonul se misca in cilindru pe cursa de",a1:"Destindere",a2:"Admisie",a3:"Evacuare",correct:1},
+{cat:"Inginerie",q:"Timpul de lucru al unui motor in care se produce introducerea aerului proaspat in cilindru se numeste",a1:"Compresie",a2:"Destindere",a3:"Admisie",correct:3},
+{cat:"Inginerie",q:"Un motor cu ardere interna este o masina care",a1:"Produce energia electrica",a2:"Produce energia mecanica",a3:"Produce energia calorica",correct:2},
+{cat:"Inginerie",q:"Ce se intelege prin supraalimentarea motorului cu ardere interna?",a1:"Cresterea puterii specifice a motorului diesel, adica obtinerea unei puteri mai mari fara a creste dimensiunile acestuia",a2:"Cresterea puterii specifice a motorului diesel, adica obtinerea unei puteri mai mari prin marirea dimensiunilor acestuia",a3:"Turbosuflanta actionata de gazele de ardere",correct:1},
+{cat:"Inginerie",q:"Care sunt dimensiunile principale ale motorului?",a1:"Diametrul cilindrului, cursa pistonului si numarul de cilindri",a2:"Inaltime, latime, diametru",a3:"Viteze, regulatoare si pistoane",correct:1},
+{cat:"Inginerie",q:"Printre piesele fixe ale unui motor diesel putem include",a1:"Bloc cilindric, chiulasa, rezervor motor",a2:"Arbore cotit, pistoane cu biele",a3:"Supapa de admisie, supapa de evacuare, suflante",correct:1},
+{cat:"Inginerie",q:"Printre piesele mobile ale unui motor diesel putem include",a1:"Arbore cotit, pistoane cu biele, tren de supape",a2:"Bloc cilindric, chiulasa, rezervor motor",a3:"Supapa de admisie, supapa de evacuare, suflante",correct:1},
+{cat:"Inginerie",q:"Care este principala deosebire dintre un motor principal si un motor auxiliar?",a1:"Motorul principal asigura propulsia in timp ce motor auxiliar asigura necesarul de energie electrica",a2:"Principala deosebire consta in diferenta de gabarit si in modul de functionare, motorul principal fiind un motor in doi timpi in timp ce motoarele auxiliare sunt motoare in patru timpi",a3:"Motorul principal este alimentat cu motorina, diesel generatorul este alimentat electric",correct:1},
+{cat:"Inginerie",q:"Care sunt deosebirile constructive intre un motor principal in patru timpi si un motor auxiliar?",a1:"Principala deosebire este cea de gabarit, respectiv dimensiunile unui motor principal sunt mult mai mari decat cele ale unui motor auxiliar",a2:"Motorul principal are o constructie total diferita fata de un motor auxiliar",a3:"Nici una",correct:3},
+{cat:"Inginerie",q:"Ce este un diesel generator si care este rolul sau?",a1:"O masina care asigura necesarul de lucru mecanic necesar pentru functionarea navei",a2:"Un ansamblu compus dintr-un motor termic care antreneaza un generator. Rolul sau este acela de a furniza energia electrica necesara navei",a3:"Este un ansamblu de motoare, instalatii si echipamente care sunt interconectate si care genereaza energia electrica pe care o directioneaza spre consumatori",correct:2},
+{cat:"Inginerie",q:"Motoarele navelor se caracterizeaza printre altele prin dimensiuni reduse si putere mare. Cum obtin fabricantii asemenea performante?",a1:"Prin calitatea superioara a materialelor folosite si a solutiilor ingineresti avansate adoptate",a2:"Prin folosirea unor combustibili de calitate ridicata si prin reducerea frecarilor printr-o ungere adecvata",a3:"Prin marirea numarului de cilindri, prin cresterea turatiei si a presiunii aerului de supraalimentare",correct:3},
+{cat:"Inginerie",q:"Alimentarea motoarelor navale fluviale se face cel mai adesea cu combustibil diesel motorina. Care sunt principalele componente ale instalatiei de alimentare cu combustibil?",a1:"Tanc combustibil, tubulaturi, valvule, pompe alimentare",a2:"Pompe de injectie, injectoare",a3:"Tanc combustibil, filtre de combustibil si ulei, pompe de injectie si injectoare",correct:3},
+{cat:"Inginerie",q:"Care este principalul motiv pentru care tancurile de combustibil se pozitioneaza la oarecare inaltime de motoarele care se alimenteaza din acestea?",a1:"Asigura numai ungerea motorului",a2:"Asigura ungerea pieselor mobile aflate in contact pentru a diminua frecarile si uzura si totodata preia o parte din caldura rezultata",a3:"Pentru a putea face alimentarea gravitationala, fara pompa de alimentare",correct:3},
+{cat:"Inginerie",q:"Care este principalul motiv pentru care tancurile de combustibil se pozitioneaza la oarecare inaltime de motoarele care se alimenteaza din acestea (2)?",a1:"Pentru o mai buna alimentare cu combustibil",a2:"Pentru a putea face alimentarea gravitationala, fara pompa de alimentare",a3:"Nu exista o regula pentru pozitionarea tancurilor de combustibil",correct:2},
+{cat:"Inginerie",q:"Care este rolul apei in sistemul de racire al motorului termic?",a1:"Apa asigura transmiterea caldurii catre organele interne ale motorului",a2:"Apa asigura racirea motorului si a sistemelor de distributie",a3:"Apa asigura racirea motorului si mentinerea acestuia la o temperatura reglata si monitorizata automat",correct:3},
+{cat:"Inginerie",q:"Una dintre principalele atributii pentru cei desemnati sa supravegheze si sa intretina motoarele navei este",a1:"Urmarirea si inregistrarea orelor de functionare",a2:"Urmarirea nivelului de combustibil in tancurile de consum si a uleiului in carterul motoarelor",a3:"Verificarea calitatii combustibilului, a uleiului si a apei de racire din instalatiile navei",correct:2},
+{cat:"Inginerie",q:"In imaginea de mai jos este prezentat un motor naval. Cum se numeste componenta evidentiata prin sageata rosie?",a1:"Galerie de admisie",a2:"Filtru de aer",a3:"Filtru de combustibil",correct:2},
+{cat:"Inginerie",q:"La navele fluviale, pornirea motoarelor se face in general cu",a1:"Actionare manuala",a2:"Cu demaror electric sau pneumatic",a3:"Cu demaror hidraulic",correct:2},
+{cat:"Inginerie",q:"Care sunt principalele etape premergatoare pornirii motorului principal al navei?",a1:"Verificarea nivelului uleiului din carter, preungerea, virarea, decuplarea virorului",a2:"Verificarea tuturor sistemelor care contribuie la functionarea motorului",a3:"Verificarea presiunii din buteliile de lansare sau a nivelului de incarcare a bateriilor in cazul pornirii electrice",correct:1},
+{cat:"Inginerie",q:"Cum se realizeaza inversarea sensului de mars la navele de ape interioare?",a1:"Prin inversarea sensului de rotatie al motorului principal si al elicei",a2:"Prin inversarea sensului de rotatie al elicei",a3:"Prin intermediul sistemului de guvernare",correct:2},
+{cat:"Inginerie",q:"Din ce motiv se impune ca la motoarele de turatie mare sa se realizeze reducerea semnificativa a turatiei imprimate elicei si cum se realizeaza acest lucru?",a1:"Acest lucru se intampla pentru ca fara aceasta reducere, turatia mare imprimata elicei ar putea duce la distrugerea acesteia si a axului de transmisie. Prin intermediul unui reductor inversor",a2:"Reducerea de turatie este necesara pentru ca in aceasta situatie nava ar putea deveni necontrolabila datorita vitezei prea mari. Prin intermediul unui reductor inversor",a3:"Reducerea de turatie este necesara pentru ca in aceasta situatie corpul navei ar fi supusa unor eforturi foarte mari care ar putea duce la avarierea acesteia. Modalitatea de reducere este prezenta unui inversor reductor de turatie",correct:1},
+{cat:"Inginerie",q:"O conditie esentiala impusa combustibilului pentru buna functionare a motoarelor este",a1:"Combustibilul trebuie sa fie curat",a2:"Combustibilul trebuie sa fie necontaminat",a3:"Combustibilul trebuie sa fie aprobat",correct:2},
+{cat:"Inginerie",q:"Una dintre principalele atributii pentru cei desemnati sa supravegheze si sa intretina motoarele navei este (2)",a1:"Urmarirea si inregistrarea orelor de functionare",a2:"Urmarirea nivelului de combustibil in tancurile de consum si a uleiului in carterul motoarelor",a3:"Verificarea calitatii combustibilului, a uleiului si a apei de racire din instalatiile navei",correct:2},
+{cat:"Inginerie",q:"Care este rolul uleiului de lubrifiere utilizat in cazul motoarelor navale?",a1:"Asigura numai ungerea motorului",a2:"Asigura ungerea pieselor mobile aflate in contact pentru a diminua frecarile si uzura si totodata preia o parte din caldura rezultata in urma acestor frecari",a3:"Asigura ungerea si totodata racirea motorului",correct:2},
+{cat:"Inginerie",q:"Care este destinatia instalatiei de aer comprimat de la bordul navei?",a1:"Corecteaza asieta navei",a2:"Asigura aerul sub presiune necesar in anumite aplicatii la nava",a3:"Ajuta la stingerea incendiilor in cadrul aplicatiei de presurizare a apei",correct:2},
+{cat:"Inginerie",q:"Pornirea electrica a motorului se face",a1:"De la baterii",a2:"Din sistemul de alimentare cu curent electric al navei",a3:"Apasand butonul START",correct:1},
+{cat:"Inginerie",q:"Care este rolul apei in sistemul de racire al motorului termic (2)?",a1:"Apa asigura transmiterea caldurii catre organele interne ale motorului",a2:"Apa asigura racirea motorului si a sistemelor de distributie",a3:"Apa asigura racirea motorului si mentinerea acestuia la o temperatura reglata si monitorizata automat",correct:3},
+{cat:"Inginerie",q:"In ce aplicatii se foloseste aerul comprimat la nava?",a1:"Pentru pornirea motoarelor principale, auxiliare si pentru sistemele de automatizare care utilizeaza aer comprimat",a2:"Pentru actionarea sculelor si a altor instalatii pneumatice",a3:"Toate cele de mai sus",correct:3},
+{cat:"Inginerie",q:"Ce este un diesel generator si care este rolul sau (2)?",a1:"O masina care asigura necesarul de lucru mecanic necesar pentru functionarea navei",a2:"Un ansamblu compus dintr-un motor termic care antreneaza un generator. Rolul acestuia este acela de a furniza energia electrica necesara navei",a3:"Este un ansamblu de motoare, instalatii si echipamente care sunt interconectate si care genereaza energia electrica pe care o directioneaza spre consumatori",correct:2},
+{cat:"Inginerie",q:"Sistemul de guvernare reprezinta",a1:"Sistemul care asigura directia de deplasare a navei. Guvernarea nu poate avea eficienta in lipsa propulsiei",a2:"Sistemul care asigura deplasarea navei spre inainte si spre inapoi",a3:"Carma navei, care prin miscarea ei intr-un bord sau altul asigura directia de deplasare a navei",correct:1},
+{cat:"Inginerie",q:"Manevrabilitatea navei reprezinta",a1:"Proprietatea navei de a-si schimba directia de deplasare in sensul dorit",a2:"Proprietatea de inaintare a navei spre directia inainte sau inapoi",a3:"Schimbarea directiei de mars prin inversarea sensului de rotatie al elicei",correct:1},
+{cat:"Inginerie",q:"Unul dintre cele mai eficiente sisteme prin care echipajul este informat despre o avarie sau o functionare defectuoasa a unor sisteme din compartimentul de masini este",a1:"Sistemul de control automatizat al navei",a2:"Sistemul de alarmare acustic si optic",a3:"Sistemul de protectie in cazul avariilor",correct:2},
+{cat:"Inginerie",q:"La operatia de lansare motorul nu porneste",a1:"Valvulele de aer de pe butelii sunt inchise",a2:"Supapa de sigurant s-a blocat",a3:"Presiunea de injectie este mica",correct:1},
+{cat:"Inginerie",q:"Gazele evacuate au culoare foarte inchisa",a1:"Nivel normal de combustibil in tancul de serviciu",a2:"Amestec prea bogat in combustibil aer insuficient",a3:"Vscozitatea uleiului de ungere cilindri este normal",correct:2},
+{cat:"Inginerie",q:"Motorul isi mareste brusc turatia",a1:"Racirea unui piston este insuficienta",a2:"Jocuri mari in lagarele de sprijin ale liniei axiale",a3:"Aerul de ardere contine o cantitate mare de vapori de ulei",correct:3},
+{cat:"Inginerie",q:"Respectarea temperaturii optime a uleiului de ungere la motoare este foarte importanta pentru buna functionare a acestora. Cu ce instrument se verifica acest parametru?",a1:"Anemometru",a2:"Termometru",a3:"Barometru",correct:2},
+{cat:"Inginerie",q:"La operatia de lansare motorul nu porneste (2)",a1:"Valvulele de aer de pe butelii sunt deschise",a2:"Injectorul la unul dintre cilindri un functioneaza",a3:"Bateria de pornire este descarcata",correct:1},
+{cat:"Inginerie",q:"Intr-un motor diesel, combustibilul este aprins de",a1:"Scnteie",a2:"Combustibil injectat",a3:"Caldura rezultata din comprimarea aerului la sfarsitul compresiei",correct:3},
+{cat:"Inginerie",q:"Combustibilul este introdus in camera de ardere prin intermediul",a1:"Pompei de injectie",a2:"Pompei de injectie si injectorului",a3:"Carburatorului si supapei de injectie",correct:2},
+{cat:"Inginerie",q:"Evidentiati cea mai utilizata metoda pentru a elimina eventuala contaminare cu apa a combustibilului la nave.",a1:"Separarea centrifugala a combustibilului",a2:"Separarea gravitationala prin decantarea si apoi purjarea tancului de combustibil",a3:"Separarea prin filtrare cu filtre speciale",correct:2},
+{cat:"Inginerie",q:"Filtrele de combustibil si ulei se inlocuiesc atunci cand",a1:"Este mentionat in cartea tehnica",a2:"Se inlocuieste uleiul",a3:"Ori de cate ori este nevoie",correct:3},
+{cat:"Inginerie",q:"Un simptom care ar putea sa indice o functionare defectuoasa a motorului poate fi",a1:"Consum prea mare sau prea mic de combustibil",a2:"Temperatura prea mare a apei de racire",a3:"Fum abundent la cos",correct:3},
+{cat:"Inginerie",q:"Daca in timpul functionarii motorul scoate sunete anormale, o prima masura ce se impune a fi luata este",a1:"Informarea rapida a sefului mecanic sau a capitanului",a2:"Oprirea de urgenta a motorului",a3:"Investigarea cauzei care a generat aceasta anomalie",correct:1},
+{cat:"Inginerie",q:"Temperaturi prea mari ale apei de racire in motor denota",a1:"Defectiuni la instalatia de racire a motorului",a2:"Sarcina prea mare pe motor",a3:"Oricare dintre cele de mai sus",correct:3},
+{cat:"Inginerie",q:"Daca in timpul functionarii, unul dintre motorulele auxiliare aflate in functiune se incalzeste excesiv, situatia trebuie raportata sefului mecanic sau capitanului navei. Cum procedati in aceasta situatie?",a1:"Raportez imediat situatia prin telefon sau sau direct prin viu grai",a2:"Raportez in scris situatia si aduc argumentele necesare",a3:"Ambele modalitati de raportare pot fi utilizate",correct:1},
+{cat:"Inginerie",q:"Daca nivelul uleiului in carter scade sub limita nivelului minim, prima actiune care trebuie intreprinsa este",a1:"Oprirea motorului si informare urgenta a conducatorului navei",a2:"Inlocuirea uleiului intrucat cel mai probabil acesta este uzat excesiv",a3:"Completarea uleiului pana la nivelul normal de functionare",correct:3},
+{cat:"Inginerie",q:"Daca dintr-o anumita cauza motorul principal al navei se supratureaza, atunci",a1:"Daca automatizarea nu a facut-o, motorul trebuie oprit manual cat mai rapid",a2:"Este posibil ca motorul isi revine automat la turatia normala",a3:"Nava isi mareste viteze corespunzator turatiei mai mari",correct:1},
+{cat:"Inginerie",q:"Una dintre principalele atributii pentru cei desemnati sa supravegheze si sa intretina motoarele navei este (3)",a1:"Urmarirea si inregistrarea orelor de functionare",a2:"Urmarirea nivelului de combustibil in tancurile de consum si a uleiului in carterul motoarelor",a3:"Verificarea calitatii combustibilului, a uleiului si a apei de racire din instalatiile navei",correct:2},
+{cat:"Inginerie",q:"Filtrele de combustibil si ulei se inlocuiesc atunci cand (2)",a1:"Este mentionat in cartea tehnica",a2:"Se inlocuieste uleiul",a3:"Ori de cate ori este nevoie",correct:3},
+{cat:"Inginerie",q:"Care este principalul motiv pentru care tancurile de combustibil se pozitioneaza la oarecare inaltime de motoarele care se alimenteaza din acestea (3)?",a1:"Pentru o mai buna alimentare cu combustibil",a2:"Pentru a putea face alimentarea gravitationala, fara pompa de alimentare",a3:"Nu exista o regula pentru pozitionarea tancurilor de combustibil",correct:2},
+{cat:"Inginerie",q:"Ce este o instalatie hidraulica de forta?",a1:"O instalatie sau sistem care utilizeaza forta aerului comprimat",a2:"O instalatie sau sistem care utilizeaza forta apei",a3:"O instalatie sau sistem care utilizeaza forta vantului",correct:1},
+{cat:"Inginerie",q:"La terminarea manevrei de acostare, procedura corecta pentru oprirea motorului principal consta in",a1:"Corecteaza asieta navei",a2:"Este folosita la spalarea puntii",a3:"Asigura racirea motoarelor cu ardere interna",correct:2},
+{cat:"Inginerie",q:"Instalatia de balast este compusa din tancuri de balast, tubulaturi si armaturi, dispozitive de sondare si ventilare. Care este elementul lipsa din aceasta enumerare?",a1:"Sistemele de tratare a apei de balast",a2:"Coferdamurile",a3:"Pompele de balast",correct:3},
+{cat:"Inginerie",q:"Ce tip de pompe sunt utilizate la nava in instalatiile de balast?",a1:"Pompe cu pistoane",a2:"Pompe cu roti dintate",a3:"Pompe centrifuge",correct:3},
+{cat:"Inginerie",q:"Ce fel de armatura valvula este reprezentata in figura alaturata?",a1:"Armatura valvula cu clapet",a2:"Armatura valvula de retinere si inchidere",a3:"Armatura valvula tip fluture",correct:3},
+{cat:"Inginerie",q:"Care este rolul armaturilor de retinere si inchidere utilizate in instalatiile de balast si santina?",a1:"Regleaza vascozitatea apei fluidului din instalatie",a2:"Blocheaza trecerea apei fluidului in sens contrar sensului normal de trecere",a3:"Asigura fluidului trecerea cu viteza mare",correct:2},
+{cat:"Inginerie",q:"Care este principalul rol al rasuflatorilor la un tancspatiu depozitare lichide?",a1:"Are rolul de a se evacua surplusul de lichid in cazul umplerii tancului",a2:"Are rolul de a avertiza asupra faptului ca tancul s-a umplut",a3:"Are rolul de a asigura evacuarea sau introducerea aerului atmosferic in respectivul spatiu",correct:3},
+{cat:"Inginerie",q:"Ce mecanism este prezentat in imaginea alaturata?",a1:"O sectiune printr-o pompa centrifuga",a2:"O pompa cu piston",a3:"O pompa cu roti dintate",correct:1},
+{cat:"Inginerie",q:"Ce rol are piesa notata cu 2 din pompa centrifuga prezentata in imaginea alaturata?",a1:"Racord pentru fixarea mamometrului",a2:"Dop pentru golirea pompei",a3:"Dop de control al presiunii apei din pompa",correct:2},
+{cat:"Inginerie",q:"Ce aparat este reprezentat in imaginea alaturata si unde se gaseste el amplasat in instalatia de balast?",a1:"Un manometru amplasat pe tevile de apa",a2:"Un manovacumetru amplasat pe aspiratia pompelor",a3:"Un termometru",correct:2},
+{cat:"Inginerie",q:"In imaginea alaturata este prezentat un mecanism deseori utilizat atunci cand vrem sa extragem apa dintr-un compartiment in care nu este amplasata o instalatie de drenare dedicata. Cum se numeste acest mecanism?",a1:"Pompa ejector portabila",a2:"Pompa centrifuga",a3:"Ajutaj pentru stins incendiu",correct:1},
+{cat:"Inginerie",q:"Una dintre modalitatile de a mentine nava pe chila dreapta este",a1:"Deplasarea greutatilor spre prova",a2:"Deplasarea greutatilor spre prova si in borduri in mod echilibrat",a3:"Controlul pozitiei navei prin utilizarea instalatiei de balast",correct:3},
+{cat:"Inginerie",q:"Care este rolul instalatiei de santina?",a1:"Instalatia de santina are rolul de a colecta toate scurgerile din compartimentul de masini si de a le stoca in tancuri special destinate acestui scop, cantitatile acumulate urmand a fi pompate catre instalatiile de colectare",a2:"Instalatia de santina are rolul de a colecta toate scurgerile din compartimentul de masini si de a le stoca in tancuri special destinate acestui scop, cantitatile acumulate urmand a fi pompate peste bord",a3:"Instalatia de santina are rolul de a colecta toate scurgerile din compartimentul de masini si de a le stoca in tancuri special destinate acestui scop, cantitatile acumulate urmand a fi apoi arse in incineratoare",correct:1},
+{cat:"Inginerie",q:"Ce este o instalatie hidraulica de forta (2)?",a1:"O instalatie care asigura actionarea unor echipamente de forta exemplu instalatia de guvernare, vinciuri etc, utilizand ca masina de forta pompe hidraulice si ca fluid de lucru uleiul hidraulic",a2:"O instalatie hidraulica de forta la nava este o instalatie care utilizeaza forta apei pentru producerea lucrului mecanic necesar pentru actionarea instalatiei de propulsie",a3:"O instalatie hidraulica de forta la nava este o masina complexa care asigura debitul si presiunea de ulei hidraulic necesar actionarilor de forta",correct:1},
+{cat:"Inginerie",q:"Ce este un electromagnet?",a1:"Un miez de fier pe care este infasurata o bobina parcursa de un curent electric",a2:"Un material sau un obiect care produce camp magnetic",a3:"Un dispozitiv in componenta caruia este montat un magnet puternic si care atrage",correct:1},
+{cat:"Inginerie",q:"Cel mai adesea, un motor electric se poate supraancalzi datorita suprasarcinii sau chiar a blocarii acestuia. In acest caz, protectia impotriva defectarii se face prin intermediul",a1:"Releelor termice",a2:"Detectoarelor de temperatura",a3:"Sigurantelor fuzibile",correct:1},
+{cat:"Inginerie",q:"Care sunt principalii parametri de care trebuie sa tinem cont la nava in cazul generatoarelor electrice de curent alternativ?",a1:"Tensiunea, frecventa, sarcina incarcarea",a2:"Frecventa si puterea",a3:"Toate cele de mai sus",correct:1},
+{cat:"Inginerie",q:"Unul dintre instrumentele de control care se regaseste in componenta tuturor tablourilor de comanda electrice este",a1:"Ampermetrul",a2:"Voltmetrul",a3:"Frecventmetrul",correct:1},
+{cat:"Inginerie",q:"Daca un motor sau o instalatie electrica prezinta anomalii de functionare, trebuie luate imediat urmatoarele masuri",a1:"Se anunta de urgenta capitanul si se opreste imediat motorul sau instalatia indiferent de situatia in care se afla nava",a2:"Se anunta de urgenta capitanul si functie de imprejurari se ia decizia daca se impune sau nu stoparea motorului sau instalatiei",a3:"Pentru orice imprejurare, daca se considera o situatie de pericol, motorul sau instalatia trebuie oprite imediat",correct:2},
+{cat:"Inginerie",q:"Ce modalitati constructive se utilizeaza pentru protectia instalatiilor electrice?",a1:"Protectie cu ajutorul sigurantelor fuzibile",a2:"Protectie cu ajutorul releelor de protectie",a3:"Protectie cu ajutorul limitatoarelor de cursa",correct:1},
+{cat:"Inginerie",q:"De ce este uneori nevoie de a se cupla doua sau mai multe generatoare in paralel?",a1:"Pentru a se obtine un plus de putere",a2:"Pentru o mai mare siguranta in functionare",a3:"Pentru realizarea echilibrului energetic",correct:1},
+{cat:"Inginerie",q:"Ce sunt acumulatoarele cu placi de plumb?",a1:"Sunt niste vase fabricate din materiale izolatoare, in care se afla un electrolit si o pereche de electrozi, generatoare de imulsuri electrice",a2:"Denumirea acestora provine de la electrolitul folosit, care este o solutie de hidroxid de potasiu sau sodiu",a3:"Sunt niste surse de curent, obtinut pe cale electrolitica, folosind ca electrolit o solutie de acid sulfuric",correct:3},
+{cat:"Inginerie",q:"Prin legarea in paralel a doi consumatori se obtine",a1:"O crestere de putere",a2:"O putere constanta",a3:"Nici una dintre acestea",correct:3},
+{cat:"Inginerie",q:"Care sunt sursele auxililare de energie electrica instalate la bordul navelor?",a1:"Generatoare de c.a",a2:"Acumulatoarele electrice alcaline, cu plumb sau Litiu Ion",a3:"Generatoare de c.c",correct:2},
+{cat:"Inginerie",q:"In ce conditii se poate realiza alimentarea cu energie electrica de la tarm?",a1:"Numai daca exista o urgenta sau o situatie de pericol pentru nava si echipaj",a2:"Ori de cate ori este nevoie, cu acceptul autoritatii competente sau a proprietarului sursei de alimentare",a3:"De fiecare data cand nava se afla la cheu cu acceptul capitanului",correct:2},
+{cat:"Inginerie",q:"Energia electrica necesara in procesul de exploatare al navei este generata de ansamblul motor auxiliar 1 si generatorul 2. Ce element cu rol determinant in lantul de distributie al energiei electrice catre consumatori este notat cu 3?",a1:"Prize de alimentare consumatori",a2:"Tablou principal de distributie TPD",a3:"Tablou sigurante fuzibile",correct:2},
+{cat:"Inginerie",q:"Care sunt sursele principale de energie electrica instalate la bordul navelor?",a1:"Acumulatoare alcaline sau cu plumb",a2:"Generatoare de c.a",a3:"Motoare electrice de c.c. sau c.a.",correct:2},
+{cat:"Inginerie",q:"Una dintre conditiile necesare pentru cuplarea in paralel a doua generatoare este",a1:"Ambele generatoare sa fie de acceasi putere",a2:"Ambele generatoare sa fie in acceasi frecventa",a3:"Ambele generatoare sa aiba acelasi numar de poli",correct:2},
+{cat:"Inginerie",q:"Precizati daca urmatorul enunt este adevarat sau fals Pentru a cupla in paralel doua generatoare trebuiesc indeplinite patru conditii esentiale Tensiuni egale, frecvente egale, acceasi succesiune a fazelor, suprapunerea fazelor pe ambele generatoare",a1:"Adevarat",a2:"Fals",a3:"Partial adevarat",correct:1},
+{cat:"Inginerie",q:"Daca una dintre doua lampi becuri legate in serie se defecteaza, ce se intampla cu cealalta lampa?",a1:"Se stinge",a2:"Ramane aprinsa",a3:"Lumineaza cu o intensitate redusa",correct:1},
+{cat:"Inginerie",q:"Pentru a creste frecventa curentului furnizata de un generaltor, este necesar sa",a1:"Crestem turatia motorului de actionare",a2:"Scadem turatia motorului de actionare",a3:"Reglam intensitatea curentului",correct:1},
+{cat:"Inginerie",q:"Daca una dintre doua lampi becuri legate in paralel se defecteaza, ce se intampla cu cealalta lampa?",a1:"Se stinge",a2:"Ramane aprinsa si lumineaza cu aceeasi intensitate",a3:"Lumineaza cu o intensitate redusa",correct:2},
+{cat:"Inginerie",q:"Ce sunt tablourile de distributie si in cate categorii se impart ele?",a1:"Sunt echipamente care contin aparate de conectare, aparate de protectie, aparate de masura, alte sisteme de distributie a energiei electrice",a2:"Sunt echipamente care contin mijloace de semnalizare optica si acustica",a3:"Sunt echipamente destinate supravegherii generatoarelor de avarie",correct:1},
+{cat:"Inginerie",q:"Daca un motor sau o instalatie prezinta anomalii de functionare, trebuie luate imediat urmatoarele masuri (2)",a1:"Se anunta de urgenta capitanul si se opreste imediat motorul sau instalatia indiferent de situatia in care se afla nava",a2:"Se anunta de urgenta capitanul si functie de imprejurari se ia decizia daca se impune sau nu stoparea motorului sau instalatiei",a3:"Pentru orice imprejurare, daca se considera o situatie de pericol, motorul sau instalatia trebuie oprite imediat",correct:2},
+{cat:"Inginerie",q:"Daca in timpul functionarii se aud batai in carterul motorului, acesta este un semnal ca",a1:"Ceva este defect si daca nu sunt luate masuri de urgenta ar putea sa se petreaca o avarie majora",a2:"Probabil uleiul este contaminat si trebuie inlocuit urgent",a3:"Trebuie anuntat de urgenta conducatorul navei sau seful mecanic",correct:1},
+{cat:"Inginerie",q:"Ce trebuie facut pentru a putea curata filtrul din imaginea alaturata?",a1:"Valvula 2 trebuie inchisa si valvula 1 trebuie deschisa",a2:"Ambele valvule trebuie inchise",a3:"Valvula 1 trebuie inchisa si valvula 2 trebuie deschisa",correct:2},
+{cat:"Inginerie",q:"Daca pompa centrifuga din instalatia de balast nu debiteaza, o cauza probabila poate fi",a1:"Pompa nu dezvolta puterea necesara",a2:"Valvula de aspiratie este inchisa",a3:"Valvula de refulare este deschisa partial",correct:2},
+{cat:"Inginerie",q:"Daca pompa centrifuga din instalatia de balast nu debiteaza, o cauza probabila poate fi (2)",a1:"Infundarea filtrului pe aspitratia pompei daca acesta exista",a2:"Debit prea mare la aspiratie",a3:"Manometru defect",correct:1},
+{cat:"Inginerie",q:"Cel mai eficace mod de a preveni eventualele avarii la instalatiile si mecanismele navei din compartimentul de masini si in afara acestuia este implementarea unui sistem eficace de prevenire prin activitati de intretinere, revizii si reparatii curente. Cat de adevarata este aceasta afirmatie?",a1:"Adevarata",a2:"Falsa",a3:"Adevarata dar incompleta",correct:1},
+{cat:"Inginerie",q:"Prima actiune ce trebuie intreprinsa in cazul in care in timpul debalastarii, pompa de balast s-a defectat este",a1:"Oprirea instalatiei si anuntarea de urgenta a sefului mecanic sau a capitanului",a2:"Oprirea pompei defecte si pornirea celei de rezerva",a3:"Repararea de urgenta a pompei defecte",correct:2},
+{cat:"Inginerie",q:"Lipsa presiunii apei in instalatia de apa sanitara, poate fi urmarea faptului ca",a1:"Pompa de alimentare a hidroforului nu functioneaza sau lipseste perna de aer din hidrofor",a2:"Presostatul de comanda al pompei s-a defectat sau pompa de alimentare este pozitionata in modul MANUAL",a3:"Oricare dintre cele enumerate mai sus",correct:3},
+{cat:"Inginerie",q:"Un semn ca pompa centrifuga a unei instalatii de balast nu debiteaza este oferit de",a1:"Manometrul montat pe refularea pompei care indica valori pozitive",a2:"Manometrul montat pe refularea pompei care indica valori apropiate de zero",a3:"Functionarea cu zgomot si vibratii a pompei",correct:2},
+{cat:"Inginerie",q:"Temperatura prea mare a uleiului de ungere se poate datora",a1:"Unei functionari defectuoase a motorului",a2:"Unei defectiuni a sistemului de racire",a3:"Nivelului prea scazut de ulei din carter",correct:2},
+{cat:"Inginerie",q:"Una dintre conditiile de baza privind buna functionare a masinilor si instalatiilor din compartimentul de masini este si",a1:"Un iluminat corespunzator astfel incat in toate spatiile lumina sa fie adecvata activitatii la bord",a2:"O ventilare foarte buna a compartimentului care sa asigure necesarul de aer pentru motoarele cu ardere interna",a3:"Ambele raspunsuri sunt valabile",correct:2},
+{cat:"Inginerie",q:"Unele dintre cele mai importante activitati desfasurate in vederea bunei functionari a navei sunt si",a1:"Pregatirea personalului care exploateaza nava",a2:"Dotarea corespunzatoare cu piese de schimb",a3:"Lucrarile de intretinere si revizii periodice de calitate",correct:3},
+{cat:"Inginerie",q:"Intretinerea si ingrijirea incaperilor de masini si a tuturor instalatiilor se face conform",a1:"Unui plan si un program bine stabilit",a2:"Conform unei liste de verificari care sa evidentieze realizarea tuturor activitatilor necesare",a3:"Ambele raspunsuri sunt corecte",correct:3},
+{cat:"Inginerie",q:"In vederea pregatirii navei pentru plecare, persoanele cu atributiuni pe linie de masini trebuie",a1:"Sa pregateasca masinile si instalatiile conform listei de verificari",a2:"Sa pregateasca nava de plecare cu minimum de agregate si instalatii necesare",a3:"Sa pregateasca nava conform indicatiilor si ordinelor primite de la biroul tehnic",correct:1},
+{cat:"Inginerie",q:"Ce este o lista de verificare?",a1:"Este un document care specifica ce trebuie verificat in cazul unei defectiuni",a2:"Este un document care specifica ce activitati se cer a fi efectuate intr-o anumita situatie si ordinea acestora",a3:"Ambele cele de mai sus",correct:2},
+{cat:"Inginerie",q:"In cadrul verificarilor periodice si inainte de utilizare a instalatiei de balast, o atentie deosebita trebuie acordata urmatoarelor aspecte",a1:"Functionarea corecta a instalatiei de pompare",a2:"Filtre curate, pompe, valvule si aparate de masura functionabile, cunoasterea procedurilor",a3:"Verificarea starii de curatenie a tancurilor, filtrelor, racitoarelor, pompelor",correct:2},
+{cat:"Inginerie",q:"Persoana desemnata cu intretinerea, verificarea si exploatarea instalatiilor si agregatelor din compartimentul de masini trebuie sa aiba abilitatile necesare pentru",a1:"A sti sa utilizeze materialele de intretinere, sculele adecvate si dispozitivele ajutatoare pentru aceste operatiuni",a2:"A cunoaste principiile de functionare si parametrii regimurilor de lucru ale acestor echipamente",a3:"Ambele cele de mai sus",correct:1},
+{cat:"Inginerie",q:"Ati terminat lucrarea de intretinere a instalatiei de balast. Ce trebuie sa mai faceti pentru ca aceasta verificare sa fie considerata finalizata?",a1:"Trebuie sa fie anuntat seful mecanic acolo unde exista sau conducerea navei",a2:"Lucrarea trebuie consemnata in jurnalul destinat acestui scop sau in jurnalul de masini",a3:"Trebuie sa ma asigur ca nu am facut greseli in cadrul acestei verificari",correct:2},
+{cat:"Inginerie",q:"Pentru intelegere modului de lucru sau a modalitatii de intretinere, exploatare si reparatii a unei pompe, instalatii, motor etc, operatorul trebuie sa fie capabil sa",a1:"Fise tehnice cu instructiuni, filme demonstrative, schite si desene de prezentare",a2:"Cartea tehnica cu documentatia aferenta echipamentului respectiv, instructiuni de intretinere si reparatii",a3:"Nu sunt necesare aceste abilitati din partea echipajului pentru ca partea de intretinere si reparatii revine atelierelor de reparatii specializate",correct:2},
+{cat:"Inginerie",q:"Persoana desemnata cu intretinerea, verificarea si exploatarea instalatiilor si agregatelor din compartimentul de masini trebuie sa aiba abilitatile necesare pentru (2)",a1:"A sti sa utilizeze materialele de intretinere, sculele adecvate si dispozitivele ajutatoare pentru aceste operatiuni",a2:"A cunoaste principiile de functionare si parametrii regimurilor de lucru ale acestor echipamente",a3:"Ambele cele de mai sus",correct:1},
+{cat:"Inginerie",q:"Ce verificari uzuale se fac la instalatiile cu tubulaturi ale instalatiilor de santina si balast inainte de punerea lor in functiune?",a1:"Se verifica existenta manualelor cu instructiuni, a listelor de verificari si a inscrisurilor din jurnalul de bord",a2:"Se face un control vizual al instalatiei, se verifica mobilitatea axului pompei in cazul celor centrifuge, a valvulelor implicate in proces, etc",a3:"Se porneste instalatia pentru o perioada de timp foarte scurta pentru a vedea daca sunt nereguli in functionare",correct:2},
+{cat:"Inginerie",q:"O atentie deosebita care trebuie acordata in timpul verificarii instalatiilor de santina si balast trebuie acordata si",a1:"Etanseitatii imbinarilor dintre tubulaturi, armaturi si pompe pentru a preantampina eventualele scurgeri",a2:"Starea tehnica a pompelor si separatoarelor de santina si balast",a3:"Daca instalatia este corect verificata si functionala din toate punctele de vedere",correct:1},
+{cat:"Inginerie",q:"O operatiune simpla de verificare ce tine de sistemul de intretinere al pompelor centrifuge este",a1:"Verificarea manuala a miscarii de rotatie al axului pompei atunci cand aceasta este in stationare si in modul LOCAL sau STOP",a2:"Pornirea pentru o foarte scurta perioda de timp a pompei pentru a verifica daca aceasta se roteste",a3:"Urmarirea comportarii pompei in functionare, fara zgomote si trepidatii",correct:1},
+{cat:"Inginerie",q:"Daca dintr-un anumit motiv una sau mai multe cerinte impuse intr-o lista de verificare nu pot fi indeplinite, atunci",a1:"Instalatia va fi pusa in functiune cu maxima atentie si sub o stricta supraveghere",a2:"Instalatia trebuie trecuta pe lista propusa pentru reparatii",a3:"Instalatia nu va fi pusa in functiune pana ce toate cerintele sunt indeplinite",correct:3},
+{cat:"Inginerie",q:"Intretinerea motorului principal presupune o serie de activitati cum ar fi",a1:"Lucrari da curatare a motorului, eliminare scurgeri, inlocuire sau curatare filtre",a2:"Inlocuire injectoare, supape, garnituri",a3:"Completarea uleiului in carter, separarea combustibilului de contaminanti, racirea corespunzatoare",correct:1},
+{cat:"Inginerie",q:"Verificarea periodica a nivelului de ulei la motoarele principale si auxiliare, precum si starea tehnica a filtrelor de aer, apa, combustibil si ulei face parte din ansamblul lucrarilor de",a1:"Revizii tehnice",a2:"Intretinere",a3:"Reparatii curente",correct:2},
+{cat:"Inginerie",q:"Ce verificari uzuale se fac la instalatiile cu tubulaturi ale instalatiilor de santina si balast inainte de punerea lor in functiune (2)?",a1:"Se verifica existenta manualelor cu instructiuni, a listelor de verificari si a inscrisurilor din jurnalul de bord",a2:"Se face un control vizual al instalatiei, se verifica mobilitatea axului pompei in cazul celor centrifuge, a valvulelor implicate in proces, etc",a3:"Se porneste instalatia pentru o perioada de timp foarte scurta pentru a vedea daca sunt nereguli in functionare",correct:2},
+{cat:"Inginerie",q:"Persona desemnata cu intretinerea, verificare si exploatarea instalatiilor si agregatelor din compartimentul de masini trebuie sa fie capabila printre altele sa",a1:"Cunoasca foarte bine modul de constructie, principiile de functionare si caracteristicile tehnice ale acestor instalatii",a2:"In caz de nevoie sa stie sa foloseasca sculele si dispozitivele ajutatoare din dotare pentru a reusi sa rezolve anumite probleme tehnice",a3:"Explice conducatorului navei care este situatia concreta a acestor instalatii si sa sugereze care sunt caile de rezolvare",correct:2},
+{cat:"Inginerie",q:"Unele dintre cele mai importante activitati desfasurate in vederea bunei functionari a navei sunt si (2)",a1:"Pregatirea personalului care exploateaza nava",a2:"Dotarea corespunzatoare cu piese de schimb",a3:"Lucrarile de intretinere si revizii periodice de calitate",correct:3},
+{cat:"Inginerie",q:"Intretinerea si ingrijirea incaperilor de masini si a tuturor instalatiilor se face conform (2)",a1:"Unui plan si un program bine stabilit",a2:"Conform unei liste de verificari care sa evidentieze realizarea tuturor activitatilor necesare",a3:"Ambele raspunsuri sunt corecte",correct:3},
+{cat:"Inginerie",q:"In vederea pregatirii navei pentru plecare, persoanele cu atributiuni pe linie de masini trebuie (2)",a1:"Sa pregateasca masinile si instalatiile conform listei de verificari",a2:"Sa pregateasca nava de plecare cu minimum de agregate si instalatii necesare",a3:"Sa pregateasca nava conform indicatiilor si ordinelor primite de la biroul tehnic al armatorului",correct:1},
+{cat:"Inginerie",q:"In cadrul verificarilor periodice si inainte de utilizare a instalatiei de balast, o atentie deosebita trebuie acordata urmatoarelor aspecte (2)",a1:"Functionarea corecta a instalatiei de pompare",a2:"Filtre curate, pompe, valvule si aparate de masura functionabile, cunoasterea procedurilor",a3:"Verificarea starii de curatenie a tancurilor, filtrelor, racitoarelor, pompelor",correct:2},
+{cat:"Inginerie",q:"In timpul unei verificari de rutina, constat ca etansarea axului pompei de balast prezinta scurgeri de apa insemnate. Ce ar trebui sa fac in aceasta situatie?",a1:"Sa remediez imediat situatia prin inlocuirea sistemului de etansare",a2:"Sa planific remedierea defectiunii cu prima ocazie cand va fi necesar sa utilizez pompa",a3:"Sa anunt situatia sefului mecanic sau capitanului care vor lua decizia ce se impune",correct:3},
+{cat:"Inginerie",q:"In timpul pregatirii instalatiei de balast pentru punere in functiune, constat ca pompa de balast absoarbe un curent anormal de mare. Ce ar trebui sa fac in aceasta situatie?",a1:"Sa opresc instalatia si sa anunt seful mecanic sau capitanul",a2:"Sa opresc pornesc pompa si sa o pornesc pe cea de rezerva apoi sa anunt seful mecanic sau capitanul",a3:"Sa constat care este cauza si sa o remediez in cel mai scurt timp posibil",correct:2},
+{cat:"Inginerie",q:"In cazul in care constat ca o imbinare cu flanse in sistemul de balast prezinta scapari de apa, solutia cea mai rapida ce poate fi adoptata este",a1:"Incercarea de a strange suruburile de cuplare a flanselor",a2:"Inlocuirea garniturii de etansare",a3:"Anuntarea rapida a sefului mecanic sau a capitanului",correct:1},
+{cat:"Inginerie",q:"Ce masuri permanente trebuiesc luate pentru a preveni producerea oricaror avarii la instalatiile navei?",a1:"Respectarea ordinelor conducatorului de nava sau a sefului mecanic",a2:"Respectarea programelor de intretinere, reparatiilor planificate, evitarea lucrarilor de ordin paliativ improvizatii",a3:"Schimbarea la timp a uleiului, filtrelor si a tuturor consumabilelor la termenele prescrise de fabricant",correct:2},
+{cat:"Inginerie",q:"La navele care transporta marfuri periculoase de genul cisternelor de titei, sculele si dispozitivele cu care se lucreaza pe punte trebuie sa aiba anumite proprietati. Care ar fi acestea?",a1:"Sa aiba calitatile necesare pentru scopul pentru care sunt utilizate",a2:"Sculele sa nu produca scantei la atingere cau soc, dispozitivele aparate masura, lanterne, aparate comunicatie sa fie de un tip aprobat de catre autoritatile competente societati de clasificare, standarde, etc",a3:"Nu exista limitari in acest sens, singurele conditii impuse sunt acelea ce se refera la scopul pentru care sunt utilizate",correct:2},
+{cat:"Inginerie",q:"Pompele cu pinioane care deservesc instalatii de transfer combustibil sau ulei, se pornesc intotdeauna",a1:"Cu valvula de refulare deschisa total",a2:"Cu valvula de refulare deschisa partial",a3:"Cu valvula de refulare inchisa",correct:1},
+{cat:"Inginerie",q:"In timpul lucrarilor de revizii si intretinere a pompelor se verifica si manevrarea usoara a valvulelor de aspiratie si refulare. In ce pozitie trebuie lasate acestea dupa finalizarea lucrarii?",a1:"Intotdeauna deschise",a2:"Intotdeauna inchise",a3:"Depinde de instalatia din care face parte pompa",correct:3},
+{cat:"Inginerie",q:"O lucrare specifica de intretinere a unei instalatii de balast este si aceea de a verifica starea de curatenie a filtrelor montate in instalatie. Cand se face acest lucru?",a1:"In timpul functionarii instalatiei",a2:"Doar cand nava este andocata",a3:"Doar cand instalatia este oprita",correct:3},
+{cat:"Inginerie",q:"Constatam ca apa sanitara nu ajunge la nivelele superioare ale navei. Ce ar trebui sa verificam in primul rand?",a1:"Daca exista apa in tancul respectiv",a2:"Daca functioneaza hidroforul",a3:"Daca avem valvulele",correct:2},
+{cat:"Inginerie",q:"Ce operatiuni sunt necesare a fi executate in cadrul programului de intretinere a compresarelor de aer?",a1:"Verificarea filtrelor de aer",a2:"Functionarea purjelor manuale si automate",a3:"Toate cele de mai sus",correct:3},
+{cat:"Inginerie",q:"Ce operatiuni sunt necesare a fi executate in cadrul programului de intretinere a instalatiei de hidrofoare?",a1:"Existenta pernei de aer in hidrofor",a2:"Functionarea corecta a presostatelor si a automtizarii pompelor",a3:"Toate cele de mai sus",correct:3},
+{cat:"Inginerie",q:"Orice program de intretinere, revizii sau reparatii finalizat trebuie consemnat. Care este documentul in care se fac aceste consemnari?",a1:"Toate lucrarile care au fost executate, inclusiv cele de curatare, vopsire, etc",a2:"Numai faptul ca s-au efectuat lucrarile respective",a3:"Toate cele de mai sus",correct:1},
+{cat:"Inginerie",q:"Dereglarea automatizarii instalatiei de hidrofor este semnalizata prin urmatoarele simptome",a1:"Pompele pornesc si se opresc foarte des",a2:"Presiunea apei este prea mica sau prea mare",a3:"Toate cele de mai sus",correct:3},
+{cat:"Inginerie",q:"Principalele activitati ce se recomanda a se efectua in cadrul programelor de intretinere a diverselor instalatii sunt specificate in",a1:"Manuale si instructiuni de intretinere",a2:"Cartea tehnica a masinii",a3:"Jurnalul de masini",correct:1},
+{cat:"Inginerie",q:"Golirea prea rapida a buteliei de aer din instalatia de aer comprimat, indica faptul ca",a1:"Cel mai probabil, la lansarea motoarelor se consuma aer in exces",a2:"Exista posibilitatea unei pierderi de presiune datorita neetanseitatilor in instalatie",a3:"Compresorul nu asigura presiunea necesara",correct:2},
+{cat:"Inginerie",q:"Nivel peste limita a uleiului in carterul unui motor, poate fi o consecinta a",a1:"Defectiunii sistemului de injectie a combustibilului",a2:"Defectiune a sistemului de racire",a3:"Oricare dintre cele doua",correct:3},
+{cat:"Inginerie",q:"O pierdere de aer in instalatia de aer comprimat poate fi depistata prin",a1:"Facand liniste in compartimentul de masini si ascultand sunetele ambientale",a2:"Verificand cu spuma elementele de imbinare a tubulaturilor",a3:"Oricare dintre cele doua modalitati prezentate mai sus",correct:3},
+{cat:"Inginerie",q:"In timpul functionarii instalatiei de balast, constatam ca apa nu creste in tancuri. Ce trebuie sa verificam in acest caz?",a1:"Daca linia este facuta corect conform manualului si a documentatiei tehnice",a2:"Daca pompa de balast functioneaza sau nu la parametrii normali",a3:"Toate cele enumerate mai sus",correct:3},
+{cat:"Inginerie",q:"In timpul lucrarilor de intretinere la un motor auxiliar, constatam ca uleiul din carter are o culoare si o consistenta anormale. Cauza cea mai probabila ar putea fi contaminarea acestuia cu",a1:"Apa",a2:"Combustibil",a3:"Oricare dintre cele doua posibile cauze a si b",correct:3},
+{cat:"Inginerie",q:"De ce este important sa consultam documentatia si manualele tehnice ale unei instalatii, agregat sau sistem?",a1:"Pentru ca in manualul sau documentatia tehnica gasim datele si informatiile necesare cunoasterii, intelegerii modului de lucru, de intretinere, revizii si reparatii",a2:"Pentru ca din aceste manuale si documentatii putem gasi informatiile necesare referitoare la parametrii optimi de functionare",a3:"Toate cele de mai sus",correct:3},
+{cat:"Inginerie",q:"O temperatura prea ridicata a gazelor de evacuare a motorului denota",a1:"O functionare defectuoasa a sistemului de alimentare cu combustibil",a2:"O functionare defectuoasa a sistemului de supraalimentare cu aer",a3:"Oricare dintre situatii pot fi posibile",correct:3},
+{cat:"Inginerie",q:"Functionarea zgomotoasa a unei pompe centrifuge poate fi cauzata de",a1:"Defectarea unui rulment de sprijin al axului pompei",a2:"Defectarea sistemului de cuplare dintre motorul electric si pompa",a3:"Oricare dintre cele doua variante",correct:3},
+{cat:"Inginerie",q:"Daca descoperiti ca in tancul de combustibil exista o mica cantitate de apa, eliminarea acesteia este posibila prin",a1:"Decantare urmata de purjarea apei",a2:"Inlocuirea intregii cantitati de combustibil",a3:"Eliminarea apei prin centrifugare",correct:1},
+{cat:"Inginerie",q:"Constatati la un moment dat ca nivelul uleiului in carterul motorului auxiliar este crescut peste limita normala. Ce masuri luati in acest caz?",a1:"Incerc sa extrag din carter o cantitate de ulei si sa ajung astfel la nivelul corect",a2:"Opresc de urgenta motorul si anunt capitanul",a3:"Anunt capitanul, daca mi se ordona, pornesc un motor de rezerva daca exista, opresc motorul defect si caut sa aflu cauza defectiunii",correct:3},
+{cat:"Inginerie",q:"O controversa legata de valoarea corecta a unor parametri de functionare a unui motor, poate fi rezolvata prin",a1:"Consultarea jurnalelor de bord",a2:"Verificarea parametrilor celorlalte agregate",a3:"Consultarea documentatiei tehnice",correct:3},
+{cat:"Inginerie",q:"In manualul tehnic al motorului principal gasim indicatia ca temperatura de lucru a uleiului de ungere trebuie sa fie intre 42 si 45 grade Celsius. Cum interpretam aceasta informatie?",a1:"Putem regla temperatura pentru oricare dintre valorile 42, 43, 44, 45 grade Celsius",a2:"Temperatura trebuie reglata fie la 42, fie la 45 grade Celsius",a3:"Cel mai bine este ca temperatura sa fie reglata la 43 sau 44 grade Celsius",correct:1},
+{cat:"Inginerie",q:"Orice lucrare de intretinere, revizii sau reparatii trebuie consemnata in documentele navei. Ce informatii trebuie sa contina respectivul inscris?",a1:"Numele navei, pavilionul, portul in care s-a facut operatiunea, numele persoanei care a facut aceasta operatie",a2:"Data si consemnarea operatiunilor care au fost executate, eventualele observatii care s-au facut cu aceasta ocazie",a3:"Toate cele de mai sus",correct:2},
+
+
+
+{cat:"Navigatie",q:"Daca conducatorul de nava strĂ˘nge pumnul spre tine, ĂŽnseamna:",a1:"Tine-o asa.",a2:"Da drumul.",a3:"Vino direct la timonerie.",correct:1},
+{cat:"Navigatie",q:"Daca sunteti instruit sa ĂŽntindeti o parĂ˘ma, aceasta ĂŽnseamna ca:",a1:"Trebuie sa eliberati nava",a2:"Trebuie sa opriti ĂŽncet nava",a3:"Trebuie sa recuperati burta parĂ˘mei",correct:3},
+{cat:"Navigatie",q:"Folositi o volta dubla la gata ca ĂŽn fotografie pentru a va asigura ca....:",a1:"ParĂ˘ma este u?or de slabit",a2:"ParĂ˘ma nu sare u?or de pe binta.",a3:"ParĂ˘ma este mai puternica.",correct:2},
+{cat:"Navigatie",q:"Daca un capitan acoseaza cu prova ĂŽn amonte, marinarul trebuie:",a1:"Sa volteze o parĂ˘ma de acostare.",a2:"Sa volteze parĂ˘ma pupa.",a3:"Sa volteze springul pupa.",correct:3},
+{cat:"Navigatie",q:"Daca acostati ĂŽntr-un port unde amplitutinea mareei este mare (apa creste si scade foarte mult) ar trebui sa:",a1:"Utilizati parĂ˘me lungi de acostare.",a2:"Folositi parĂ˘me scurte de acostare.",a3:"ViratĂŽ parĂ˘mele la fiecare doua ore",correct:1},
+{cat:"Navigatie",q:"Ce reprezinta imaginea de mai jos:",a1:"Un cos ĂŽn care se tine sĂ˘rma macaralei.",a2:"Un cos pentru pastrarea parĂ˘melor.",a3:"Un cos pentru depozitarea cablurilor electrice.",correct:2},
+{cat:"Navigatie",q:"Care parĂ˘ma de moleaza de obicei ultima?",a1:"ParĂ˘ma pupa.",a2:"Springul prova.",a3:"ParĂ˘ma prova",correct:3},
+{cat:"Navigatie",q:"Care este numarul minim de volte ce trebuie luate la o binta?",a1:"Doua",a2:"Sapte.",a3:"Patru",correct:3},
+{cat:"Navigatie",q:"Ce ĂŽnseamna termenul shifting:",a1:"Informati comandantul prin radio portabil.",a2:"Deplasati nava pe o distanta scurta.",a3:"CĂ˘nd comandantul va da o instructiune.",correct:2},
+{cat:"Navigatie",q:"Din ce este compus convoiul din imagine?",a1:"Nava autopropulsata cu o barja de ĂŽmpingere.",a2:"Ămpingator cu doua barje ĂŽn cuplu.",a3:"Nava autopropulsata cu slep.",correct:1},
+{cat:"Navigatie",q:"Care este avantajul ĂŽn cazul ĂŽn care nava cu motor si barja se pot prinde una peste alta?",a1:"Ca accelereaza.",a2:"Ca barja si nava sunt bine atasate.",a3:"Puteti naviga prin curba mult mai u?or.",correct:3},
+{cat:"Navigatie",q:"Ce transforma un convoi ĂŽmpins ĂŽntr-un ansamblu solid?",a1:"Piese de cuplare.",a2:"ParĂ˘me de cuplare si vinciuri de cuplare.",a3:"SĂ˘rme de cuplare si vinciuri de cuplare.",correct:3},
+{cat:"Navigatie",q:"De ce barjele sunt prevazute cu ancore ĂŽncorporate?",a1:"Astfel ĂŽncĂ˘t ancorele sa dispara complet ĂŽn nava, iar ancora sa nu ĂŽmpiedice conectarea.",a2:"Este mult mai sigur, in cazul unei coliziuni, nu mai exista nicio sansa ca ancora sa provoace daune",a3:"Ancora nu va fi deteriorata la cuplare.",correct:1},
+{cat:"Navigatie",q:"Ce activitati din transportul ĂŽmpins prezinta pericole pe care nu le ĂŽntĂ˘mpinati ĂŽn alte transporturi interioare?",a1:"Pericole ĂŽn cuplare.",a2:"Conditii de alunecare pe punte",a3:"Pericol de cadere peste bord.",correct:1},
+{cat:"Navigatie",q:"Ce echipament individual de protectie purtatĂŽ ĂŽn timpul cuplarii?",a1:"Manusi, vesta de salvare, pantofi de siguran?a, salopete.",a2:"Manusi, pantofi de protectie, vesta de protectie.",a3:"Casca, pantofi de protectie, salopete, ochelari de protectie.",correct:1},
+{cat:"Navigatie",q:"Ce pericole ati putea ĂŽntĂ˘lni la trecerea de pe ĂŽmpingator pe barje?",a1:"Din cauza diferentei de inaltime, puteti cadea ĂŽn apa.",a2:"Datorita diferentei de inaltime puteti cadea in magazia de marfa.",a3:"Poti cadea peste o sĂ˘rma de cuplare.",correct:1},
+{cat:"Navigatie",q:"Numiti doua sarcini de ĂŽntre?inere ĂŽn ceea ce priveste barjele.",a1:"Ungeti vinciurile, ĂŽnlocuiti sĂ˘rmele.",a2:"Cuplarea si deplasarea.",a3:"Slefuire si vopsire.",correct:1},
+{cat:"Navigatie",q:"La verificarea barjelor, numiti doua sarcini.",a1:"Verificati magaziile de marfa, verificati daca exista obstacole.",a2:"Verificati ce fel de marfa a fost si daca exista pete de rugina.",a3:"Verificati peak-urile prova si pupa pentru apa, verificati vinciurile de ancora.",correct:3},
+{cat:"Navigatie",q:"De ce toate obstacolele de pe puntea unei barje de ĂŽmpingere sunt vopsite ĂŽn galben?",a1:"Este ceva stabilit de proprietarul barjei.",a2:"Galbenul se distinge ĂŽn ĂŽntuneric.",a3:"Face obstacolele clar vizibile.",correct:3},
+{cat:"Navigatie",q:"Ce tip de ancora este cel mai comun ĂŽn transportul pe ape interioare?",a1:"Ancora tip Hall",a2:"Ancore Stok",a3:"Ancore tip amiralitate",correct:1},
+{cat:"Navigatie",q:"Pe zona de semnal ĂŽngust a unui fluviu, ancoraČi astfel:",a1:"Cu o ancora de pupa",a2:"Cu doua ancore ĂŽn barba",a3:"Nu se ancoreaza",correct:2},
+{cat:"Navigatie",q:"Pentru a fundarisi ancora:",a1:"Eliberati frĂ˘na",a2:"Puneti vinciul ancorei ĂŽn miscare",a3:"Apasati butonul de ancorare",correct:1},
+{cat:"Navigatie",q:"CĂ˘nd adĂ˘ncimea apei este de 5 metri:",a1:"Se dau aproximativ 10 metri de lant",a2:"Se dau aproximativ 15 metri de lant",a3:"Se dau aproximativ 50 de metri de lant",correct:2},
+{cat:"Navigatie",q:"Se foloseste o ancora de pupa:",a1:"Pentru a face o oprire de urgenta",a2:"Pentru a acosta vasul",a3:"CĂ˘nd ancora prova nu tine suficient",correct:1},
+{cat:"Navigatie",q:"O linie de relevment este utilizata pentru:",a1:"Pentru a verifica ca esti inca ancorat pe curs",a2:"A verifica daca ancora tine",a3:"A verifica adĂ˘ncimea apei",correct:2},
+{cat:"Navigatie",q:"Referitor la Reglementarile Maritime: Pentru a indica altor nave ĂŽn timpul zilei ca nava proprie este ancorata, trebuie sa ridicati:",a1:"O bula rosie",a2:"Un bicon negru",a3:"O bula neagra",correct:3},
+{cat:"Navigatie",q:"Pentru a arata altor nave ca sunteti ancorat ĂŽn timpul noptii:",a1:"Aratati o lumina alba de 360 de grade.",a2:"Aratati o lumina galbena de 360 de grade.",a3:"Aratati doua lumini de 360 de grade, o lumina alba si una galbena",correct:1},
+{cat:"Navigatie",q:"CĂ˘nd este interzisa ancorarea:",a1:"La adĂ˘ncimi peste 15 metri",a2:"Ăn zone cu curent de travers",a3:"Ăn zone traversate de cabluri submersibile",correct:3},
+{cat:"Navigatie",q:"Lucrul ĂŽn siguranta cu vinciul de ancorare este important deoarece:",a1:"Se poate rupe usor",a2:"Pot avea loc accidente",a3:"Este greu de operat.",correct:2},
+{cat:"Navigatie",q:"La o nava fluviala moderna guvernam cu:",a1:"Un sistem electric",a2:"Un sistem hidraulic",a3:"Un sistem pneumatic",correct:2},
+{cat:"Navigatie",q:"Pilotul automat poate fi conectat la:",a1:"Tahometrul, termometrul sau alarma de santina",a2:"Indicatorul vitezei de giratie, compasul sau GPS-ul",a3:"Radarul sau harta electronica",correct:2},
+{cat:"Navigatie",q:"La guvernarea pe pilot automat, modul manual este utilizat pentru:",a1:"A intra ĂŽntr-o ecluza",a2:"A mentine drumul ĂŽn ape deschise",a3:"A naviga pe un curs prestabilit",correct:1},
+{cat:"Navigatie",q:"CĂ˘r ma se va misca ĂŽntr-o directie atĂ˘ta timp cĂ˘t maneta de comanda este mutata ĂŽntr-o parte. Pentru a opri miscarea cĂ˘rmei, stick-ul de control trebuie pus ĂŽn pozitia de mijloc, numim asa:",a1:"Pilot automat",a2:"Operare directa",a3:"Guvernare manuala â Follow up.",correct:3},
+{cat:"Navigatie",q:"Te apropii de acest pod. Uitate la imagine. Luminile indica faptul ca:",a1:"Podul este ĂŽnchis si scos din functiune",a2:"Podul este ĂŽnchis, dar trecerea pe pod este permisa, trecerea pe sub pod este interziza",a3:"Podul este ĂŽnchis, trecerea este interzisa",correct:2},
+{cat:"Navigatie",q:"Pe fotografie vedem carena unei nave cu asa-numitul sistem Voight Schneider. Veti gasi aceste sisteme la:",a1:"Remorchere",a2:"Veliere",a3:"Nave maritime",correct:1},
+{cat:"Navigatie",q:"Elicea acestei nave este:",a1:"O elice cu patru pale, cu rotatie ĂŽn ambele sensuri",a2:"O elice cu cinci pale, cu pas stĂ˘nga",a3:"O elice cu cinci pale, cu rotatie ĂŽn ambele sensuri",correct:3},
+{cat:"Navigatie",q:"Aceasta este o:",a1:"Instalatie de guvernare Van der Velde",a2:"CĂ˘rma de tip Becker flap",a3:"CĂ˘rma plata",correct:2},
+{cat:"Navigatie",q:"Pe fotografie vedem o nava cu:",a1:"Sistem de directie Schottel la prova",a2:"Un sistem de control pasiv al provei",a3:"O elice de prova cu tunel",correct:3},
+{cat:"Navigatie",q:"Un sistem hidraulic de directie este umplut cu:",a1:"Ulei pneumatic",a2:"Apa hidraulica",a3:"Ulei hidraulic",correct:3},
+{cat:"Navigatie",q:"CĂ˘nd acostati, preferati sa folositi:",a1:"Guvernarea de urgenta.",a2:"Guvernarea manuala.",a3:"Guvernarea cu pilotul automat.",correct:2},
+{cat:"Navigatie",q:"Daca vĂ˘ntul si curentul sunt opuse, atunci vedeti:",a1:"O hula lunga continua.",a2:"Valuri de travers.",a3:"Valuri scurte si ascutite.",correct:3},
+{cat:"Navigatie",q:"Daca navigati ĂŽn ape deschise spre est (90 de grade) si exista un vĂ˘nt puternic de nord, atunci:",a1:"Nava va deriva catre est si ar trebui sa guvernati mai mult spre sud.",a2:"Nava va deriva catre nord si ar trebui sa guvernati mai mult spre sud",a3:"Nava va deriva catre sud si ar trebui sa guvernati mai mult spre nord.",correct:3},
+{cat:"Navigatie",q:"CĂ˘nd navigati pe guvernarea de avarie, folositi:",a1:"Guvernare manuala.",a2:"Pilotul automat.",a3:"Pilotul de fluviu.",correct:1},
+{cat:"Navigatie",q:"Daca conducatorul de nava ĂŽi spune timonierului sa schimbe de drum cu 5 grade la babord, atunci:",a1:"Micsorati drumul compas cu 5 grade",a2:"Mariti drumul compas cu 5 grade.",a3:"Puneti cĂ˘rma 5 grade la babord.",correct:1},
+{cat:"Navigatie",q:"Conducatorul de nava este pentru scurt timp pe punte si tu conduci nava, ĂŽn departare o nava de ĂŽntĂ˘lnire se apropie pe un curs periculos, apoi:",a1:"Prima data informati conducatorul de nava.",a2:"Dati un semnal sonor.",a3:"Intrati ĂŽn contact VHF.",correct:1},
+{cat:"Navigatie",q:"Ăn timpul voiajului, instalatia de guvernare nu mai raspunde, apoi:",a1:"Treci pe guvernarea de avarie.",a2:"Opriti motorul.",a3:"Chemati echipa de reparatii.",correct:1},
+{cat:"Navigatie",q:"La acostarea pe ape curgatoare:",a1:"De preferat sa acostati cu prova ĂŽn curent.",a2:"De preferat sa acostati cu pupa ĂŽn curent.",a3:"Nu conteaza cum acostati.",correct:1},
+{cat:"Navigatie",q:"Pentru a putea sta la cĂ˘rma, trebuie sa:",a1:"Ai cel putin 18 ani.",a2:"Ai cel putin 16 ani.",a3:"Ai cel putin 21 ani.",correct:2},
+{cat:"Navigatie",q:"Nu aveti voie sa navigati sub influenta alcoolului, nivelul de alcool din sĂ˘ngele dumneavoastra nu poate depasi:",a1:"1,0 pe mil.",a2:"0,5 pe mil.",a3:"0,1 pe mil.",correct:2},
+{cat:"Navigatie",q:"Roza compasului contine:",a1:"300 de grade",a2:"360 de grade",a3:"180 de grade",correct:2},
+{cat:"Navigatie",q:"Abrevierea RADAR ĂŽnseamna:",a1:"Radio Detecting and Ranging",a2:"Real Data and Reacting",a3:"Radio Data and Ranging",correct:1},
+{cat:"Navigatie",q:"O sonda ultrason functioneaza cu un sunet inaudibil, numim asta:",a1:"Ecografia",a2:"Sonar",a3:"Radar",correct:2},
+{cat:"Navigatie",q:"Sonda ultrason indica distanta:",a1:"Ăntre linia de plutire si fundul apei",a2:"Ăntre chila navei si linia de plutire",a3:"Ăntre fundul apei si chila navei",correct:3},
+{cat:"Navigatie",q:"Ăn partea stĂ˘nga sus a acestei harti nautice scrie D37, asta ĂŽnseamna:",a1:"AdĂ˘ncimea este de 37 de centimetri in raport cu suprafata apei",a2:"AdĂ˘ncimea este de 37 de metri in raport cu suprafata apei",a3:"AdĂ˘ncimea este de 37 de decimetri ĂŽn raport cu suprafata apei",correct:3},
+{cat:"Navigatie",q:"Ce semnifica tabelele de mai jos pe o harta de navigatie?",a1:"O legenda",a2:"Un cuprins",a3:"Un apendice",correct:1},
+{cat:"Navigatie",q:"Folosim instrumentul din imagine pentru a:",a1:"Controla viteza motoarelor principale",a2:"Opera cĂ˘rmele",a3:"Controla viteza propulsorului de prova",correct:1},
+{cat:"Navigatie",q:"CĂ˘nd timonierul ĂŽncepe acostarea, trece la:",a1:"Pilot automat",a2:"Guvernare manuala",a3:"Guvernare de urgenta",correct:2},
+{cat:"Navigatie",q:"In figura de mai jos vedem:",a1:"Un indicator viteza de giratie",a2:"Un indicator de propulsor de prova",a3:"Un indicator de pozitie a vĂ˘ntului",correct:1},
+{cat:"Navigatie",q:"Pe aceasta harta electronica vezi cercuri colorate, ele reprezinta:",a1:"Zone de ancoraj",a2:"Statii radar",a3:"Sectoare de lumini ale farurilor",correct:3},
+{cat:"Navigatie",q:"Sa ĂŽntreprinda actiunile necesare pentru siguranta navigatiei.",a1:"O persoana pentru vinciu si o persoana ĂŽn interiorul barcii.",a2:"O persoana.",a3:"O persoana ĂŽn interiorul barcii, o persoana care sa tina barca departe de bordaj si o persoana care sa opereze vinciul.",correct:2},
+{cat:"Navigatie",q:"CĂ˘nd raschiati rugina...",a1:"Ăntotdeauna port ochelari de protectie ĂŽn caz ca vopseaua zboara.",a2:"Ăntotdeauna port un guler de siguranta. Acest lucru este ĂŽntotdeauna util.",a3:"Ăncalcamintea mea de siguranta ma protejeaza ĂŽmpotriva zburatii vopselei.",correct:1},
+{cat:"Navigatie",q:"Dopurile pentru urechiâŚ",a1:"Protejeaza ĂŽmpotriva oricarui zgomot.",a2:"Sunt ideale pentru zgomot peste 110dB.",a3:"Protejeaza ĂŽmpotriva zgomotului de pĂ˘na la 90 dB.",correct:3},
+{cat:"Navigatie",q:"Capacele magaziilor....",a1:"Sunt stivuite pe fundul magaziilor la ĂŽncarcarea cerealelor.",a2:"Sunt puse pe caile de rulare pentru a ĂŽnchide magaziile.",a3:"Sunt ĂŽndepartate la ĂŽncarcarea marfurilor lichide.",correct:2},
+{cat:"Navigatie",q:"Ăntretinerea reductor/inversorului consta ĂŽn...",a1:"O schimbare saptamanala a uleiului, deoarece uleiul arde foarte repede si o verificare a filtrelor.",a2:"O verificare zilnica a utilizarii si completarea cu ulei multigrad.",a3:"O verificare zilnica a manometrului uleiului si a presiunii si o schimbare a uleiului la fiecare 1000 de ore.",correct:3},
+{cat:"Navigatie",q:"Dupa schimbarea uleiului motorului...",a1:"Pompezi totul peste bord.",a2:"Dati uleiul schimbat si cĂ˘rpele de curatare la facilitatile de colectare.",a3:"Puneti cĂ˘rpele folosite ĂŽn sala masinilor.",correct:2},
+{cat:"Navigatie",q:"Nava este ĂŽncarcata cu carbune de cĂ˘teva saptamĂ˘ni. Poti sa intri ĂŽn siguranta ĂŽn magazii?",a1:"Da.",a2:"Numai daca scara este bine fixata.",a3:"Nu.",correct:3},
+{cat:"Navigatie",q:"Pe un ĂŽmpingator vi se cere sa verificati un compartiment ĂŽnchis pentru eventuale infiltratii. Cum procedati?",a1:"Doar cobor.",a2:"Aerisesc bine compartimentul ĂŽnainte de a coborĂŽ. CĂ˘nd cobor colegul meu sta de veghe.",a3:"Nu fac nimic din cele de mai sus.",correct:2},
+{cat:"Navigatie",q:"CĂ˘nd intri ĂŽntr-o camera ĂŽn care motoarele sunt ĂŽn functiune...",a1:"Port sapca.",a2:"Ămi pun dopuri ĂŽn urechi si ma asigur ca nu port haine largi.",a3:"Intru oricum.",correct:2},
+{cat:"Navigatie",q:"Sunteti ocupat cu curatarea unui rezervor de marfa degazat. Cineva va striga si va cere sa iesiti din tanc.",a1:"Deoarece mai aveti nevoie de doar 2 minute pentru a termina treaba, continuati curatenia.",a2:"Parasiti tancul imediat.",a3:"Ignorati cererea.",correct:2},
+{cat:"Navigatie",q:"RadarulâŚ",a1:"Este principalul mijloc de comunicare pentru a ajunge la alte nave.",a2:"Cauta alte obiecte folosind unde electromagnetice",a3:"Este harta electronica conectata cu navigatia prin satelit.",correct:2},
+{cat:"Navigatie",q:"Pentru a masura adĂ˘ncimea de sub chilaâŚ",a1:"Radarul este foarte potrivit.",a2:"Folosim o sonda ultrason",a3:"Conectam navigatia prin satelit la o harta electronica.",correct:2},
+{cat:"Navigatie",q:"CĂ˘nd ajustati un rĂ˘u...",a1:"Se prevede un pat considerabil de iarna si panta egalizata",a2:"Curbele inutile sunt eliminate.",a3:"Se construiesc baraje si ecluze.",correct:2},
+{cat:"Navigatie",q:"CĂ˘nd regularizati un rĂ˘u...",a1:"Se prevede un pat considerabil de iarna si panta egalizata.",a2:"Curbele inutile sunt eliminate.",a3:"Se construiesc baraje si ecluze.",correct:1},
+{cat:"Navigatie",q:"CĂ˘nd normalizati un rĂ˘u...",a1:"Se prevede un pat considerabil de iarna si panta egalizata.",a2:"Curbele inutile sunt eliminate.",a3:"Se construiesc epiuri si diguri longitudinale.",correct:3},
+{cat:"Navigatie",q:"CĂ˘nd canalizati un rĂ˘u...",a1:"Se prevede un pat considerabil de iarna si panta egalizata.",a2:"Curbele inutile sunt eliminate.",a3:"Se construiesc baraje si ecluze.",correct:3},
+{cat:"Navigatie",q:"Cum poti urmari pozitia cĂ˘rmei ĂŽn timonerie?",a1:"Prin intermediul sondei ultrason.",a2:"Prin intermediul indicatorului vitezei de giratie.",a3:"Prin intermediul indicatorului de cĂ˘rma.",correct:3},
+{cat:"Navigatie",q:"Ce rezerva de inaltime este necesara reglementarile pentru a trece pe sub poduri fixe?",a1:"10 cm",a2:"Minim 30 cm",a3:"Acest lucru nu este reglementat si depinde de nivelul apei.",correct:2},
+{cat:"Navigatie",q:"Nava se apropie de o deschidere a podului deasupra careia exista urmatorul semn, care este semnificatia acestui semn:",a1:"Interzicere de trecere.",a2:"Trecere permisa",a3:"Trecere permisa numai pentru navele cu motor.",correct:1},
+{cat:"Navigatie",q:"Vedeti aceste lumini la deschiderea de trecere a unui pod sau ecluza:",a1:"Navigarea ĂŽnauntru, ĂŽn afara sau pe nu este permisa.",a2:"Trebuie sa ai grija, navele ies din ecluza.",a3:"Interzicerea de a trece, dar pregatiti-va de mars.",correct:3},
+{cat:"Navigatie",q:"Te apropii de urmatorul semn, asta ĂŽnseamna:",a1:"Obligatia de a-si pastra malul.",a2:"Obligatia de a da un semnal sonor.",a3:"Obligatia de a acorda o atentie deosebita.",correct:3},
+{cat:"Navigatie",q:"Urmatoarele semne sunt dispuse deasupra deschiderii de trecere a unui pod, aceasta ĂŽnseamna:",a1:"Trecerea din sens opus este permisa.",a2:"Trecerea din sens opus este interzisa.",a3:"Trecerea este permisa din ambele sensuri.",correct:2},
+{cat:"Navigatie",q:"Navigati pe lĂ˘nga acest semn:",a1:"Bac care naviga liber.",a2:"Te apropii de un loc de lumina.",a3:"Te apropii de o rampa.",correct:1},
+{cat:"Navigatie",q:"Pune semnificatia celor trei geamanduri ĂŽn ordinea corecta:",a1:"Partea dreapta a senalului, partea stĂ˘nga a senalului, bifurcatia senalului",a2:"Partea stĂ˘nga a senalului, partea dreapta a senalului, bifurcatia senalului.",a3:"Canal principal de Nord, canal principal de Sud, geamandura centrala.",correct:2},
+{cat:"Navigatie",q:"Vedeti urmatorul semn, care este sensul:",a1:"O traversare a doua cai navigabile.",a2:"Senalul se schimba de la tribord la babord.",a3:"Semn de bifurcatie a caii navigabile.",correct:3},
+{cat:"Navigatie",q:"Conducatorul de nava emite urmatorul semnal sonor:",a1:"Vin la tribord.",a2:"Masina pe mars ĂŽnapoi.",a3:"Nava nu mai poate manevra.",correct:2},
+{cat:"Navigatie",q:"Ăn departare vezi un convoi de ĂŽmpingere cu semnul urmator, acum stii ca:",a1:"Convoiul care ĂŽmpinge este ancorat.",a2:"Convoiul de ĂŽmpingere este asistat.",a3:"Convoiul ĂŽmpins transporta marfuri periculoase.",correct:2},
+{cat:"Navigatie",q:"CĂ˘nd se deschide un pod pivotant, acesta se ĂŽntoarce:",a1:"Spre tine.",a2:"Departe de tine.",a3:"La tribord.",correct:2},
+{cat:"Navigatie",q:"Nava este ancostata ĂŽn ecluza, unghiul ascut al portilor sunt departe de tine, ca ĂŽn fotografie, asta ĂŽnseamna ca:",a1:"Nivelul apei din ecluza este mai mare.",a2:"Nivelul apei de pe cealalta parte a usilor este mai scazut.",a3:"Nivelul apei de pe cealalta parte a usilor este mai mare.",correct:3},
+{cat:"Navigatie",q:"Ecluza ĂŽn care navele navigheaza de la o cale navigabila la alta se numeste:",a1:"Ecluza cu camera.",a2:"Ecluza dubla.",a3:"Ecluza ĂŽmpotriva inundatiilor.",correct:1},
+{cat:"Navigatie",q:"La ecluze si poduri veti gasi adesea pereti de protectie. Peretii de protectie:",a1:"Ofera putere podului sau ecluzei.",a2:"Ghideaza curentul de apa.",a3:"Protejeaza ecluza sau podul ĂŽmpotriva daunelor cauzate de coliziune.",correct:3},
+{cat:"Navigatie",q:"Te apropii de un pod si vezi aceste doua semne deasupra deschiderii, asta ĂŽnseamna ca:",a1:"Trecere recomandata ĂŽn ambele sensuri.",a2:"Trecere recomandata ĂŽn singurul sens indicat (trecerea ĂŽn sens invers fiind interzisa).",a3:"Trecerea nu este permisa.",correct:2},
+{cat:"Navigatie",q:"Nava se apropie de acest pod, luminile rosii duble ĂŽnseamna ca:",a1:"Trecerea este interzisa.",a2:"Trecere permisa cu pod ĂŽnchis, navigatie opusa este posibila.",a3:"Trecere permisa cu pod ĂŽnchis, interzis navigatiei opuse.",correct:1},
+{cat:"Navigatie",q:"Nava se apropie de o ecluza, aceste lumini ĂŽnseamna ca:",a1:"Trecerea este permisa pentru navele mai mici de 15 metri.",a2:"Trebuie sa ai grija, navele ies din ecluza.",a3:"Intrarea este interzisa, dar va fi permisa ĂŽn curĂ˘nd.",correct:3},
+{cat:"Navigatie",q:"Aceasta este o:",a1:"Marca de referinta",a2:"Mira hidrometrica",a3:"Scara de adĂ˘ncime",correct:2},
+{cat:"Navigatie",q:"Nava navigheaza ĂŽntr-un canal spre ecluza si vedeti vedea aceste lumini sau semnal de pavilion. Ănseamna ca:",a1:"Se asteapta precipitatii abundente.",a2:"Apa va fi ĂŽn curĂ˘nd lasata sa intre sau scursa.",a3:"Apa este eliberata din canal.",correct:3},
+{cat:"Navigatie",q:"Nava se apropie de ecluza, acest semn ĂŽnseamna ca:",a1:"La aproximativ 11 metri este disponibil un post VHF.",a2:"Viteza maxima este de 11 kilometri pe ora.",a3:"Trebuie sa raportati pe canalul VHF desemnat.",correct:3},
+{cat:"Navigatie",q:"Ce ĂŽnseamna abrevierea ECDIS?",a1:"Electronic Chart and Display Information System.",a2:"Electronic Chart and Display Inland System.",a3:"Electronic Chart and Distress Information System.",correct:1},
+{cat:"Navigatie",q:"Ce ĂŽnseamna abrevierea AIS?",a1:"Autonomous Identification System.",a2:"Automatic Inland System.",a3:"Automatic Identification System.",correct:3},
+{cat:"Navigatie",q:"Ăn cazul unui pericol grav si iminent pentru nava si echipaj, puteti utiliza urmatorul semnal de primejdie:",a1:"Ajutor!",a2:"Mayday.",a3:"Panpan.",correct:2},
+{cat:"Navigatie",q:"Controlorul de trafic al statiei de circulatie a sectorului ĂŽn care navigati da instructiuni pentru a preveni pericolul imediat. Conducatorul de nava:",a1:"Poate urma aceasta instructiune, dar asta nu este obligatoriu.",a2:"Va ĂŽntreba de ce.",a3:"Trebuie sa se supuna acestei instructiuni.",correct:3},
+{cat:"Navigatie",q:"Acest semn se afla pe partea dreapta a caii de rulare. Ănseamna ca...:",a1:"Te apropii de un pod.",a2:"Te apropii de un baraj.",a3:"Te apropii de o ecluza.",correct:2},
+{cat:"Navigatie",q:"Nava se apropie de aceasta ecluza, luminile verzi duble ĂŽnseamna ca:",a1:"Trecerea este permisa, ecluza este deschisa pe ambele parti.",a2:"Trecerea este permisa, dar interzisa pentru navele care se apropie.",a3:"Trecerea este permisa, dar va fi interzisa ĂŽn curĂ˘nd.",correct:1},
+{cat:"Navigatie",q:"Vedeti doua lumini izofazate luminĂ˘nd sincronizate. Aceasta ĂŽnseamna ca..",a1:"Trebuie sa intri repede.",a2:"Atentie, navele ies din ecluza.",a3:"Poti ĂŽnainta.",correct:3},
+{cat:"Navigatie",q:"Ăn timp ce te apropii de un complex de ecluze vezi acest semn. Inseamna:",a1:"Obligatia de a ĂŽncrucisa senalul la tribord.",a2:"Obligatia de a ĂŽncrucisa senalul la babord.",a3:"Obligatia de a te ĂŽntĂ˘lni rosu ĂŽn rosu cĂ˘nd se apropie de navigatie opusa.",correct:2},
+{cat:"Navigatie",q:"Te apropii de un pod deschis si vei vedea o lumina rosie continua deasupra unei lumini verzi intermitente. Ănseamna caâŚ:",a1:"Trecerea nu este permisa, cu exceptia serviciilor de urgenta.",a2:"Trecerea este permisa, cu conditia sa fie posibila trecerea la o viteza rezonabila.",a3:"Trecerea este interzisa, cu exceptia cazului ĂŽn care deschiderea pasajului este deja spre ĂŽnchidere, atunci cĂ˘nd nu este posibil sa opresti ĂŽntr-un timp rezonabil",correct:3},
+{cat:"Navigatie",q:"Pentru a utiliza un VHF:",a1:"Nu am nevoie de certificat.",a2:"Am nevoie de o licenta de navigatie.",a3:"Am nevoie de un certificat de operator.",correct:3},
+
+
+
+
+
+
+];
+
+    // -------------------- PERSISTENȚĂ LOCALĂ --------------------
+    const STORAGE_KEY = "test_marinar_questions_v1";
+
+    function loadQuestions() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          const arr = JSON.parse(saved);
+          if (Array.isArray(arr) && arr.length > 0) return arr;
+        } catch {}
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(baseQuestions));
+      return baseQuestions.slice();
+    }
+
+    function saveQuestions(arr) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+    }
+
+    let questions = loadQuestions();
+
+    // -------------------- UI GESTIONARE --------------------
+    const qList = document.getElementById("qList");
+    const statTotal = document.getElementById("stat-total");
+    const filterCat = document.getElementById("filterCat");
+
+    function renderList() {
+      const cat = filterCat.value;
+      const filtered = cat === "all" ? questions : questions.filter(q => q.cat === cat);
+      statTotal.textContent = questions.length;
+      qList.innerHTML = "";
+      if (!filtered.length) {
+        qList.innerHTML = "<div class='small'>📭 Nicio întrebare</div>";
+        return;
+      }
+      filtered.forEach((q, idx) => {
+        const div = document.createElement("div");
+        div.className = "q-item";
+        div.innerHTML = `
+          <div><span class="badge">${q.cat}</span><strong>Întrebarea ${idx+1}</strong></div>
+          <div>${q.q}</div>
+          <div class="small">1) ${q.a1}</div>
+          <div class="small">2) ${q.a2}</div>
+          <div class="small">3) ${q.a3}</div>
+          <div class="small">Răspuns corect: varianta ${q.correct}</div>
+        `;
+        qList.appendChild(div);
+      });
+    }
+
+    renderList();
+    filterCat.addEventListener("change", renderList);
+
+    document.getElementById("addBtn").addEventListener("click", () => {
+      const cat = document.getElementById("cat").value.trim();
+      const q = document.getElementById("question").value.trim();
+      const a1 = document.getElementById("a1").value.trim();
+      const a2 = document.getElementById("a2").value.trim();
+      const a3 = document.getElementById("a3").value.trim();
+      const correct = document.getElementById("correct").value;
+
+      if (!cat || !q || !a1 || !a2 || !a3 || !correct) {
+        alert("Completează toate câmpurile și răspunsul corect.");
+        return;
+      }
+      questions.push({cat, q, a1, a2, a3, correct:Number(correct)});
+      saveQuestions(questions);
+      document.getElementById("question").value = "";
+      document.getElementById("a1").value = "";
+      document.getElementById("a2").value = "";
+      document.getElementById("a3").value = "";
+      document.getElementById("correct").value = "";
+      renderList();
+    });
+
+    // -------------------- TABURI --------------------
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabAdmin = document.getElementById("tab-admin");
+    const tabExam = document.getElementById("tab-exam");
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        if (btn.dataset.tab === "admin") {
+          tabAdmin.style.display = "";
+          tabExam.style.display = "none";
+        } else {
+          tabAdmin.style.display = "none";
+          tabExam.style.display = "";
+        }
+      });
+    });
+
+    // -------------------- MUTARE ÎN MASĂ --------------------
+    const moveCategoryFrom = document.getElementById("moveCategoryFrom");
+    const moveCategoryTo = document.getElementById("moveCategoryTo");
+    const moveCount = document.getElementById("moveCount");
+    const bulkMoveBtn = document.getElementById("bulkMoveBtn");
+    const moveStatus = document.getElementById("moveStatus");
+
+    function updateMoveCount() {
+      const from = moveCategoryFrom.value;
+      if (!from) {
+        moveCount.textContent = "Întrebări ce vor fi mutate: 0";
+        return;
+      }
+      const count = questions.filter(q => q.cat === from).length;
+      moveCount.textContent = `Întrebări ce vor fi mutate: ${count}`;
+    }
+
+    function executeBulkMove() {
+      const from = moveCategoryFrom.value;
+      const to = moveCategoryTo.value;
+
+      if (!from || !to) {
+        alert("Selectează categoria sursă și categoria destinație.");
+        return;
+      }
+
+      if (from === to) {
+        alert("Categoria sursă și categoria destinație trebuie să fie diferite.");
+        return;
+      }
+
+      const count = questions.filter(q => q.cat === from).length;
+      if (count === 0) {
+        alert(`Nu există întrebări în categoria "${from}".`);
+        return;
+      }
+
+      if (confirm(`Sigur dorești să muti ${count} întrebări din "${from}" la "${to}"? Aceasta este o acțiune ireversibilă.`)) {
+        // Execută mutarea
+        questions.forEach(q => {
+          if (q.cat === from) {
+            q.cat = to;
+          }
+        });
+
+        // Salvează și reîncarcă interfața
+        saveQuestions(questions);
+        moveStatus.style.display = "block";
+        moveStatus.className = "feedback correct";
+        moveStatus.textContent = `✓ S-au mutat cu succes ${count} întrebări din "${from}" la "${to}".`;
+
+        // Resetează selectoarele
+        moveCategoryFrom.value = "";
+        moveCategoryTo.value = "";
+        updateMoveCount();
+
+        // Reîncarcă lista de întrebări
+        filterCat.value = "all";
+        renderList();
+
+        // Ascunde mesajul după 3 secunde
+        setTimeout(() => {
+          moveStatus.style.display = "none";
+        }, 3000);
+      }
+    }
+
+    moveCategoryFrom.addEventListener("change", updateMoveCount);
+    bulkMoveBtn.addEventListener("click", executeBulkMove);
+
+    // -------------------- EXAMEN NOU --------------------
+    let examQuestions = [];
+    let currentIndex = 0;
+    let scoreCorrect = 0;
+    let scoreWrong = 0;
+    let examStarted = false;
+    let timerInterval = null;
+    let remainingSeconds = 0;
+    let currentSelection = null;
+    let currentAnswered = false;
+
+    const examBody = document.getElementById("exam-body");
+    const startExamBtn = document.getElementById("startExamBtn");
+    const confirmBtn = document.getElementById("confirmBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const skipBtn = document.getElementById("skipBtn");
+    const finishBtn = document.getElementById("finishBtn");
+    const timerEl = document.getElementById("timer");
+    const progressInfo = document.getElementById("progressInfo");
+    const summaryEl = document.getElementById("summary");
+    const examCategorySelect = document.getElementById("examCategory");
+
+    function shuffle(array) {
+      return array
+        .map(value => ({ value, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({ value }) => value);
+    }
+
+    function startTimer(minutes) {
+      remainingSeconds = minutes * 60;
+      function updateTimer() {
+        const m = Math.floor(remainingSeconds / 60);
+        const s = remainingSeconds % 60;
+        timerEl.textContent = m.toString().padStart(2,"0") + ":" + s.toString().padStart(2,"0");
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          finishExam(true);
+        } else {
+          remainingSeconds--;
+        }
+      }
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function updateProgressInfo() {
+      progressInfo.textContent = `Corecte: ${scoreCorrect} • Greșite: ${scoreWrong}`;
+    }
+
+    function setButtonsState(state) {
+      // state: "idle", "answering", "afterAnswer", "finished"
+      if (state === "idle") {
+        confirmBtn.disabled = true;
+        nextBtn.disabled = true;
+        skipBtn.disabled = true;
+        finishBtn.disabled = true;
+      } else if (state === "answering") {
+        confirmBtn.disabled = (currentSelection === null);
+        nextBtn.disabled = true;
+        skipBtn.disabled = false;
+        finishBtn.disabled = false;
+      } else if (state === "afterAnswer") {
+        confirmBtn.disabled = true;
+        nextBtn.disabled = false;
+        skipBtn.disabled = true;
+        finishBtn.disabled = false;
+      } else if (state === "finished") {
+        confirmBtn.disabled = true;
+        nextBtn.disabled = true;
+        skipBtn.disabled = true;
+        finishBtn.disabled = true;
+      }
+    }
+
+    function renderCurrentQuestion() {
+      const q = examQuestions[currentIndex];
+      if (!q) return;
+      const num = currentIndex + 1;
+      currentSelection = null;
+      currentAnswered = false;
+
+      examBody.innerHTML = `
+        <div><span class="badge">${q.cat}</span><strong>Întrebarea ${num} din ${examQuestions.length}</strong></div>
+        <div style="margin-top:8px;">${q.q}</div>
+        <div class="answers">
+          ${[1,2,3].map(i => `
+            <label class="ans-option" data-val="${i}">
+              <input type="radio" name="ans" value="${i}">
+              <span>${q["a"+i]}</span>
+            </label>
+          `).join("")}
+        </div>
+        <div class="feedback" id="feedback"></div>
+      `;
+
+      const options = examBody.querySelectorAll(".ans-option");
+      options.forEach(opt => {
+        opt.addEventListener("click", () => {
+          if (currentAnswered) return;
+          const val = Number(opt.dataset.val);
+          currentSelection = val;
+          options.forEach(o => o.classList.remove("selected"));
+          opt.classList.add("selected");
+          setButtonsState("answering");
+        });
+      });
+
+      updateProgressInfo();
+      setButtonsState("answering");
+    }
+
+    function handleConfirm() {
+      if (currentSelection === null || currentAnswered) return;
+      const q = examQuestions[currentIndex];
+      const feedback = document.getElementById("feedback");
+      const options = examBody.querySelectorAll(".ans-option");
+      currentAnswered = true;
+
+      options.forEach(opt => {
+        const val = Number(opt.dataset.val);
+        opt.classList.add("disabled");
+        if (val === q.correct) {
+          opt.classList.add("correct");
+        }
+        if (val === currentSelection && val !== q.correct) {
+          opt.classList.add("wrong");
+        }
+      });
+
+      if (currentSelection === q.correct) {
+        scoreCorrect++;
+        feedback.textContent = "Corect!";
+        feedback.className = "feedback correct";
+      } else {
+        scoreWrong++;
+        feedback.textContent = `Greșit. Răspuns corect: varianta ${q.correct}.`;
+        feedback.className = "feedback wrong";
+      }
+      updateProgressInfo();
+      setButtonsState("afterAnswer");
+    }
+
+    function goToNextQuestion() {
+      if (!currentAnswered) return; // nu trecem fără confirmare
+      if (currentIndex < examQuestions.length - 1) {
+        currentIndex++;
+        renderCurrentQuestion();
+      } else {
+        finishExam(false);
+      }
+    }
+
+    function skipQuestion() {
+      // Sari întrebarea doar dacă nu a fost răspunsă încă
+      const q = examQuestions[currentIndex];
+      if (!q) return;
+      if (currentAnswered) return;
+      examQuestions.push(q); // mută la coadă
+      examQuestions.splice(currentIndex, 1);
+      if (currentIndex >= examQuestions.length) {
+        currentIndex = examQuestions.length - 1;
+      }
+      renderCurrentQuestion();
+    }
+
+    function finishExam(timeUp) {
+      if (!examStarted) return;
+      examStarted = false;
+      startExamBtn.disabled = false;
+      startExamBtn.textContent = "▶️ Reia examenul";
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      setButtonsState("finished");
+
+      const totalAnswered = scoreCorrect + scoreWrong;
+      const total = examQuestions.length;
+      const pct = totalAnswered === 0 ? 0 : ((scoreCorrect / totalAnswered) * 100).toFixed(1);
+
+      summaryEl.style.display = "block";
+      summaryEl.innerHTML = `
+        <strong>Rezultat examen:</strong><br>
+        Întrebări rezolvate: ${totalAnswered} din ${total}.<br>
+        Corecte: ${scoreCorrect}, Greșite: ${scoreWrong}.<br>
+        Procent corecte (din cele rezolvate): ${pct}%.<br>
+        ${timeUp ? "Timpul a expirat." : "Examen încheiat la cerere sau întrebări epuizate."}
+      `;
+      examBody.innerHTML = `<div class="small">Examenul s-a încheiat. Poți apăsa „Reia examenul” pentru un nou set de întrebări.</div>`;
+    }
+
+    startExamBtn.addEventListener("click", () => {
+      // selectare categorie
+      const cat = examCategorySelect.value;
+      let pool = cat === "all" ? questions.slice() : questions.filter(q => q.cat === cat);
+      if (pool.length === 0) {
+        alert("Nu există întrebări în categoria selectată.");
+        return;
+      }
+      pool = shuffle(pool);
+      examQuestions = pool.slice(0, Math.min(30, pool.length));
+
+      currentIndex = 0;
+      scoreCorrect = 0;
+      scoreWrong = 0;
+      examStarted = true;
+      summaryEl.style.display = "none";
+      startExamBtn.disabled = true;
+      startExamBtn.textContent = "Examen în desfășurare...";
+      startTimer(30);
+      renderCurrentQuestion();
+      setButtonsState("answering");
+      finishBtn.disabled = false;
+    });
+
+    confirmBtn.addEventListener("click", handleConfirm);
+    nextBtn.addEventListener("click", goToNextQuestion);
+    skipBtn.addEventListener("click", skipQuestion);
+    finishBtn.addEventListener("click", () => finishExam(false));
+
+  </script>
